@@ -127,15 +127,20 @@ main {
     margin: 1.5rem 0;
 }
 
-.ai-badge {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+.highlight-box .card {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 1.5rem;
     color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    display: inline-block;
-    margin: 0.5rem 0;
+}
+
+.highlight-box .card h4,
+.highlight-box .card p {
+    color: white;
 }
 
 /* Grid Layouts */
@@ -153,13 +158,12 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-
 .card {
     background: #f8f9fa;
     padding: 1.5rem;
     border-radius: 8px;
     border-left: 4px solid #667eea;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .card h4 {
