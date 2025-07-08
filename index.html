@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightsHive - AI-Powered Retail Intelligence Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-list {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .solution-list {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .team-member {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            background: #28a745;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .beta-badge {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .mvp-badge {
+            background: #28a745;
+            color: white;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1rem 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">InsightsHive</div>
+            <div class="tagline">AI-Powered Retail Intelligence Platform</div>
+            <div class="hero-description">
+                A digital-native tech startup offering proprietary mobile and desktop applications that leverage advanced AI computer vision to transform retail operations through automated KPI extraction and real-time insights.
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#business">Our Business</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Business Description Section -->
+        <section id="business" class="section">
+            <h2>Our Business</h2>
+            
+            <div class="highlight-box">
+                <h3>What We Do</h3>
+                <p>InsightsHive leverages advanced AI-driven computer vision and machine learning to analyze in-store imagery captured via our proprietary mobile application. Our platform automatically extracts critical retail Key Performance Indicators (KPIs) such as shelf compliance, planogram adherence, and promotional display effectiveness. Our desktop platform then transforms this raw data into actionable, real-time insights for retail managers and executives.</p>
+                <span class="ai-badge">🤖 AI-Powered</span>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="problem-list">
+                    <h3>🎯 Problems We Solve</h3>
+                    <ul>
+                        <li><strong>Manual Store Audits:</strong> Eliminates time-consuming, error-prone manual inventory checks</li>
+                        <li><strong>Delayed Data Collection:</strong> Provides real-time visibility into in-store execution</li>
+                        <li><strong>Inefficient Resource Allocation:</strong> Optimizes field team productivity and accuracy</li>
+                        <li><strong>Merchandising Compliance:</strong> Ensures planogram adherence and promotional display effectiveness</li>
+                        <li><strong>Lack of Actionable Insights:</strong> Transforms raw data into strategic business intelligence</li>
+                    </ul>
+                </div>
+
+                <div class="solution-list">
+                    <h3>🎯 Target Audience</h3>
+                    <ul>
+                        <li><strong>Large Retail Chains:</strong> Grocery, electronics, fashion, pharmacies</li>
+                        <li><strong>CPG Brands:</strong> Managing in-store presence and compliance</li>
+                        <li><strong>Field Merchandising Teams:</strong> Improving audit efficiency and accuracy</li>
+                        <li><strong>Store Operations Managers:</strong> Real-time performance monitoring</li>
+                        <li><strong>Regional Sales Directors:</strong> Data-driven territory management</li>
+                        <li><strong>Marketing Executives:</strong> Campaign effectiveness tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <h2>Our Products</h2>
+            <p>InsightsHive offers a comprehensive suite of AI-powered applications designed to revolutionize retail operations through automated data collection and intelligent analysis.</p>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>📱 Mobile Application</h3>
+                    <span class="status-badge beta-badge">Beta - Active Pilot Customers</span>
+                    <span class="ai-badge">Computer Vision Enabled</span>
+                    
+                    <h4>Core Functionality:</h4>
+                    <p>AI-powered in-store image capture and automated data collection</p>
+                    
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Guided photo workflow with step-by-step instructions</li>
+                        <li>Real-time object detection and product recognition</li>
+                        <li>Offline data collection capabilities</li>
+                        <li>Secure cloud synchronization</li>
+                        <li>On-device AI processing for immediate feedback</li>
+                    </ul>
+                    
+                    <h4>Problems Solved:</h4>
+                    <ul>
+                        <li>Eliminates manual audit errors</li>
+                        <li>Accelerates data collection by 85%</li>
+                        <li>Ensures consistent data capture across locations</li>
+                        <li>Improves field team efficiency and accuracy</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>💻 Desktop Platform</h3>
+                    <span class="status-badge mvp-badge">MVP - Deployed with Paying Customers</span>
+                    <span class="ai-badge">Machine Learning Analytics</span>
+                    
+                    <h4>Core Functionality:</h4>
+                    <p>Real-time retail KPI dashboards and advanced predictive analytics</p>
+                    
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Customizable dashboards and automated reports</li>
+                        <li>Drill-down capabilities (region → store → product)</li>
+                        <li>Historical trend analysis and forecasting</li>
+                        <li>Comparative analytics and benchmarking</li>
+                        <li>Exportable data and API integrations</li>
+                    </ul>
+                    
+                    <h4>KPIs Extracted:</h4>
+                    <ul>
+                        <li>Out-of-Stock (OOS) rates</li>
+                        <li>Share of Shelf (SOS) metrics</li>
+                        <li>Planogram compliance scores</li>
+                        <li>Promotional display effectiveness</li>
+                        <li>Competitive product presence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔗 Integrated Workflow</h3>
+                <p><strong>Step 1:</strong> Field teams capture in-store imagery using our mobile app → <strong>Step 2:</strong> AI computer vision processes images and extracts KPIs → <strong>Step 3:</strong> Desktop platform delivers real-time insights and actionable recommendations → <strong>Step 4:</strong> Retail managers optimize merchandising and operations based on data-driven insights</p>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section id="technology" class="section">
+            <h2>AI Technology & Competitive Advantage</h2>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>🧠 Computer Vision</h4>
+                    <p>Advanced deep learning models trained specifically for retail environments, enabling accurate product recognition and shelf analysis</p>
+                </div>
+                <div class="card">
+                    <h4>📊 Machine Learning</h4>
+                    <p>Predictive analytics and anomaly detection algorithms that identify trends and optimize business performance</p>
+                </div>
+                <div class="card">
+                    <h4>⚡ Real-Time Processing</h4>
+                    <p>Edge computing capabilities for immediate on-device analysis and cloud-based scalable processing</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Why AI is Central to Our Solution</h3>
+                <ul>
+                    <li><strong>Scalability:</strong> Processes thousands of images simultaneously across multiple locations</li>
+                    <li><strong>Accuracy:</strong> 95%+ accuracy in product recognition and KPI extraction</li>
+                    <li><strong>Speed:</strong> Reduces manual audit time from 30+ minutes to under 5 minutes</li>
+                    <li><strong>Consistency:</strong> Eliminates human error and ensures standardized data collection</li>
+                    <li><strong>Intelligence:</strong> Provides predictive insights and actionable recommendations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section">
+            <h2>Our Team</h2>
+            <p>InsightsHive is founded by experienced professionals with expertise in technology, business development, and market research.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">NK</div>
+                    <h3>Nikola K.</h3>
+                    <h4>Co-Founder</h4>
+                    <p><strong>Background:</strong> Experienced specialist with demonstrated history in market research and technology. Based in Sofia with extensive experience at Pic-Pok and previous roles as pricing consultant at Ingram Micro.</p>
+                    <p><strong>Education:</strong> Hochschule Worms</p>
+                    <p><strong>Expertise:</strong> Market research, pricing strategy, business development, technology implementation</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" style="color: #667eea;">View Profile</a></p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">OV</div>
+                    <h3>Ognyan Vasilev</h3>
+                    <h4>Co-Founder</h4>
+                    <p><strong>Background:</strong> Manager at Salesforce with over 9 years of consulting experience at leading global companies including Boston Consulting Group and Accenture Digital. Angel investor and part of ABLE.</p>
+                    <p><strong>Expertise:</strong> Technology consulting, digital transformation, business strategy, angel investing</p>
+                    <p><strong>Experience:</strong> Salesforce, Boston Consulting Group, Accenture Digital</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" style="color: #667eea;">View Profile</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2>Ready to Transform Your Retail Operations?</h2>
+            <p>Join leading retailers who are already leveraging InsightsHive's AI-powered platform to optimize their operations and drive growth.</p>
+            <button class="cta-button">Request a Demo</button>
+            <button class="cta-button">Contact Our Team</button>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>Contact InsightsHive</h3>
+            <p>Email: info@insightshive.com | Business Inquiries: contact@insightshive.com</p>
+            <p>Connect with our founders:</p>
+            <p>
+                <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" style="color: #667eea; margin-right: 2rem;">Nikola K. - CEO</a>
+                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" style="color: #667eea;">Ognyan Vasilev - CTO</a>
+            </p>
+            <p>&copy; 2025 InsightsHive. All rights reserved. | <a href="#" style="color: #667eea;">Privacy Policy</a> | <a href="#" style="color: #667eea;">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
