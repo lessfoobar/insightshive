@@ -303,11 +303,10 @@ li {
 .beta-badge {
     background: #ffc107;
     color: #333;
-}
-
-.mvp-badge {
-    background: #28a745;
-    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .ai-badge {
