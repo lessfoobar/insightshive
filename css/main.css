@@ -15,11 +15,6 @@
     --nav-bg: #ffffff;
     --footer-bg: #a359bc;
     --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #f4e1f5 0%, #d6cdea 100%);
-    --problem-bg: #fff3cd;
-    --problem-border: #ffc107;
-    --solution-bg: #e0f5ea;
-    --solution-border: #28a745;
 }
 
 [data-theme="dark"] {
@@ -37,13 +32,7 @@
     --nav-bg: #2d2d2d;
     --footer-bg: #1a1a1a;
     --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #a359bc 0%, #3a1a5c 100%);
-    --problem-bg: #4a3c1a;
-    --problem-border: #ffc107;
-    --solution-bg: #1a3d2e;
-    --solution-border: #28a745;
 }
-
 
 * {
     margin: 0;
@@ -229,31 +218,6 @@ main {
     margin: 1.5rem 0 1rem 0;
 }
 
-.highlight-box {
-    background: var(--highlight-bg);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    transition: background 0.3s ease;
-}
-
-.highlight-box .card {
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 8px;
-    padding: 1.5rem;
-    color: white;
-}
-
-.highlight-box .card h4,
-.highlight-box .card p {
-    color: white;
-}
-
 /* Grid Layouts */
 .grid {
     display: grid;
@@ -269,6 +233,7 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+/* UNIFIED CARD STYLING */
 .card {
     background: var(--bg-card);
     padding: 1.5rem;
@@ -283,6 +248,19 @@ main {
     margin-bottom: 0.5rem;
 }
 
+/* Special card variants for different content types */
+.card.highlight-card {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    color: white;
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.card.highlight-card h3,
+.card.highlight-card h4,
+.card.highlight-card p {
+    color: white;
+}
+
 /* Lists */
 ul {
     padding-left: 1.5rem;
@@ -292,22 +270,6 @@ ul {
 li {
     margin-bottom: 0.5rem;
     color: var(--text-secondary);
-}
-
-.problem-list {
-    background: var(--problem-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--problem-border);
-    transition: background-color 0.3s ease;
-}
-
-.solution-list {
-    background: var(--solution-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--solution-border);
-    transition: background-color 0.3s ease;
 }
 
 /* Team Section */
@@ -429,14 +391,6 @@ footer a:hover {
     background: var(--text-primary);
 }
 
-[data-theme="dark"] .problem-list {
-    color: #ffc107;
-}
-
-[data-theme="dark"] .solution-list {
-    color: #28a745;
-}
-
 [data-theme="dark"] li {
     color: var(--text-secondary);
 }
@@ -552,16 +506,6 @@ footer a:hover {
 
     /* Optimize card layouts for mobile */
     .card {
-        padding: 1.2rem;
-    }
-
-    .highlight-box {
-        padding: 1.2rem;
-        margin: 1rem 0;
-    }
-
-    .problem-list,
-    .solution-list {
         padding: 1.2rem;
     }
 
