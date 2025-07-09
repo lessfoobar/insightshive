@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (savedTheme) {
                 initialTheme = savedTheme;
             } else {
-                initialTheme = systemPrefersDark ? 'dark' : 'light';
+                initialTheme = 'dark';
             }
             
             setTheme(initialTheme);
