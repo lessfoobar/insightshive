@@ -1,47 +1,68 @@
-/* main.css - Mobile-optimized styles with hamburger menu and dark mode */
+/* main.css - Refined 2-3 color palette with mobile optimization */
 
 :root {
+    /* Primary brand color */
+    --primary-main: #a359bc;
+    --primary-light: #c084d1;
+    --primary-dark: #8a4aa0;
+    
+    /* Neutral colors */
+    --neutral-50: #fafafa;
+    --neutral-100: #f4f4f5;
+    --neutral-200: #e4e4e7;
+    --neutral-300: #d4d4d8;
+    --neutral-400: #a1a1aa;
+    --neutral-500: #71717a;
+    --neutral-600: #52525b;
+    --neutral-700: #3f3f46;
+    --neutral-800: #27272a;
+    --neutral-900: #18181b;
+    
     /* Light mode colors */
-    --bg-primary: #f8f9fa;
+    --bg-primary: var(--neutral-50);
     --bg-secondary: #ffffff;
-    --bg-card: #f8f9fa;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --accent-primary: #667eea;
-    --accent-secondary: #764ba2;
-    --border-color: rgba(0,0,0,0.1);
-    --shadow-light: rgba(0,0,0,0.1);
-    --shadow-medium: rgba(0,0,0,0.15);
+    --bg-card: #ffffff;
+    --text-primary: var(--neutral-900);
+    --text-secondary: var(--neutral-600);
+    --accent-primary: var(--primary-main);
+    --accent-secondary: var(--primary-dark);
+    --border-color: var(--neutral-200);
+    --shadow-light: rgba(0,0,0,0.05);
+    --shadow-medium: rgba(0,0,0,0.1);
     --nav-bg: #ffffff;
-    --footer-bg: #333333;
+    --footer-bg: var(--neutral-900);
     --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --problem-bg: #fff3cd;
-    --problem-border: #ffc107;
-    --solution-bg: #d4edda;
-    --solution-border: #28a745;
+    
+    /* Simplified backgrounds */
+    --highlight-bg: linear-gradient(135deg, var(--primary-main) 0%, var(--primary-dark) 100%);
+    --success-bg: var(--neutral-100);
+    --success-border: var(--primary-main);
+    --info-bg: var(--neutral-100);
+    --info-border: var(--primary-light);
 }
 
 [data-theme="dark"] {
     /* Dark mode colors */
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --bg-card: #3a3a3a;
-    --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --accent-primary: #7b8ff4;
-    --accent-secondary: #8a5fb8;
-    --border-color: rgba(255,255,255,0.2);
-    --shadow-light: rgba(0,0,0,0.3);
-    --shadow-medium: rgba(0,0,0,0.4);
-    --nav-bg: #2d2d2d;
-    --footer-bg: #1a1a1a;
-    --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #6a4c93 0%, #3a1a5c 100%);
-    --problem-bg: #4a3c1a;
-    --problem-border: #ffc107;
-    --solution-bg: #1a3d2e;
-    --solution-border: #28a745;
+    --bg-primary: var(--neutral-900);
+    --bg-secondary: var(--neutral-800);
+    --bg-card: var(--neutral-700);
+    --text-primary: var(--neutral-50);
+    --text-secondary: var(--neutral-300);
+    --accent-primary: var(--primary-light);
+    --accent-secondary: var(--primary-main);
+    --border-color: var(--neutral-600);
+    --shadow-light: rgba(0,0,0,0.2);
+    --shadow-medium: rgba(0,0,0,0.3);
+    --nav-bg: var(--neutral-800);
+    --footer-bg: var(--neutral-900);
+    --footer-text: var(--neutral-50);
+    
+    /* Dark mode backgrounds */
+    --highlight-bg: linear-gradient(135deg, var(--primary-main) 0%, var(--primary-dark) 100%);
+    --success-bg: rgba(163, 89, 188, 0.1);
+    --success-border: var(--primary-light);
+    --info-bg: rgba(163, 89, 188, 0.05);
+    --info-border: var(--primary-main);
 }
 
 * {
@@ -88,11 +109,12 @@ body {
 .theme-toggle:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px var(--shadow-medium);
+    background: var(--accent-secondary);
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: var(--highlight-bg);
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -211,7 +233,8 @@ main {
     padding: 2.5rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px var(--shadow-light);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .section h2 {
@@ -274,7 +297,13 @@ main {
     border-radius: 8px;
     border-left: 4px solid var(--accent-primary);
     box-shadow: 0 2px 8px var(--shadow-light);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--shadow-medium);
 }
 
 .card h4 {
@@ -293,20 +322,44 @@ li {
     color: var(--text-secondary);
 }
 
-.problem-list {
-    background: var(--problem-bg);
+/* Simplified content boxes */
+.content-box {
+    background: var(--success-bg);
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid var(--problem-border);
-    transition: background-color 0.3s ease;
+    border-left: 4px solid var(--success-border);
+    border: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.info-box {
+    background: var(--info-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--info-border);
+    border: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Legacy support - map old classes to new ones */
+.problem-list {
+    background: var(--info-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--info-border);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 .solution-list {
-    background: var(--solution-bg);
+    background: var(--success-bg);
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid var(--solution-border);
-    transition: background-color 0.3s ease;
+    border-left: 4px solid var(--success-border);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 /* Team Section */
@@ -322,15 +375,16 @@ li {
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 3px 10px var(--shadow-light);
+    border: 1px solid var(--border-color);
     text-align: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .team-photo {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: var(--highlight-bg);
     margin: 0 auto 1rem auto;
     display: flex;
     align-items: center;
@@ -342,7 +396,7 @@ li {
 
 /* Status Badges */
 .status-badge {
-    background: #28a745;
+    background: var(--accent-primary);
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -351,12 +405,12 @@ li {
 }
 
 .beta-badge {
-    background: #ffc107;
-    color: #333;
+    background: var(--primary-light);
+    color: white;
 }
 
 .mvp-badge {
-    background: #28a745;
+    background: var(--accent-primary);
     color: white;
 }
 
@@ -373,7 +427,7 @@ li {
 
 /* Call to Action */
 .cta-section {
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    background: var(--highlight-bg);
     color: white;
     text-align: center;
     padding: 3rem 2rem;
@@ -385,18 +439,21 @@ li {
     background: white;
     color: var(--accent-primary);
     padding: 1rem 2rem;
-    border: none;
+    border: 2px solid white;
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
     margin: 1rem 0.5rem;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
 }
 
 .cta-button:hover {
+    background: transparent;
+    color: white;
+    border-color: white;
     transform: translateY(-2px);
 }
 
@@ -416,6 +473,7 @@ footer a {
 }
 
 footer a:hover {
+    color: var(--primary-light);
     text-decoration: underline;
 }
 
@@ -426,14 +484,6 @@ footer a:hover {
 
 [data-theme="dark"] .menu-toggle span {
     background: var(--text-primary);
-}
-
-[data-theme="dark"] .problem-list {
-    color: #ffc107;
-}
-
-[data-theme="dark"] .solution-list {
-    color: #28a745;
 }
 
 [data-theme="dark"] li {
@@ -559,6 +609,8 @@ footer a:hover {
         margin: 1rem 0;
     }
 
+    .content-box,
+    .info-box,
     .problem-list,
     .solution-list {
         padding: 1.2rem;
