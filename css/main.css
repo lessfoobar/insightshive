@@ -248,19 +248,6 @@ main {
     margin-bottom: 0.5rem;
 }
 
-/* Special card variants for different content types */
-.card.highlight-card {
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    color: white;
-    border-left: 4px solid rgba(255, 255, 255, 0.3);
-}
-
-.card.highlight-card h3,
-.card.highlight-card h4,
-.card.highlight-card p {
-    color: white;
-}
-
 /* Lists */
 ul {
     padding-left: 1.5rem;
