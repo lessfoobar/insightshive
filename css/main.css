@@ -132,7 +132,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
 }
 
 .theme-toggle:hover {
@@ -148,19 +147,6 @@ header {
     padding: 2rem 0;
     text-align: center;
     position: relative;
-    overflow: hidden;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    z-index: 1;
 }
 
 header .container {
@@ -349,37 +335,23 @@ main {
     margin: 1.5rem 0;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-}
-
-.highlight-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
 }
 
 .highlight-box .card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-left: 4px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15px);
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 1.5rem;
     color: white;
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
 }
 
 .highlight-box .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .highlight-box .card h4,
@@ -542,25 +514,11 @@ li strong {
     border-radius: 12px;
     margin: 3rem 0;
     position: relative;
-    overflow: hidden;
-}
-
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
 }
 
 .cta-section h2 {
     color: white;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    position: relative;
-    z-index: 1;
 }
 
 .cta-button {
@@ -576,8 +534,6 @@ li strong {
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
-    position: relative;
-    z-index: 1;
 }
 
 .cta-button:hover {
