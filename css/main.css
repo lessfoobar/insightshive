@@ -2,47 +2,48 @@
 
 :root {
     /* Light mode colors */
-    --bg-primary: #f8f9fa;
+    --bg-primary: #f9f7fb;
     --bg-secondary: #ffffff;
-    --bg-card: #f8f9fa;
-    --text-primary: #333333;
+    --bg-card: #f4e1f5;
+    --text-primary: #1e1e1e;
     --text-secondary: #666666;
-    --accent-primary: #667eea;
-    --accent-secondary: #764ba2;
-    --border-color: rgba(0,0,0,0.1);
-    --shadow-light: rgba(0,0,0,0.1);
-    --shadow-medium: rgba(0,0,0,0.15);
+    --accent-primary: #a359bc;
+    --accent-secondary: #d6cdea;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
     --nav-bg: #ffffff;
-    --footer-bg: #333333;
+    --footer-bg: #a359bc;
     --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --highlight-bg: linear-gradient(135deg, #f4e1f5 0%, #d6cdea 100%);
     --problem-bg: #fff3cd;
     --problem-border: #ffc107;
-    --solution-bg: #d4edda;
+    --solution-bg: #e0f5ea;
     --solution-border: #28a745;
 }
 
 [data-theme="dark"] {
     /* Dark mode colors */
-    --bg-primary: #1a1a1a;
+    --bg-primary: #1a1a1d;
     --bg-secondary: #2d2d2d;
-    --bg-card: #3a3a3a;
-    --text-primary: #ffffff;
+    --bg-card: #3a2f3f;
+    --text-primary: #e8dff2;
     --text-secondary: #cccccc;
-    --accent-primary: #7b8ff4;
-    --accent-secondary: #8a5fb8;
-    --border-color: rgba(255,255,255,0.2);
-    --shadow-light: rgba(0,0,0,0.3);
-    --shadow-medium: rgba(0,0,0,0.4);
+    --accent-primary: #a359bc;
+    --accent-secondary: #f2e6fa;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
     --nav-bg: #2d2d2d;
     --footer-bg: #1a1a1a;
     --footer-text: #ffffff;
-    --highlight-bg: linear-gradient(135deg, #6a4c93 0%, #3a1a5c 100%);
+    --highlight-bg: linear-gradient(135deg, #a359bc 0%, #3a1a5c 100%);
     --problem-bg: #4a3c1a;
     --problem-border: #ffc107;
     --solution-bg: #1a3d2e;
     --solution-border: #28a745;
 }
+
 
 * {
     margin: 0;
