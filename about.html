@@ -20,33 +20,31 @@
     <script nomodule src="js/legacy/app-legacy.js"></script>
 </head>
 <body class="dark-theme">
-    <header>
+    <header class="header header--about">
         <div class="container">
-            <div class="logo">InsightsHive</div>
-            <div class="tagline">About Our Company</div>
-            <div class="hero-description">
+            <div class="header__logo">InsightsHive</div>
+            <div class="header__tagline">About Our Company</div>
+            <div class="header__description">
                 Learn about our mission to transform retail operations through AI-powered technology and automated insights.
             </div>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+    <nav class="nav">
+        <div class="nav__container">
+            <button type="button" class="btn--menu-toggle" aria-label="Toggle navigation menu">
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                <li><a href="about.html" class="nav__link nav__link--active">About Us</a></li>
+                <li><a href="products.html" class="nav__link">Products</a></li>
+                <li><a href="team.html" class="nav__link">Our Team</a></li>
+                <li><a href="technology.html" class="nav__link">Technology</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -54,169 +52,227 @@
         <h1 class="page-title">About InsightsHive</h1>
 
         <!-- What We Do -->
-        <section class="section">
+        <section class="card--section">
             <h2>What We Do</h2>
             <div class="card">
-                <h3>Our Core Business</h3>
-                <p>InsightsHive is a <strong>digital-native tech startup</strong> that leverages advanced AI-driven computer vision and machine learning to analyze in-store imagery captured via our proprietary mobile application. Our platform automatically extracts critical retail Key Performance Indicators (KPIs) such as shelf compliance, planogram adherence, and promotional display effectiveness. Our web platform then transforms this raw data into actionable, real-time insights for retail managers and executives.</p>
-                <span class="ai-badge">🤖 AI-Powered Solution</span>
+                <div class="card__header">
+                    <h3 class="card__title">Our Core Business</h3>
+                </div>
+                <div class="card__body">
+                    <p>InsightsHive is a <strong>digital-native tech startup</strong> that leverages advanced AI-driven computer vision and machine learning to analyze in-store imagery captured via our proprietary mobile application. Our platform automatically extracts critical retail Key Performance Indicators (KPIs) such as shelf compliance, planogram adherence, and promotional display effectiveness. Our web platform then transforms this raw data into actionable, real-time insights for retail managers and executives.</p>
+                    <span class="badge badge--ai">🤖 AI-Powered Solution</span>
+                </div>
             </div>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>📊 Our Technology Platform</h3>
-                    <ul>
-                        <li><strong>Mobile Application:</strong> AI-powered image capture with guided workflows</li>
-                        <li><strong>Web Platform:</strong> Real-time analytics and customizable dashboards</li>
-                        <li><strong>Computer Vision:</strong> Advanced product recognition and shelf analysis</li>
-                        <li><strong>Machine Learning:</strong> Predictive analytics and trend identification</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">📊 Our Technology Platform</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Mobile Application:</strong> AI-powered image capture with guided workflows</li>
+                            <li><strong>Web Platform:</strong> Real-time analytics and customizable dashboards</li>
+                            <li><strong>Computer Vision:</strong> Advanced product recognition and shelf analysis</li>
+                            <li><strong>Machine Learning:</strong> Predictive analytics and trend identification</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>⚡ Our Value Proposition</h3>
-                    <ul>
-                        <li><strong>Speed:</strong> Reduce audit time with 85%+ (from 30+ minutes to under 5 minutes)</li>
-                        <li><strong>Accuracy:</strong> 95%+ accuracy in product recognition and KPI extraction</li>
-                        <li><strong>Scalability:</strong> Process thousands of images across multiple locations</li>
-                        <li><strong>Intelligence:</strong> Actionable insights and predictive recommendations</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">⚡ Our Value Proposition</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Speed:</strong> Reduce audit time with 85%+ (from 30+ minutes to under 5 minutes)</li>
+                            <li><strong>Accuracy:</strong> 95%+ accuracy in product recognition and KPI extraction</li>
+                            <li><strong>Scalability:</strong> Process thousands of images across multiple locations</li>
+                            <li><strong>Intelligence:</strong> Actionable insights and predictive recommendations</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Problems We Solve -->
-        <section class="section">
+        <section class="card--section">
             <h2>Problems We Solve</h2>
             <p>We are focused on FMCG and CPG companies, addressing critical operational challenges that cost retailers millions in lost revenue and inefficiencies.</p>
 
             <div class="card">
-                <h3>🎯 Specific Retail Challenges</h3>
-                <ul>
-                    <li><strong>Manual Store Audits:</strong> Eliminates time-consuming, error-prone manual inventory checks that take 30+ minutes per location</li>
-                    <li><strong>Delayed Data Collection:</strong> Provides real-time visibility into in-store execution, replacing slow, unreliable manual reporting</li>
-                    <li><strong>Inefficient Resource Allocation:</strong> Optimizes field team productivity by automating data collection and reducing travel time</li>
-                    <li><strong>Merchandising Compliance Issues:</strong> Ensures planogram adherence and promotional display effectiveness across all locations</li>
-                    <li><strong>Lack of Actionable Insights:</strong> Transforms raw data into strategic business intelligence for data-driven decision making</li>
-                    <li><strong>Out of Stock (OOS) Monitoring:</strong> Real-time detection of stock-outs to minimize lost sales opportunities</li>
-                    <li><strong>Share of Shelf (SOS) Tracking:</strong> Accurate measurement of brand presence and competitive positioning</li>
-                    <li><strong>Second Point of Sales Analysis:</strong> Comprehensive in-store performance metrics beyond traditional POS data</li>
-                </ul>
+                <div class="card__header">
+                    <h3 class="card__title">🎯 Specific Retail Challenges</h3>
+                </div>
+                <div class="card__body">
+                    <ul>
+                        <li><strong>Manual Store Audits:</strong> Eliminates time-consuming, error-prone manual inventory checks that take 30+ minutes per location</li>
+                        <li><strong>Delayed Data Collection:</strong> Provides real-time visibility into in-store execution, replacing slow, unreliable manual reporting</li>
+                        <li><strong>Inefficient Resource Allocation:</strong> Optimizes field team productivity by automating data collection and reducing travel time</li>
+                        <li><strong>Merchandising Compliance Issues:</strong> Ensures planogram adherence and promotional display effectiveness across all locations</li>
+                        <li><strong>Lack of Actionable Insights:</strong> Transforms raw data into strategic business intelligence for data-driven decision making</li>
+                        <li><strong>Out of Stock (OOS) Monitoring:</strong> Real-time detection of stock-outs to minimize lost sales opportunities</li>
+                        <li><strong>Share of Shelf (SOS) Tracking:</strong> Accurate measurement of brand presence and competitive positioning</li>
+                        <li><strong>Second Point of Sales Analysis:</strong> Comprehensive in-store performance metrics beyond traditional POS data</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="card">
-                <h3>Industry Impact</h3>
-                <p>Today, companies in the FMCG and CPG industry spend more than 30 minutes capturing Share of Shelf (SOS), Out of Stock (OOS), and Planogram Compliance data from retailers. We aim to reduce this time to just 5 minutes which saves 85%+ by simply taking a photo or a short video, while dramatically improving accuracy and providing deeper insights.</p>
+                <div class="card__header">
+                    <h3 class="card__title">Industry Impact</h3>
+                </div>
+                <div class="card__body">
+                    <p>Today, companies in the FMCG and CPG industry spend more than 30 minutes capturing Share of Shelf (SOS), Out of Stock (OOS), and Planogram Compliance data from retailers. We aim to reduce this time to just 5 minutes which saves 85%+ by simply taking a photo or a short video, while dramatically improving accuracy and providing deeper insights.</p>
+                </div>
             </div>
         </section>
 
         <!-- Target Audience -->
-        <section class="section">
+        <section class="card--section">
             <h2>Our Target Audience</h2>
             <p>We serve specific segments within the retail ecosystem, focusing on companies and professionals who need accurate, real-time retail performance data.</p>
 
             <div class="grid grid-3">
                 <div class="card">
-                    <h3>🏢 Large Retail Chains</h3>
-                    <ul>
-                        <li>Grocery store chains</li>
-                        <li>Electronics retailers</li>
-                        <li>Fashion and apparel stores</li>
-                        <li>Pharmacy chains</li>
-                        <li>Consumer goods retailers</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🏢 Large Retail Chains</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li>Grocery store chains</li>
+                            <li>Electronics retailers</li>
+                            <li>Fashion and apparel stores</li>
+                            <li>Pharmacy chains</li>
+                            <li>Consumer goods retailers</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>📦 CPG Brands</h3>
-                    <ul>
-                        <li>Consumer Packaged Goods manufacturers</li>
-                        <li>Brands managing in-store presence</li>
-                        <li>Companies with extensive retail distribution</li>
-                        <li>Marketing teams tracking promotional effectiveness</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">📦 CPG Brands</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li>Consumer Packaged Goods manufacturers</li>
+                            <li>Brands managing in-store presence</li>
+                            <li>Companies with extensive retail distribution</li>
+                            <li>Marketing teams tracking promotional effectiveness</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>👥 Retail Professionals</h3>
-                    <ul>
-                        <li>Field Merchandising Teams</li>
-                        <li>Store Operations Managers</li>
-                        <li>Regional Sales Directors</li>
-                        <li>Marketing Executives</li>
-                        <li>Category Managers</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">👥 Retail Professionals</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li>Field Merchandising Teams</li>
+                            <li>Store Operations Managers</li>
+                            <li>Regional Sales Directors</li>
+                            <li>Marketing Executives</li>
+                            <li>Category Managers</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Why We're Doing This -->
-        <section class="section">
+        <section class="card--section">
             <h2>Why We're Doing This</h2>
             <div class="card">
-                <h3>🚀 Our Mission</h3>
-                <p>We strongly believe that AI technology can bring significant value to companies that are not in the tech industry. Our solution delivers Share of Shelf (SOS), Out of Stock (OOS), Planogram Compliance, and Second Point of Sales data faster and in a much more efficient way than manual methods of collecting these leading indicators.</p>
+                <div class="card__header">
+                    <h3 class="card__title">🚀 Our Mission</h3>
+                </div>
+                <div class="card__body">
+                    <p>We strongly believe that AI technology can bring significant value to companies that are not in the tech industry. Our solution delivers Share of Shelf (SOS), Out of Stock (OOS), Planogram Compliance, and Second Point of Sales data faster and in a much more efficient way than manual methods of collecting these leading indicators.</p>
 
-                <div class="card">
-                    <h3>Core Beliefs:</h3>
-                    <ul>
-                        <li><strong>AI Democratization:</strong> Advanced AI should be accessible to traditional industries, not just tech companies</li>
-                        <li><strong>Operational Excellence:</strong> Retailers deserve real-time, accurate data to make better decisions</li>
-                        <li><strong>Human Efficiency:</strong> Technology should eliminate repetitive tasks and empower strategic thinking</li>
-                        <li><strong>Market Transparency:</strong> Better data leads to better competition and customer experiences</li>
-                        <li><strong>Scalable Impact:</strong> Our platform can transform operations across thousands of retail locations</li>
-                    </ul>
+                    <div class="card">
+                        <div class="card__header">
+                            <h3 class="card__title">Core Beliefs:</h3>
+                        </div>
+                        <div class="card__body">
+                            <ul>
+                                <li><strong>AI Democratization:</strong> Advanced AI should be accessible to traditional industries, not just tech companies</li>
+                                <li><strong>Operational Excellence:</strong> Retailers deserve real-time, accurate data to make better decisions</li>
+                                <li><strong>Human Efficiency:</strong> Technology should eliminate repetitive tasks and empower strategic thinking</li>
+                                <li><strong>Market Transparency:</strong> Better data leads to better competition and customer experiences</li>
+                                <li><strong>Scalable Impact:</strong> Our platform can transform operations across thousands of retail locations</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <h3>The Missing Solution</h3>
-                <p>A thorough solution has been missing for FMCG and CPG companies that provides accurate and up-to-date KPIs for Out of Stock (OOS), Share of Shelf (SOS), Planogram Compliance, and Second Point of Sales. InsightsHive fills this critical gap with our AI-powered platform.</p>
+                <div class="card__header">
+                    <h3 class="card__title">The Missing Solution</h3>
+                </div>
+                <div class="card__body">
+                    <p>A thorough solution has been missing for FMCG and CPG companies that provides accurate and up-to-date KPIs for Out of Stock (OOS), Share of Shelf (SOS), Planogram Compliance, and Second Point of Sales. InsightsHive fills this critical gap with our AI-powered platform.</p>
+                </div>
             </div>
         </section>
 
         <!-- Our Business Model -->
-        <section class="section">
+        <section class="card--section">
             <h2>Our Digital-Native Business Model</h2>
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>🛠️ Product-Centric Approach</h3>
-                    <p>InsightsHive operates as a <strong>tech startup offering its own app, tool, and platform</strong>. We are not a consultancy or service provider - we develop, maintain, and license proprietary software solutions.</p>
-                    <ul>
-                        <li>Proprietary mobile application for data collection</li>
-                        <li>Proprietary web platform for analytics</li>
-                        <li>Proprietary AI algorithms for computer vision</li>
-                        <li>SaaS-based revenue model</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🛠️ Product-Centric Approach</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>InsightsHive operates as a <strong>tech startup offering its own app, tool, and platform</strong>. We are not a consultancy or service provider - we develop, maintain, and license proprietary software solutions.</p>
+                        <ul>
+                            <li>Proprietary mobile application for data collection</li>
+                            <li>Proprietary web platform for analytics</li>
+                            <li>Proprietary AI algorithms for computer vision</li>
+                            <li>SaaS-based revenue model</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>📈 Scalable Technology</h3>
-                    <p>Our platform is designed for scale, processing thousands of images and serving multiple clients simultaneously through cloud-based infrastructure.</p>
-                    <ul>
-                        <li>Cloud-native architecture</li>
-                        <li>Multi-tenant SaaS platform</li>
-                        <li>API-driven integrations</li>
-                        <li>Automated AI processing pipelines</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">📈 Scalable Technology</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Our platform is designed for scale, processing thousands of images and serving multiple clients simultaneously through cloud-based infrastructure.</p>
+                        <ul>
+                            <li>Cloud-native architecture</li>
+                            <li>Multi-tenant SaaS platform</li>
+                            <li>API-driven integrations</li>
+                            <li>Automated AI processing pipelines</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="cta-section">
+        <section class="card--cta">
             <h2>Learn More About Our Solutions</h2>
             <p>Discover how InsightsHive's AI-powered platform can transform your retail operations.</p>
-            <a href="products.html" class="cta-button">Explore Our Products</a>
-            <a href="technology.html" class="cta-button">Our AI Technology</a>
+            <div class="btn-group btn-group--center">
+                <a href="products.html" class="btn btn--cta">Explore Our Products</a>
+                <a href="technology.html" class="btn btn--cta">Our AI Technology</a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <h3>Contact InsightsHive</h3>
-            <p>Email: info@insightshive.com | Business Inquiries: info@insightshive.com</p>
-            <p>
-                <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
-                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
-            </p>
-            <p>&copy; 2025 InsightsHive. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__contact">
+                <h3 class="footer__contact-title">Contact InsightsHive</h3>
+                <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
+                <div class="footer__contact-info">
+                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
+                    <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+            </div>
         </div>
     </footer>
 </body>

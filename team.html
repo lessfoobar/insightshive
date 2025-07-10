@@ -20,33 +20,31 @@
     <script nomodule src="js/legacy/app-legacy.js"></script>
 </head>
 <body class="dark-theme">
-    <header>
+    <header class="header header--team">
         <div class="container">
-            <div class="logo">InsightsHive</div>
-            <div class="tagline">Our Team</div>
-            <div class="hero-description">
+            <div class="header__logo">InsightsHive</div>
+            <div class="header__tagline">Our Team</div>
+            <div class="header__description">
                 Meet the experienced professionals driving InsightsHive's mission to transform retail operations through AI-powered technology.
             </div>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="team.html" class="active">Our Team</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+    <nav class="nav">
+        <div class="nav__container">
+            <button type="button" class="btn--menu-toggle" aria-label="Toggle navigation menu">
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                <li><a href="about.html" class="nav__link">About Us</a></li>
+                <li><a href="products.html" class="nav__link">Products</a></li>
+                <li><a href="team.html" class="nav__link nav__link--active">Our Team</a></li>
+                <li><a href="technology.html" class="nav__link">Technology</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -54,219 +52,308 @@
         <h1 class="page-title">Key Members &amp; Relevant Experience</h1>
 
         <!-- Team Overview -->
-        <section class="section">
+        <section class="card--section">
             <h2>Core Team</h2>
             <div class="card">
-                <h3>Experienced Founders</h3>
-                <p>InsightsHive is founded by experienced professionals with complementary expertise in technology, business development, and market research. Our team combines deep technical knowledge with extensive industry experience to deliver innovative AI-powered solutions for the retail sector.</p>
+                <div class="card__header">
+                    <h3 class="card__title">Experienced Founders</h3>
+                </div>
+                <div class="card__body">
+                    <p>InsightsHive is founded by experienced professionals with complementary expertise in technology, business development, and market research. Our team combines deep technical knowledge with extensive industry experience to deliver innovative AI-powered solutions for the retail sector.</p>
+                </div>
             </div>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>🎯 Core Expertise Areas</h3>
-                    <ul>
-                        <li><strong>Technology Consulting:</strong> 9+ years at top-tier consulting firms</li>
-                        <li><strong>Market Research:</strong> Specialized experience in retail and pricing</li>
-                        <li><strong>Business Development:</strong> Proven track record in scaling technology solutions</li>
-                        <li><strong>AI &amp; Innovation:</strong> Hands-on experience with emerging technologies</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🎯 Core Expertise Areas</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Technology Consulting:</strong> 9+ years at top-tier consulting firms</li>
+                            <li><strong>Market Research:</strong> Specialized experience in retail and pricing</li>
+                            <li><strong>Business Development:</strong> Proven track record in scaling technology solutions</li>
+                            <li><strong>AI &amp; Innovation:</strong> Hands-on experience with emerging technologies</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>🏢 Professional Background</h3>
-                    <ul>
-                        <li><strong>Salesforce:</strong> Current management position</li>
-                        <li><strong>Boston Consulting Group:</strong> Strategy and digital transformation</li>
-                        <li><strong>Accenture Digital:</strong> Technology implementation</li>
-                        <li><strong>Ingram Micro:</strong> Pricing and distribution expertise</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🏢 Professional Background</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Salesforce:</strong> Current management position</li>
+                            <li><strong>Boston Consulting Group:</strong> Strategy and digital transformation</li>
+                            <li><strong>Accenture Digital:</strong> Technology implementation</li>
+                            <li><strong>Ingram Micro:</strong> Pricing and distribution expertise</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
        <!-- Individual Team Members -->
-        <section class="section">
+        <section class="card--section">
             <h2>Meet Our Core Team</h2>
 
             <div class="grid grid-3">
                 <!-- Nikola Kalev -->
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/nikola-kalev.jpg" alt="Nikola Kalev">
                     </div>
-                    <h3 class="text-accent">Nikola Kalev</h3>
-                    <h4>Co-Founder</h4>
+                    <h3 class="team-member__name text-accent">Nikola Kalev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
 
                     <div class="card">
-                        <h4>💼 Professional Experience</h4>
-                        <p>
-                            Accomplished technology leader with over <strong>10 years</strong> of experience designing AI-driven analytical solutions for leading global brands including Dell, HP, Lenovo, and Vodafone.
-                        </p>
+                        <div class="card__header">
+                            <h4 class="card__title">💼 Professional Experience</h4>
+                        </div>
+                        <div class="card__body">
+                            <p>
+                                Accomplished technology leader with over <strong>10 years</strong> of experience designing AI-driven analytical solutions for leading global brands including Dell, HP, Lenovo, and Vodafone.
+                            </p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🎯 Core Competencies</h4>
-                        <ul>
-                            <li><strong>Market Intelligence &amp; Competitive Analysis</strong></li>
-                            <li><strong>Revenue Optimization &amp; Pricing Strategy</strong></li>
-                            <li><strong>Enterprise Technology Implementation</strong></li>
-                            <li><strong>Strategic Business Development &amp; Alliances</strong></li>
-                        </ul>
+                        <div class="card__header">
+                            <h4 class="card__title">🎯 Core Competencies</h4>
+                        </div>
+                        <div class="card__body">
+                            <ul>
+                                <li><strong>Market Intelligence &amp; Competitive Analysis</strong></li>
+                                <li><strong>Revenue Optimization &amp; Pricing Strategy</strong></li>
+                                <li><strong>Enterprise Technology Implementation</strong></li>
+                                <li><strong>Strategic Business Development &amp; Alliances</strong></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🔗 Connect</h4>
-                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" class="text-accent">View Profile</a></p>
+                        <div class="card__header">
+                            <h4 class="card__title">🔗 Connect</h4>
+                        </div>
+                        <div class="card__body">
+                            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" class="text-accent">View Profile</a></p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Ognyan Vasilev -->
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/ognyan-vasilev.jpg" alt="Ognyan Vasilev">
                     </div>
-                    <h3 class="text-accent">Ognyan Vasilev</h3>
-                    <h4>Co-Founder</h4>
+                    <h3 class="team-member__name text-accent">Ognyan Vasilev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
 
                     <div class="card">
-                        <h4>💼 Professional Experience</h4>
-                        <p>
-                            Strategic growth expert with over <strong>12 years</strong> of experience in enterprise sales, value-driven consulting, and business development with top-tier organizations such as Coca-Cola, BCG, and Salesforce.
-                        </p>
+                        <div class="card__header">
+                            <h4 class="card__title">💼 Professional Experience</h4>
+                        </div>
+                        <div class="card__body">
+                            <p>
+                                Strategic growth expert with over <strong>12 years</strong> of experience in enterprise sales, value-driven consulting, and business development with top-tier organizations such as Coca-Cola, BCG, and Salesforce.
+                            </p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🎯 Core Competencies</h4>
-                        <ul>
-                            <li><strong>Technology Advisory &amp; Strategic Consulting</strong></li>
-                            <li><strong>Digital Transformation Leadership</strong></li>
-                            <li><strong>Enterprise Sales &amp; Customer Success Strategy</strong></li>
-                            <li><strong>Startup Ecosystem Engagement &amp; Angel Investing</strong></li>
-                        </ul>
+                        <div class="card__header">
+                            <h4 class="card__title">🎯 Core Competencies</h4>
+                        </div>
+                        <div class="card__body">
+                            <ul>
+                                <li><strong>Technology Advisory &amp; Strategic Consulting</strong></li>
+                                <li><strong>Digital Transformation Leadership</strong></li>
+                                <li><strong>Enterprise Sales &amp; Customer Success Strategy</strong></li>
+                                <li><strong>Startup Ecosystem Engagement &amp; Angel Investing</strong></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🔗 Connect</h4>
-                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="text-accent">View Profile</a></p>
+                        <div class="card__header">
+                            <h4 class="card__title">🔗 Connect</h4>
+                        </div>
+                        <div class="card__body">
+                            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="text-accent">View Profile</a></p>
+                        </div>
                     </div>
                 </div>
 
-
                 <!-- Ivan Ivanov -->
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/ivan-ivanov.jpg" alt="Ivan Ivanov">
                     </div>
-                    <h3 class="text-accent">Ivan Ivanov</h3>
-                    <h4>Technical Architect</h4>
+                    <h3 class="team-member__name text-accent">Ivan Ivanov</h3>
+                    <h4 class="team-member__title">Technical Architect</h4>
 
                     <div class="card">
-                        <h4>💼 Professional Experience</h4>
-                        <p>
-                            Accomplished Technical Architect with over <strong>16 years</strong> of proven success delivering complex enterprise solutions. Career highlights include senior roles at Hetzner and C&amp;A, as well as a distinguished track record as an independent consultant.
-                        </p>
+                        <div class="card__header">
+                            <h4 class="card__title">💼 Professional Experience</h4>
+                        </div>
+                        <div class="card__body">
+                            <p>
+                                Accomplished Technical Architect with over <strong>16 years</strong> of proven success delivering complex enterprise solutions. Career highlights include senior roles at Hetzner and C&amp;A, as well as a distinguished track record as an independent consultant.
+                            </p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🎯 Core Competencies</h4>
-                        <ul>
-                            <li><strong>Cloud Infrastructure &amp; Scalability Engineering</strong></li>
-                            <li><strong>Enterprise Systems Architecture &amp; Integration</strong></li>
-                            <li><strong>AI/ML Platform Design &amp; Development</strong></li>
-                            <li><strong>Strategic Technical Consulting &amp; Solution Delivery</strong></li>
-                        </ul>
+                        <div class="card__header">
+                            <h4 class="card__title">🎯 Core Competencies</h4>
+                        </div>
+                        <div class="card__body">
+                            <ul>
+                                <li><strong>Cloud Infrastructure &amp; Scalability Engineering</strong></li>
+                                <li><strong>Enterprise Systems Architecture &amp; Integration</strong></li>
+                                <li><strong>AI/ML Platform Design &amp; Development</strong></li>
+                                <li><strong>Strategic Technical Consulting &amp; Solution Delivery</strong></li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <h4>🔗 Connect</h4>
-                        <p><strong>LinkedIn:</strong> <a href="#" target="_blank" class="text-accent">View Profile</a></p>
+                        <div class="card__header">
+                            <h4 class="card__title">🔗 Connect</h4>
+                        </div>
+                        <div class="card__body">
+                            <p><strong>LinkedIn:</strong> <a href="#" target="_blank" class="text-accent">View Profile</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Team Strengths -->
-        <section class="section">
+        <section class="card--section">
             <h2>Why Our Team is Uniquely Positioned for Success</h2>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>🎯 Complementary Expertise</h3>
-                    <ul>
-                        <li><strong>Technical + Business:</strong> Perfect balance of technology depth and business acumen</li>
-                        <li><strong>Consulting + Implementation:</strong> Strategic thinking combined with hands-on execution experience</li>
-                        <li><strong>Enterprise + Startup:</strong> Large company processes with startup agility and innovation</li>
-                        <li><strong>Local + Global:</strong> European market expertise with international scaling capabilities</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🎯 Complementary Expertise</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Technical + Business:</strong> Perfect balance of technology depth and business acumen</li>
+                            <li><strong>Consulting + Implementation:</strong> Strategic thinking combined with hands-on execution experience</li>
+                            <li><strong>Enterprise + Startup:</strong> Large company processes with startup agility and innovation</li>
+                            <li><strong>Local + Global:</strong> European market expertise with international scaling capabilities</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>✅ Proven Track Record</h3>
-                    <ul>
-                        <li><strong>Top-Tier Experience:</strong> Combined 9+ years at BCG, Accenture, and Salesforce</li>
-                        <li><strong>Technology Focus:</strong> Deep experience in AI, digital transformation, and enterprise technology</li>
-                        <li><strong>Retail Understanding:</strong> Market research and pricing expertise in relevant industries</li>
-                        <li><strong>Investment Insight:</strong> Active angel investor perspective on startup success factors</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">✅ Proven Track Record</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Top-Tier Experience:</strong> Combined 9+ years at BCG, Accenture, and Salesforce</li>
+                            <li><strong>Technology Focus:</strong> Deep experience in AI, digital transformation, and enterprise technology</li>
+                            <li><strong>Retail Understanding:</strong> Market research and pricing expertise in relevant industries</li>
+                            <li><strong>Investment Insight:</strong> Active angel investor perspective on startup success factors</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <h3>🚀 Team Capabilities for Scaling InsightsHive</h3>
-                <div class="grid grid-3">
-                    <div class="card">
-                        <h4>🛠️ Product Development</h4>
-                        <p>Technical expertise to build and scale AI-powered applications with enterprise-grade reliability</p>
-                    </div>
-                    <div class="card">
-                        <h4>📈 Business Growth</h4>
-                        <p>Proven strategies for customer acquisition, market expansion, and revenue optimization</p>
-                    </div>
-                    <div class="card">
-                        <h4>💰 Fundraising &amp; Investment</h4>
-                        <p>Angel investor perspective and network connections for strategic funding and partnerships</p>
+                <div class="card__header">
+                    <h3 class="card__title">🚀 Team Capabilities for Scaling InsightsHive</h3>
+                </div>
+                <div class="card__body">
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <div class="card__header">
+                                <h4 class="card__title">🛠️ Product Development</h4>
+                            </div>
+                            <div class="card__body">
+                                <p>Technical expertise to build and scale AI-powered applications with enterprise-grade reliability</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <h4 class="card__title">📈 Business Growth</h4>
+                            </div>
+                            <div class="card__body">
+                                <p>Proven strategies for customer acquisition, market expansion, and revenue optimization</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <h4 class="card__title">💰 Fundraising &amp; Investment</h4>
+                            </div>
+                            <div class="card__body">
+                                <p>Angel investor perspective and network connections for strategic funding and partnerships</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Team Culture & Vision -->
-        <section class="section">
+        <section class="card--section">
             <h2>Our Team Culture &amp; Vision</h2>
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>🎯 Mission-Driven</h3>
-                    <p>We believe AI technology should benefit traditional industries, not just tech companies. Our team is committed to democratizing advanced AI capabilities for retail operations.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">🎯 Mission-Driven</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>We believe AI technology should benefit traditional industries, not just tech companies. Our team is committed to democratizing advanced AI capabilities for retail operations.</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>🚀 Growth-Oriented</h3>
-                    <p>With combined experience scaling technology solutions at global consulting firms and enterprise companies, we're focused on building InsightsHive for rapid, sustainable growth.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">🚀 Growth-Oriented</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>With combined experience scaling technology solutions at global consulting firms and enterprise companies, we're focused on building InsightsHive for rapid, sustainable growth.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <h3>Why We're Building InsightsHive</h3>
-                <p>Our team combines the strategic thinking of top-tier consulting with the execution excellence of enterprise technology leadership. We've seen firsthand how AI can transform business operations, and we're passionate about bringing these capabilities to the retail industry where they can create immediate, measurable value.</p>
+                <div class="card__header">
+                    <h3 class="card__title">Why We're Building InsightsHive</h3>
+                </div>
+                <div class="card__body">
+                    <p>Our team combines the strategic thinking of top-tier consulting with the execution excellence of enterprise technology leadership. We've seen firsthand how AI can transform business operations, and we're passionate about bringing these capabilities to the retail industry where they can create immediate, measurable value.</p>
+                </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="cta-section">
+        <section class="card--cta">
             <h2>Connect with Our Team</h2>
             <p>Ready to learn more about InsightsHive? Get in touch with our founders to discuss how our AI-powered platform can transform your retail operations.</p>
-            <a href="contact.html" class="cta-button">Contact Our Team</a>
-            <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="cta-button">Connect on LinkedIn</a>
+            <div class="btn-group btn-group--center">
+                <a href="contact.html" class="btn btn--cta">Contact Our Team</a>
+                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="btn btn--cta">Connect on LinkedIn</a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <h3>Contact InsightsHive</h3>
-            <p>Email: info@insightshive.com | Business Inquiries: info@insightshive.com</p>
-            <p>
-                <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
-                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
-            </p>
-            <p>&copy; 2025 InsightsHive. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__contact">
+                <h3 class="footer__contact-title">Contact InsightsHive</h3>
+                <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
+                <div class="footer__contact-info">
+                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
+                    <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+            </div>
         </div>
     </footer>
 </body>

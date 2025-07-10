@@ -20,140 +20,170 @@
     <script nomodule src="js/legacy/app-legacy.js"></script>
 </head>
 <body class="dark-theme">
-    <header>
+    <header class="header">
         <div class="container">
-            <div class="logo">InsightsHive</div>
-            <div class="tagline">AI-Powered Retail Intelligence Platform</div>
-            <div class="hero-description">
+            <div class="header__logo">InsightsHive</div>
+            <div class="header__tagline">AI-Powered Retail Intelligence Platform</div>
+            <div class="header__description">
                 A digital-native tech startup offering proprietary mobile and web applications that leverage advanced AI computer vision to transform retail operations through automated KPI extraction and real-time insights.
             </div>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+    <nav class="nav">
+        <div class="nav__container">
+            <button type="button" class="btn--menu-toggle" aria-label="Toggle navigation menu">
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
+                <li><a href="about.html" class="nav__link">About Us</a></li>
+                <li><a href="products.html" class="nav__link">Products</a></li>
+                <li><a href="team.html" class="nav__link">Our Team</a></li>
+                <li><a href="technology.html" class="nav__link">Technology</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <main class="container">
         <!-- Overview Section -->
-        <section class="section">
+        <section class="card--section">
             <h1>Transform Retail Operations with AI</h1>
             <div class="card">
-                <h2>What Makes InsightsHive Different</h2>
-                <p>We are a <strong>digital-native tech startup</strong> that has developed proprietary mobile and web applications powered by advanced AI computer vision. Our platform reduces manual retail audit time with 85%+ (from 30+ minutes to under 5 minutes) by simply taking a photo or short video.</p>
-                <span class="ai-badge">🤖 AI-Powered Platform</span>
+                <div class="card__header">
+                    <h2 class="card__title">What Makes InsightsHive Different</h2>
+                </div>
+                <div class="card__body">
+                    <p>We are a <strong>digital-native tech startup</strong> that has developed proprietary mobile and web applications powered by advanced AI computer vision. Our platform reduces manual retail audit time with 85%+ (from 30+ minutes to under 5 minutes) by simply taking a photo or short video.</p>
+                    <span class="badge badge--ai">🤖 AI-Powered Platform</span>
+                </div>
             </div>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>📱 Mobile App</h3>
-                    <p><strong>Beta Stage</strong> - AI-powered image capture with real-time object detection and offline capabilities</p>
-                    <a href="products.html" class="text-accent">Learn More →</a>
+                    <div class="card__header">
+                        <h3 class="card__title">📱 Mobile App</h3>
+                    </div>
+                    <div class="card__body">
+                        <p><strong>Beta Stage</strong> - AI-powered image capture with real-time object detection and offline capabilities</p>
+                        <a href="products.html" class="text-accent">Learn More →</a>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>💻 Web Platform</h3>
-                    <p><strong>MVP Deployed</strong> - Real-time KPI dashboards with predictive analytics and customizable reporting</p>
-                    <a href="products.html" class="text-accent">Learn More →</a>
+                    <div class="card__header">
+                        <h3 class="card__title">💻 Web Platform</h3>
+                    </div>
+                    <div class="card__body">
+                        <p><strong>MVP Deployed</strong> - Real-time KPI dashboards with predictive analytics and customizable reporting</p>
+                        <a href="products.html" class="text-accent">Learn More →</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Key Problems & Solutions -->
-        <section class="section">
+        <section class="card--section">
             <h2>Solving Critical Retail Challenges</h2>
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>🚨 Problems We Solve</h3>
-                    <ul>
-                        <li><strong>Manual Store Audits:</strong> Eliminates 30+ minute manual processes</li>
-                        <li><strong>Data Accuracy:</strong> Removes human error from KPI collection</li>
-                        <li><strong>Real-Time Visibility:</strong> Instant insights into store performance</li>
-                        <li><strong>Resource Efficiency:</strong> Optimizes field team productivity</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🚨 Problems We Solve</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>Manual Store Audits:</strong> Eliminates 30+ minute manual processes</li>
+                            <li><strong>Data Accuracy:</strong> Removes human error from KPI collection</li>
+                            <li><strong>Real-Time Visibility:</strong> Instant insights into store performance</li>
+                            <li><strong>Resource Efficiency:</strong> Optimizes field team productivity</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>✅ Our AI Solution</h3>
-                    <ul>
-                        <li><strong>5-Minute Process:</strong> Rapid image-based data collection</li>
-                        <li><strong>95%+ Accuracy:</strong> AI-powered product recognition</li>
-                        <li><strong>Real-Time Analytics:</strong> Instant KPI extraction and reporting</li>
-                        <li><strong>Scalable Platform:</strong> Works across thousands of locations</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">✅ Our AI Solution</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul>
+                            <li><strong>5-Minute Process:</strong> Rapid image-based data collection</li>
+                            <li><strong>95%+ Accuracy:</strong> AI-powered product recognition</li>
+                            <li><strong>Real-Time Analytics:</strong> Instant KPI extraction and reporting</li>
+                            <li><strong>Scalable Platform:</strong> Works across thousands of locations</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Team Highlight -->
-        <section class="section">
+        <section class="card--section">
             <h2>Experienced Core Team</h2>
             <div class="grid grid-3">
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/nikola-kalev.jpg" alt="Nikola Kalev">
                     </div>
-                    <h3>Nikola Kalev</h3>
-                    <h4>Co-Founder</h4>
-                    <p>Accomplished technology leader with over <strong>10 years</strong> of experience designing AI-driven analytical solutions for leading global brands including Dell, HP, Lenovo, and Vodafone.</p>
-                    <a href="team.html" class="text-accent">View Full Profile →</a>
+                    <h3 class="team-member__name">Nikola Kalev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
+                    <div class="team-member__bio">
+                        <p>Accomplished technology leader with over <strong>10 years</strong> of experience designing AI-driven analytical solutions for leading global brands including Dell, HP, Lenovo, and Vodafone.</p>
+                        <a href="team.html" class="text-accent">View Full Profile →</a>
+                    </div>
                 </div>
 
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/ognyan-vasilev.jpg" alt="Ognyan Vasilev">
                     </div>
-                    <h3>Ognyan Vasilev</h3>
-                    <h4>Co-Founder</h4>
-                    <p>Strategic growth expert with over <strong>12 years</strong> of experience in enterprise sales, value-driven consulting, and business development with top-tier organizations such as Coca-Cola, BCG, and Salesforce.</p>
-                    <a href="team.html" class="text-accent">View Full Profile →</a>
+                    <h3 class="team-member__name">Ognyan Vasilev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
+                    <div class="team-member__bio">
+                        <p>Strategic growth expert with over <strong>12 years</strong> of experience in enterprise sales, value-driven consulting, and business development with top-tier organizations such as Coca-Cola, BCG, and Salesforce.</p>
+                        <a href="team.html" class="text-accent">View Full Profile →</a>
+                    </div>
                 </div>
 
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/ivan-ivanov.jpg" alt="Ivan Ivanov">
                     </div>
-                    <h3>Ivan Ivanov</h3>
-                    <h4>Technical Architect</h4>
-                    <p>Seasoned Technical Architect with over 16 years of comprehensive experience delivering enterprise-grade solutions across global organizations including Hetzner, C&amp;A, and a distinguished career as an independent consultant.</p>
-                    <a href="team.html" class="text-accent">View Full Profile →</a>
+                    <h3 class="team-member__name">Ivan Ivanov</h3>
+                    <h4 class="team-member__title">Technical Architect</h4>
+                    <div class="team-member__bio">
+                        <p>Seasoned Technical Architect with over 16 years of comprehensive experience delivering enterprise-grade solutions across global organizations including Hetzner, C&A, and a distinguished career as an independent consultant.</p>
+                        <a href="team.html" class="text-accent">View Full Profile →</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
-        <section class="cta-section">
+        <section class="card--cta">
             <h2>Ready to See InsightsHive in Action?</h2>
             <p>Join leading retailers who are already leveraging our AI-powered platform to optimize operations and drive growth.</p>
-            <a href="contact.html" class="cta-button">Request a Demo</a>
-            <a href="products.html" class="cta-button">Explore Products</a>
+            <div class="btn-group btn-group--center">
+                <a href="contact.html" class="btn btn--cta">Request a Demo</a>
+                <a href="products.html" class="btn btn--cta">Explore Products</a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <h3>Contact InsightsHive</h3>
-            <p>Email: info@insightshive.com | Business Inquiries: info@insightshive.com</p>
-            <p>
-                <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
-                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
-            </p>
-            <p>&copy; 2025 InsightsHive. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__contact">
+                <h3 class="footer__contact-title">Contact InsightsHive</h3>
+                <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
+                <div class="footer__contact-info">
+                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
+                    <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+            </div>
         </div>
     </footer>
 </body>

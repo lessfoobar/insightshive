@@ -20,33 +20,31 @@
     <script nomodule src="js/legacy/app-legacy.js"></script>
 </head>
 <body class="dark-theme">
-    <header>
+    <header class="header header--contact">
         <div class="container">
-            <div class="logo">InsightsHive</div>
-            <div class="tagline">Contact Us</div>
-            <div class="hero-description">
+            <div class="header__logo">InsightsHive</div>
+            <div class="header__tagline">Contact Us</div>
+            <div class="header__description">
                 Ready to transform your retail operations? Get in touch with our team to schedule a demo or discuss how InsightsHive can benefit your business.
             </div>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </div>
+    <nav class="nav">
+        <div class="nav__container">
+            <button type="button" class="btn--menu-toggle" aria-label="Toggle navigation menu">
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+                <span class="btn--menu-toggle__line"></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                <li><a href="about.html" class="nav__link">About Us</a></li>
+                <li><a href="products.html" class="nav__link">Products</a></li>
+                <li><a href="team.html" class="nav__link">Our Team</a></li>
+                <li><a href="technology.html" class="nav__link">Technology</a></li>
+                <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -54,198 +52,265 @@
         <h1 class="page-title">Get in Touch</h1>
 
         <!-- Contact Options -->
-        <section class="section">
+        <section class="card--section">
             <h2>Contact Information</h2>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>📧 General Inquiries</h3>
-                    <p><strong>Email:</strong> <a href="mailto:info@insightshive.com" class="text-accent">info@insightshive.com</a></p>
-                    <p>For general questions about InsightsHive, our platform, or technical support.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">📧 General Inquiries</h3>
+                    </div>
+                    <div class="card__body">
+                        <p><strong>Email:</strong> <a href="mailto:info@insightshive.com" class="text-accent">info@insightshive.com</a></p>
+                        <p>For general questions about InsightsHive, our platform, or technical support.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>💼 Business Inquiries</h3>
-                    <p><strong>Email:</strong> <a href="mailto:info@insightshive.com" class="text-accent">info@insightshive.com</a></p>
-                    <p>For partnership opportunities, sales inquiries, and business development discussions.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">💼 Business Inquiries</h3>
+                    </div>
+                    <div class="card__body">
+                        <p><strong>Email:</strong> <a href="mailto:info@insightshive.com" class="text-accent">info@insightshive.com</a></p>
+                        <p>For partnership opportunities, sales inquiries, and business development discussions.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Team Contact -->
-        <section class="section">
+        <section class="card--section">
             <h2>Connect with Our Founders</h2>
 
             <div class="grid grid-2">
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/nikola-kalev.jpg" alt="Nikola Kalev">
                     </div>
-                    <h3>Nikola Kalev</h3>
-                    <h4>Co-Founder</h4>
-                    <p><strong>Expertise:</strong> Market Research, Pricing Strategy, Technology Implementation</p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" class="text-accent">linkedin.com/in/nikola-k-393b18104/</a></p>
-                    <p>Connect with Nikola for discussions about market research, pricing strategies, and Eastern European market opportunities.</p>
+                    <h3 class="team-member__name">Nikola Kalev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
+                    <div class="team-member__bio">
+                        <p><strong>Expertise:</strong> Market Research, Pricing Strategy, Technology Implementation</p>
+                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank" class="text-accent">linkedin.com/in/nikola-k-393b18104/</a></p>
+                        <p>Connect with Nikola for discussions about market research, pricing strategies, and Eastern European market opportunities.</p>
+                    </div>
                 </div>
 
-                <div class="team-member">
-                    <div class="team-photo">
+                <div class="card--team-member">
+                    <div class="team-member__photo">
                         <img src="images/team/ognyan-vasilev.jpg" alt="Ognyan Vasilev">
                     </div>
-                    <h3>Ognyan Vasilev</h3>
-                    <h4>Co-Founder</h4>
-                    <p><strong>Expertise:</strong> Technology Consulting, Business Strategy, Digital Transformation</p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="text-accent">linkedin.com/in/ognyan-v-vasilev/</a></p>
-                    <p>Connect with Ognyan for discussions about technology strategy, business development, and strategic partnerships.</p>
+                    <h3 class="team-member__name">Ognyan Vasilev</h3>
+                    <h4 class="team-member__title">Co-Founder</h4>
+                    <div class="team-member__bio">
+                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="text-accent">linkedin.com/in/ognyan-v-vasilev/</a></p>
+                        <p>Connect with Ognyan for discussions about technology strategy, business development, and strategic partnerships.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Demo Request -->
-        <section class="section">
+        <section class="card--section">
             <h2>Request a Demo</h2>
             <div class="card">
-                <h3>🚀 See InsightsHive in Action</h3>
-                <p>Experience our AI-powered retail intelligence platform firsthand. Our team will show you how InsightsHive can transform your retail operations with real-time KPI extraction and advanced analytics.</p>
+                <div class="card__header">
+                    <h3 class="card__title">🚀 See InsightsHive in Action</h3>
+                </div>
+                <div class="card__body">
+                    <p>Experience our AI-powered retail intelligence platform firsthand. Our team will show you how InsightsHive can transform your retail operations with real-time KPI extraction and advanced analytics.</p>
 
-                <div class="grid grid-2">
-                    <div>
-                        <h4>What You'll See:</h4>
-                        <ul>
-                            <li>Live demonstration of mobile app image capture</li>
-                            <li>Real-time AI processing and KPI extraction</li>
-                            <li>Web platform analytics and reporting</li>
-                            <li>Integration possibilities with your existing systems</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Demo Duration:</h4>
-                        <ul>
-                            <li><strong>Standard Demo:</strong> 30 minutes</li>
-                            <li><strong>Deep Dive:</strong> 60 minutes with Q&amp;A</li>
-                            <li><strong>Pilot Discussion:</strong> 90 minutes including implementation planning</li>
-                        </ul>
+                    <div class="grid grid-2">
+                        <div>
+                            <h4>What You'll See:</h4>
+                            <ul>
+                                <li>Live demonstration of mobile app image capture</li>
+                                <li>Real-time AI processing and KPI extraction</li>
+                                <li>Web platform analytics and reporting</li>
+                                <li>Integration possibilities with your existing systems</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Demo Duration:</h4>
+                            <ul>
+                                <li><strong>Standard Demo:</strong> 30 minutes</li>
+                                <li><strong>Deep Dive:</strong> 60 minutes with Q&amp;A</li>
+                                <li><strong>Pilot Discussion:</strong> 90 minutes including implementation planning</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="cta-section">
+            <div class="card--cta">
                 <h3>Ready to Schedule Your Demo?</h3>
                 <p>Contact us to arrange a personalized demonstration of InsightsHive's AI-powered platform.</p>
-                <a href="mailto:info@insightshive.com?subject=Demo Request&amp;body=Hello, I'm interested in scheduling a demo of InsightsHive. Please let me know your availability." class="cta-button">Request Demo</a>
+                <div class="btn-group btn-group--center">
+                    <a href="mailto:info@insightshive.com?subject=Demo Request&amp;body=Hello, I'm interested in scheduling a demo of InsightsHive. Please let me know your availability." class="btn btn--cta">Request Demo</a>
+                </div>
             </div>
         </section>
 
         <!-- Partnership Opportunities -->
-        <section class="section">
+        <section class="card--section">
             <h2>Partnership Opportunities</h2>
 
             <div class="grid grid-3">
                 <div class="card">
-                    <h3>🏢 Retail Partners</h3>
-                    <p>Large retail chains interested in piloting our AI-powered platform for improved operations and insights.</p>
-                    <ul>
-                        <li>Beta testing opportunities</li>
-                        <li>Customized implementation</li>
-                        <li>Dedicated support</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🏢 Retail Partners</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Large retail chains interested in piloting our AI-powered platform for improved operations and insights.</p>
+                        <ul>
+                            <li>Beta testing opportunities</li>
+                            <li>Customized implementation</li>
+                            <li>Dedicated support</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>🤝 Technology Partners</h3>
-                    <p>Integration partners and technology vendors looking to enhance their retail solutions with AI capabilities.</p>
-                    <ul>
-                        <li>API integrations</li>
-                        <li>Joint solutions</li>
-                        <li>Co-marketing opportunities</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">🤝 Technology Partners</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Integration partners and technology vendors looking to enhance their retail solutions with AI capabilities.</p>
+                        <ul>
+                            <li>API integrations</li>
+                            <li>Joint solutions</li>
+                            <li>Co-marketing opportunities</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>💰 Investment Partners</h3>
-                    <p>Investors and VCs interested in supporting our mission to democratize AI for retail operations.</p>
-                    <ul>
-                        <li>Funding opportunities</li>
-                        <li>Strategic guidance</li>
-                        <li>Network access</li>
-                    </ul>
+                    <div class="card__header">
+                        <h3 class="card__title">💰 Investment Partners</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Investors and VCs interested in supporting our mission to democratize AI for retail operations.</p>
+                        <ul>
+                            <li>Funding opportunities</li>
+                            <li>Strategic guidance</li>
+                            <li>Network access</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- FAQ -->
-        <section class="section">
+        <section class="card--section">
             <h2>Frequently Asked Questions</h2>
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>❓ How does InsightsHive work?</h3>
-                    <p>Our mobile app captures in-store imagery, AI processes the images to extract KPIs, and our web platform delivers real-time insights and analytics.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ How does InsightsHive work?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Our mobile app captures in-store imagery, AI processes the images to extract KPIs, and our web platform delivers real-time insights and analytics.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>❓ What KPIs can you extract?</h3>
-                    <p>We extract Out-of-Stock rates, Share of Shelf metrics, Planogram Compliance, promotional display effectiveness, and competitive product presence.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ What KPIs can you extract?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>We extract Out-of-Stock rates, Share of Shelf metrics, Planogram Compliance, promotional display effectiveness, and competitive product presence.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>❓ How accurate is your AI?</h3>
-                    <p>Our AI achieves 95%+ accuracy in product recognition and KPI extraction, significantly outperforming manual methods.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ How accurate is your AI?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Our AI achieves 95%+ accuracy in product recognition and KPI extraction, significantly outperforming manual methods.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>❓ Can you integrate with our existing systems?</h3>
-                    <p>Yes, our platform offers API integrations and can connect with most retail management and ERP systems.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ Can you integrate with our existing systems?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Yes, our platform offers API integrations and can connect with most retail management and ERP systems.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>❓ What's the implementation timeline?</h3>
-                    <p>Typical implementation takes 2-4 weeks, including training, customization, and integration with your existing workflows.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ What's the implementation timeline?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Typical implementation takes 2-4 weeks, including training, customization, and integration with your existing workflows.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>❓ Do you offer pilot programs?</h3>
-                    <p>Yes, we offer pilot programs for qualified retailers to test our platform in a limited number of locations before full deployment.</p>
+                    <div class="card__header">
+                        <h3 class="card__title">❓ Do you offer pilot programs?</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Yes, we offer pilot programs for qualified retailers to test our platform in a limited number of locations before full deployment.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Legal Information -->
-        <section class="section">
+        <section class="card--section">
             <h2>Legal &amp; Compliance</h2>
             <div class="grid grid-2">
                 <div class="card">
-                    <h3>📋 Privacy Policy</h3>
-                    <p>We are committed to protecting your privacy and data. Our platform complies with GDPR and other data protection regulations.</p>
-                    <a href="#" class="text-accent">View Privacy Policy →</a>
+                    <div class="card__header">
+                        <h3 class="card__title">📋 Privacy Policy</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>We are committed to protecting your privacy and data. Our platform complies with GDPR and other data protection regulations.</p>
+                        <a href="#" class="text-accent">View Privacy Policy →</a>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>📜 Terms of Service</h3>
-                    <p>Our terms of service outline the usage guidelines and legal framework for using InsightsHive's platform and services.</p>
-                    <a href="#" class="text-accent">View Terms of Service →</a>
+                    <div class="card__header">
+                        <h3 class="card__title">📜 Terms of Service</h3>
+                    </div>
+                    <div class="card__body">
+                        <p>Our terms of service outline the usage guidelines and legal framework for using InsightsHive's platform and services.</p>
+                        <a href="#" class="text-accent">View Terms of Service →</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Final CTA -->
-        <section class="cta-section">
+        <section class="card--cta">
             <h2>Start Your AI-Powered Retail Transformation</h2>
             <p>Join leading retailers who are already leveraging InsightsHive to optimize operations, reduce costs, and increase revenue.</p>
-            <a href="mailto:info@insightshive.com" class="cta-button">Contact Us Today</a>
-            <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="cta-button">Connect on LinkedIn</a>
+            <div class="btn-group btn-group--center">
+                <a href="mailto:info@insightshive.com" class="btn btn--cta">Contact Us Today</a>
+                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank" class="btn btn--cta">Connect on LinkedIn</a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <h3>Contact InsightsHive</h3>
-            <p>Email: info@insightshive.com | Business Inquiries: info@insightshive.com</p>
-            <p>
-                <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
-                <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
-            </p>
-            <p>&copy; 2025 InsightsHive. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__contact">
+                <h3 class="footer__contact-title">Contact InsightsHive</h3>
+                <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
+                <div class="footer__contact-info">
+                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
+                    <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+            </div>
         </div>
     </footer>
 </body>
