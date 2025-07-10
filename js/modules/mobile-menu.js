@@ -1,4 +1,5 @@
-// Mobile Menu Module - ES6 Module for responsive navigation
+// js/modules/mobile-menu.js - Updated to use BEM classes
+
 export class MobileMenu {
   constructor() {
     this.menuToggle = null;
@@ -12,26 +13,33 @@ export class MobileMenu {
   }
 
   createMenuToggle() {
-    const existingToggle = document.querySelector('.menu-toggle');
+    const existingToggle = document.querySelector('.btn--menu-toggle');  // ✅ Using BEM class
 
     if (!existingToggle) {
-      const navContainer = document.querySelector('.nav-container');
+      const navContainer = document.querySelector('.nav__container');  // ✅ Using BEM class
       if (!navContainer) {
         return;
       }
 
       const newMenuToggle = document.createElement('button');
-      newMenuToggle.className = 'menu-toggle';
-      newMenuToggle.innerHTML = '<span></span><span></span><span></span>';
+      newMenuToggle.type = 'button';
+      newMenuToggle.className = 'btn btn--menu-toggle';  // ✅ Using BEM classes
       newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+      
+      // Create hamburger lines using BEM classes
+      newMenuToggle.innerHTML = `
+        <span class="btn--menu-toggle__line"></span>
+        <span class="btn--menu-toggle__line"></span>
+        <span class="btn--menu-toggle__line"></span>
+      `;
+      
       navContainer.appendChild(newMenuToggle);
-
       this.menuToggle = newMenuToggle;
     } else {
       this.menuToggle = existingToggle;
     }
 
-    this.navLinks = document.querySelector('.nav-links');
+    this.navLinks = document.querySelector('.nav__links');  // ✅ Using BEM class
   }
 
   toggleMenu() {
@@ -39,11 +47,11 @@ export class MobileMenu {
       return;
     }
 
-    this.menuToggle.classList.toggle('active');
-    this.navLinks.classList.toggle('active');
+    this.menuToggle.classList.toggle('btn--menu-toggle--active');  // ✅ Using BEM modifier
+    this.navLinks.classList.toggle('nav__links--active');  // ✅ Using BEM modifier
 
     // Prevent body scroll when menu is open
-    if (this.navLinks.classList.contains('active')) {
+    if (this.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -55,8 +63,8 @@ export class MobileMenu {
       return;
     }
 
-    this.menuToggle.classList.remove('active');
-    this.navLinks.classList.remove('active');
+    this.menuToggle.classList.remove('btn--menu-toggle--active');  // ✅ Using BEM modifier
+    this.navLinks.classList.remove('nav__links--active');  // ✅ Using BEM modifier
     document.body.style.overflow = '';
   }
 
@@ -67,7 +75,7 @@ export class MobileMenu {
     }
 
     // Close menu when clicking on a link
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+    const navLinksItems = document.querySelectorAll('.nav__links a');  // ✅ Using BEM class
     navLinksItems.forEach((link) => {
       link.addEventListener('click', () => this.closeMenu());
     });
@@ -83,7 +91,7 @@ export class MobileMenu {
 
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.navLinks && this.navLinks.classList.contains('active')) {
+      if (e.key === 'Escape' && this.navLinks && this.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
         this.closeMenu();
       }
     });

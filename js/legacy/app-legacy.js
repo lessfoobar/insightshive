@@ -1,6 +1,6 @@
 /*
+ * js/legacy/app-legacy.js - Updated to use BEM classes
  * Legacy Browser Support - Non-module version
- * Fallback for browsers that don't support ES6 modules
  */
 
 /* eslint-disable prefer-arrow-callback */
@@ -20,12 +20,12 @@
   };
 
   ThemeManager.prototype.createThemeToggle = function () {
-    if (document.querySelector('.theme-toggle')) {
+    if (document.querySelector('.btn--theme-toggle')) {  // ✅ Using BEM class
       return;
     }
 
     const themeToggle = document.createElement('button');
-    themeToggle.className = 'theme-toggle';
+    themeToggle.className = 'btn btn--theme-toggle';  // ✅ Using BEM classes
     themeToggle.setAttribute('aria-label', 'Toggle dark mode');
     themeToggle.innerHTML = this.getThemeIcon();
 
@@ -43,6 +43,9 @@
   };
 
   ThemeManager.prototype.initializeTheme = function () {
+    // Remove any existing class-based theme
+    document.body.classList.remove('dark-theme', 'light-theme');
+    
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -68,12 +71,13 @@
 
   ThemeManager.prototype.setTheme = function (theme) {
     document.documentElement.setAttribute('data-theme', theme);
+    document.body.classList.remove('dark-theme', 'light-theme');
     localStorage.setItem('theme', theme);
     this.updateMetaThemeColor(theme);
   };
 
   ThemeManager.prototype.updateToggleIcon = function () {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.querySelector('.btn--theme-toggle');  // ✅ Using BEM class
     if (themeToggle) {
       themeToggle.innerHTML = this.getThemeIcon();
     }
@@ -91,10 +95,10 @@
   };
 
   ThemeManager.prototype.animateThemeChange = function () {
-    document.body.style.transition = 'none';
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
     setTimeout(function () {
       document.body.style.transition = '';
-    }, 50);
+    }, 300);
   };
 
   ThemeManager.prototype.bindEvents = function () {
@@ -129,18 +133,19 @@
   };
 
   MobileMenu.prototype.createMenuToggle = function () {
-    const existingToggle = document.querySelector('.menu-toggle');
+    const existingToggle = document.querySelector('.btn--menu-toggle');  // ✅ Using BEM class
 
     if (!existingToggle) {
-      const navContainer = document.querySelector('.nav-container');
+      const navContainer = document.querySelector('.nav__container');  // ✅ Using BEM class
       if (!navContainer) {
         return;
       }
 
       const newMenuToggle = document.createElement('button');
-      newMenuToggle.className = 'menu-toggle';
-      newMenuToggle.innerHTML = '<span></span><span></span><span></span>';
+      newMenuToggle.type = 'button';
+      newMenuToggle.className = 'btn btn--menu-toggle';  // ✅ Using BEM classes
       newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+      newMenuToggle.innerHTML = '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>';  // ✅ Using BEM classes
       navContainer.appendChild(newMenuToggle);
 
       this.menuToggle = newMenuToggle;
@@ -148,7 +153,7 @@
       this.menuToggle = existingToggle;
     }
 
-    this.navLinks = document.querySelector('.nav-links');
+    this.navLinks = document.querySelector('.nav__links');  // ✅ Using BEM class
   };
 
   MobileMenu.prototype.toggleMenu = function () {
@@ -156,10 +161,10 @@
       return;
     }
 
-    this.menuToggle.classList.toggle('active');
-    this.navLinks.classList.toggle('active');
+    this.menuToggle.classList.toggle('btn--menu-toggle--active');  // ✅ Using BEM modifier
+    this.navLinks.classList.toggle('nav__links--active');  // ✅ Using BEM modifier
 
-    if (this.navLinks.classList.contains('active')) {
+    if (this.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -171,8 +176,8 @@
       return;
     }
 
-    this.menuToggle.classList.remove('active');
-    this.navLinks.classList.remove('active');
+    this.menuToggle.classList.remove('btn--menu-toggle--active');  // ✅ Using BEM modifier
+    this.navLinks.classList.remove('nav__links--active');  // ✅ Using BEM modifier
     document.body.style.overflow = '';
   };
 
@@ -185,7 +190,7 @@
       });
     }
 
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+    const navLinksItems = document.querySelectorAll('.nav__links a');  // ✅ Using BEM class
     navLinksItems.forEach(function (link) {
       link.addEventListener('click', function () {
         self.closeMenu();
@@ -201,7 +206,7 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && self.navLinks && self.navLinks.classList.contains('active')) {
+      if (e.key === 'Escape' && self.navLinks && self.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
         self.closeMenu();
       }
     });

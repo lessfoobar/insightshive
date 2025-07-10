@@ -1,4 +1,5 @@
-// Theme Manager Module - ES6 Module for dark/light theme switching
+// js/modules/theme-manager.js - Updated to use BEM classes
+
 export class ThemeManager {
   constructor() {
     this.initializeTheme();
@@ -8,12 +9,12 @@ export class ThemeManager {
 
   createThemeToggle() {
     // Check if theme toggle already exists
-    if (document.querySelector('.theme-toggle')) {
+    if (document.querySelector('.btn--theme-toggle')) {
       return;
     }
 
     const themeToggle = document.createElement('button');
-    themeToggle.className = 'theme-toggle';
+    themeToggle.className = 'btn btn--theme-toggle';  // ✅ Using BEM classes
     themeToggle.setAttribute('aria-label', 'Toggle dark mode');
     themeToggle.innerHTML = this.getThemeIcon();
 
@@ -30,6 +31,9 @@ export class ThemeManager {
   }
 
   initializeTheme() {
+    // Remove any existing class-based theme
+    document.body.classList.remove('dark-theme', 'light-theme');
+    
     // Check for saved theme preference or default to system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -57,7 +61,13 @@ export class ThemeManager {
   }
 
   setTheme(theme) {
+    // Set the data-theme attribute on html element
     document.documentElement.setAttribute('data-theme', theme);
+    
+    // Remove any old class-based themes
+    document.body.classList.remove('dark-theme', 'light-theme');
+    
+    // Save to localStorage
     localStorage.setItem('theme', theme);
 
     // Update meta theme-color for mobile browsers
@@ -65,7 +75,7 @@ export class ThemeManager {
   }
 
   updateToggleIcon() {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.querySelector('.btn--theme-toggle');  // ✅ Using BEM class
     if (themeToggle) {
       themeToggle.innerHTML = this.getThemeIcon();
     }
@@ -84,10 +94,10 @@ export class ThemeManager {
   }
 
   animateThemeChange() {
-    document.body.style.transition = 'none';
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
     setTimeout(() => {
       document.body.style.transition = '';
-    }, 50);
+    }, 300);
   }
 
   bindEvents() {
