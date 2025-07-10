@@ -1,27 +1,26 @@
-/* Grid Layout System - Updated for desired design */
+/* Grid Layout System - Fixed for proper 2-column and 3-column layouts */
 
-/* Container and main content */
+/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-5);
 }
 
-/* Grid system */
+/* Base grid */
 .grid {
   display: grid;
   gap: var(--space-6);
-  margin-bottom: var(--space-8);
 }
 
-/* Two column grid - equal width */
+/* Two column grid - FIXED */
 .grid-2 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
 }
 
-/* Three column grid - equal width */
+/* Three column grid - FIXED */
 .grid-3 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Four column grid */
@@ -34,7 +33,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-/* Mobile responsive grid */
+/* Responsive grid adjustments */
 @media (max-width: 768px) {
   .grid-2,
   .grid-3,
@@ -50,48 +49,174 @@
 @media (max-width: 1024px) and (min-width: 769px) {
   .grid-3,
   .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Specific layout adjustments for home page sections */
-.section-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* Grid alignment utilities */
+.place-items-center {
+  place-items: center;
+}
+
+.place-items-start {
+  place-items: start;
+}
+
+.place-content-center {
+  place-content: center;
+}
+
+/* Grid area utilities */
+.col-span-1 {
+  grid-column: span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3;
+}
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+.row-span-1 {
+  grid-row: span 1;
+}
+
+.row-span-2 {
+  grid-row: span 2;
+}
+
+.row-span-3 {
+  grid-row: span 3;
+}
+
+/* Specific layout classes for consistent spacing */
+.grid-equal-height {
+  align-items: stretch;
+}
+
+.grid-equal-height > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid gap variations */
+.gap-2 {
+  gap: var(--space-2);
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.gap-6 {
   gap: var(--space-6);
-  margin-bottom: var(--space-8);
 }
 
-.section-cards--three {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (max-width: 768px) {
-  .section-cards,
-  .section-cards--three {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-}
-
-/* Team member grid specific layout */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.gap-8 {
   gap: var(--space-8);
-  margin-bottom: var(--space-8);
 }
 
-@media (max-width: 1024px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
+/* Row and column gaps */
+.gap-x-2 {
+  column-gap: var(--space-2);
 }
 
-@media (max-width: 768px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
+.gap-x-4 {
+  column-gap: var(--space-4);
+}
+
+.gap-x-6 {
+  column-gap: var(--space-6);
+}
+
+.gap-y-2 {
+  row-gap: var(--space-2);
+}
+
+.gap-y-4 {
+  row-gap: var(--space-4);
+}
+
+.gap-y-6 {
+  row-gap: var(--space-6);
+}
+
+/* Auto-grid responsive */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+}
+
+.auto-grid-sm {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.auto-grid-lg {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* CSS Grid debugging - remove in production */
+.grid-debug {
+  outline: 1px solid red;
+}
+
+.grid-debug > * {
+  outline: 1px solid blue;
 }
