@@ -1,6 +1,6 @@
-/* Card Components - Updated for better spacing and layout */
+/* Card Components - Updated for equal height grid support */
 
-/* Base card component */
+/* Base card component - FIXED for equal height */
 .card {
   background: var(--bg-card);
   padding: var(--space-6);
@@ -9,7 +9,9 @@
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
   margin-bottom: var(--space-4);
-  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* FIXED: Ensure card fills container height */
 }
 
 .card:hover {
@@ -27,6 +29,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--space-2);
+  flex-shrink: 0; /* FIXED: Header doesn't shrink */
 }
 
 .card__title {
@@ -43,9 +46,12 @@
   font-weight: var(--font-weight-normal);
 }
 
-/* Card body */
+/* Card body - FIXED for equal height */
 .card__body {
-  margin-bottom: var(--space-2);
+  flex: 1; /* FIXED: Body expands to fill available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Content starts at top but fills space */
 }
 
 .card__body p:last-child {
@@ -73,6 +79,8 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
+  flex-shrink: 0; /* FIXED: Footer doesn't shrink */
+  margin-top: auto; /* FIXED: Footer pushes to bottom */
 }
 
 /* Card variants */
@@ -106,7 +114,7 @@
   padding: var(--space-8);
 }
 
-/* Team member card */
+/* Team member card - FIXED for equal height */
 .card--team-member {
   text-align: center;
   background: var(--bg-secondary);
@@ -114,9 +122,9 @@
   border-radius: var(--radius-xl);
   transition: all var(--transition-base);
   padding: var(--space-6);
-  height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%; /* FIXED: Full height */
 }
 
 .card--team-member:hover {
@@ -138,6 +146,7 @@
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  flex-shrink: 0; /* FIXED: Photo doesn't shrink */
 }
 
 .card--team-member .team-member__photo img {
@@ -151,18 +160,22 @@
   color: var(--accent-primary);
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-2);
+  flex-shrink: 0; /* FIXED: Name doesn't shrink */
 }
 
 .card--team-member .team-member__title {
   color: var(--text-primary);
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-4);
+  flex-shrink: 0; /* FIXED: Title doesn't shrink */
 }
 
 .card--team-member .team-member__bio {
   text-align: left;
-  margin-bottom: var(--space-4);
-  flex: 1;
+  flex: 1; /* FIXED: Bio expands to fill remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* CTA section card */
@@ -174,6 +187,10 @@
   border-radius: var(--radius-xl);
   margin: var(--space-12) 0;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card--cta h2,
@@ -196,6 +213,8 @@
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   border-left: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .card--section h1,
@@ -239,35 +258,30 @@
   color: white;
 }
 
-/* Section-specific card spacing */
-.section-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-  margin-bottom: var(--space-4);
+/* Special class for cards that need content alignment at bottom */
+.card--push-footer .card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.section-cards .card {
-  margin-bottom: 0;
+.card--push-footer .card__footer,
+.card--push-footer .btn,
+.card--push-footer a[class*="btn"] {
+  margin-top: auto;
 }
 
-/* Team grid specific styling */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-  margin-bottom: var(--space-4);
-}
-
-.team-grid .card--team-member {
-  margin-bottom: 0;
+/* Grid-specific card adjustments */
+.grid .card {
+  margin-bottom: 0; /* Remove bottom margin in grid context */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
     padding: var(--space-4);
-    margin-bottom: var(--space-4);
+    height: auto; /* FIXED: Allow natural height on mobile */
   }
 
   .card--section {
@@ -299,20 +313,9 @@
     gap: var(--space-2);
   }
 
-  .section-cards {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* On mobile, cards don't need to be equal height */
+  .grid .card {
+    height: auto;
   }
 }
 
