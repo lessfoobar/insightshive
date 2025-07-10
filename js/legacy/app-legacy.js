@@ -20,12 +20,12 @@
   };
 
   ThemeManager.prototype.createThemeToggle = function () {
-    if (document.querySelector('.btn--theme-toggle')) {  // ✅ Using BEM class
+    if (document.querySelector('.btn--theme-toggle')) {
       return;
     }
 
     const themeToggle = document.createElement('button');
-    themeToggle.className = 'btn btn--theme-toggle';  // ✅ Using BEM classes
+    themeToggle.className = 'btn btn--theme-toggle';es
     themeToggle.setAttribute('aria-label', 'Toggle dark mode');
     themeToggle.innerHTML = this.getThemeIcon();
 
@@ -77,7 +77,7 @@
   };
 
   ThemeManager.prototype.updateToggleIcon = function () {
-    const themeToggle = document.querySelector('.btn--theme-toggle');  // ✅ Using BEM class
+    const themeToggle = document.querySelector('.btn--theme-toggle');
     if (themeToggle) {
       themeToggle.innerHTML = this.getThemeIcon();
     }
@@ -133,19 +133,19 @@
   };
 
   MobileMenu.prototype.createMenuToggle = function () {
-    const existingToggle = document.querySelector('.btn--menu-toggle');  // ✅ Using BEM class
+    const existingToggle = document.querySelector('.btn--menu-toggle');
 
     if (!existingToggle) {
-      const navContainer = document.querySelector('.nav__container');  // ✅ Using BEM class
+      const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
         return;
       }
 
       const newMenuToggle = document.createElement('button');
       newMenuToggle.type = 'button';
-      newMenuToggle.className = 'btn btn--menu-toggle';  // ✅ Using BEM classes
+      newMenuToggle.className = 'btn btn--menu-toggle';es
       newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
-      newMenuToggle.innerHTML = '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>';  // ✅ Using BEM classes
+      newMenuToggle.innerHTML = '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>'; es
       navContainer.appendChild(newMenuToggle);
 
       this.menuToggle = newMenuToggle;
@@ -153,7 +153,7 @@
       this.menuToggle = existingToggle;
     }
 
-    this.navLinks = document.querySelector('.nav__links');  // ✅ Using BEM class
+    this.navLinks = document.querySelector('.nav__links');
   };
 
   MobileMenu.prototype.toggleMenu = function () {
@@ -161,10 +161,10 @@
       return;
     }
 
-    this.menuToggle.classList.toggle('btn--menu-toggle--active');  // ✅ Using BEM modifier
-    this.navLinks.classList.toggle('nav__links--active');  // ✅ Using BEM modifier
+    this.menuToggle.classList.toggle('btn--menu-toggle--active');
+    this.navLinks.classList.toggle('nav__links--active');
 
-    if (this.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
+    if (this.navLinks.classList.contains('nav__links--active')) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -176,8 +176,8 @@
       return;
     }
 
-    this.menuToggle.classList.remove('btn--menu-toggle--active');  // ✅ Using BEM modifier
-    this.navLinks.classList.remove('nav__links--active');  // ✅ Using BEM modifier
+    this.menuToggle.classList.remove('btn--menu-toggle--active');
+    this.navLinks.classList.remove('nav__links--active');
     document.body.style.overflow = '';
   };
 
@@ -190,7 +190,7 @@
       });
     }
 
-    const navLinksItems = document.querySelectorAll('.nav__links a');  // ✅ Using BEM class
+    const navLinksItems = document.querySelectorAll('.nav__links a');
     navLinksItems.forEach(function (link) {
       link.addEventListener('click', function () {
         self.closeMenu();
@@ -206,7 +206,7 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && self.navLinks && self.navLinks.classList.contains('nav__links--active')) {  // ✅ Using BEM modifier
+      if (e.key === 'Escape' && self.navLinks && self.navLinks.classList.contains('nav__links--active')) {
         self.closeMenu();
       }
     });
