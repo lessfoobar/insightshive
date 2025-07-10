@@ -207,8 +207,10 @@
 
   // Initialize when DOM is ready
   function initApp() {
+    /* eslint-disable no-new */
     new ThemeManager();
     new MobileMenu();
+    /* eslint-enable no-new */
   }
 
   if (document.readyState === 'loading') {
@@ -216,5 +218,4 @@
   } else {
     initApp();
   }
-
-})();
+}());

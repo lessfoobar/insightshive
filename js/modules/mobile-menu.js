@@ -13,7 +13,7 @@ export class MobileMenu {
 
   createMenuToggle() {
     const existingToggle = document.querySelector('.menu-toggle');
-    
+
     if (!existingToggle) {
       const navContainer = document.querySelector('.nav-container');
       if (!navContainer) {
