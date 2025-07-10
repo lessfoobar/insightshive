@@ -1,0 +1,57 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build CSS
+      run: |
+        # Create dist directory
+        mkdir -p dist/css
+        
+        # Build CSS using PostCSS (processes @imports)
+        npx postcss css/main.css -o dist/css/main.css
+        
+        # Copy built CSS back to source for GitHub Pages
+        cp dist/css/main.css css/main.css
+        
+        # Copy other assets
+        mkdir -p dist/js dist/images
+        cp -r js/* dist/js/ 2>/dev/null || :
+        cp -r images/* dist/images/ 2>/dev/null || :
+        
+        # Copy HTML files
+        cp *.html dist/
+
+    - name: Validate HTML
+      run: npm run validate || true
+
+    - name: Lint JavaScript
+      run: npm run lint || true
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        # We deploy the root directory since we copy built CSS back to css/main.css

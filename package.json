@@ -4,16 +4,19 @@
   "description": "AI-Powered Retail Intelligence Platform Website",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server --port=8080 --open=/index.html",
-    "build": "npm run css:build && npm run js:build",
-    "css:build": "postcss css/main.css -o dist/css/main.css",
-    "css:watch": "postcss css/main.css -o dist/css/main.css --watch",
+    "dev": "npm run css:build && live-server --port=8080 --open=/index.html",
+    "build": "npm run clean && npm run css:build && npm run js:build && npm run copy:assets",
+    "css:build": "postcss css/main.css -o css/main.css --config postcss.config.js",
+    "css:watch": "postcss css/main.css -o css/main.css --watch --config postcss.config.js",
+    "css:dev": "postcss css/main.css -o css/main.css --config postcss.config.js --watch",
     "js:build": "mkdir -p dist/js && cp -r js/* dist/js/",
+    "copy:assets": "cp -r images dist/ && cp *.html dist/",
     "lint": "eslint js/**/*.js",
     "lint:fix": "eslint js/**/*.js --fix",
     "validate": "html-validate *.html",
     "serve": "live-server --port=3000",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "deploy:prepare": "npm run build && cp css/main.css dist/css/main.css"
   },
   "keywords": [
     "ai",
