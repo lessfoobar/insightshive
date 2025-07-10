@@ -1,6 +1,6 @@
 /*
  * Page Configurations - Define page-specific settings
- */
+*/
 
 export const pageConfigs = {
   home: {
@@ -65,7 +65,7 @@ export const pageConfigs = {
 export function getCurrentPageConfig() {
   const path = window.location.pathname;
   const filename = path.split('/').pop().replace('.html', '') || 'index';
-  
+
   // Map filenames to config keys
   const pageMap = {
     'index': 'home',

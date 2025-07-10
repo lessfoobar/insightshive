@@ -137,7 +137,7 @@ export class PageComponents {
 
     const breadcrumbItems = breadcrumbs.map((crumb, index) => {
       const isLast = index === breadcrumbs.length - 1;
-      
+
       if (isLast) {
         return `
           <span class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
@@ -209,7 +209,7 @@ export class PageRenderer {
     // Update document head
     if (this.pageConfig.title || this.pageConfig.description) {
       document.title = this.pageConfig.title || 'InsightsHive - AI-Powered Retail Intelligence Platform';
-      
+
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription && this.pageConfig.description) {
         metaDescription.content = this.pageConfig.description;
