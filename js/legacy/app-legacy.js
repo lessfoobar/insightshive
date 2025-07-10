@@ -3,6 +3,8 @@
  * Fallback for browsers that don't support ES6 modules
  */
 
+/* eslint-disable prefer-arrow-callback */
+
 (function () {
   'use strict';
 
@@ -219,3 +221,5 @@
     initApp();
   }
 }());
+
+/* eslint-enable prefer-arrow-callback */
