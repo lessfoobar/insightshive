@@ -2,14 +2,20 @@
   "name": "insightshive-website",
   "version": "1.0.0",
   "description": "AI-Powered Retail Intelligence Platform Website",
-  "main": "index.html",
+  "main": "js/main.js",
+  "type": "module",
   "scripts": {
     "build": "npm run css:build",
     "css:build": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer",
     "css:minify": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer cssnano",
     "lint": "eslint js/**/*.js --no-eslintrc --config .eslintrc.js",
     "lint:fix": "eslint js/**/*.js --fix --no-eslintrc --config .eslintrc.js",
-    "validate": "html-validate *.html --config .htmlvalidate.json"
+    "lint:modules": "eslint js/modules/*.js js/main.js --no-eslintrc --config .eslintrc.js",
+    "lint:legacy": "eslint js/legacy/*.js --no-eslintrc --config .eslintrc.js",
+    "validate": "html-validate *.html --config .htmlvalidate.json",
+    "test": "npm run lint && npm run validate",
+    "dev": "live-server . --port=3000 --open=index.html",
+    "serve": "python3 -m http.server 8000"
   },
   "keywords": [
     "ai",
@@ -27,7 +33,8 @@
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.2",
     "eslint": "^8.57.0",
-    "html-validate": "^8.7.4"
+    "html-validate": "^8.7.4",
+    "live-server": "^1.2.2"
   },
   "browserslist": [
     "> 1%",
