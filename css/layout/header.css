@@ -1,0 +1,60 @@
+/* layout/header.css - Header Styles */
+header {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    color: var(--color-white);
+    padding: var(--space-8) 0;
+    text-align: center;
+}
+
+.logo {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+}
+
+.tagline {
+    font-size: var(--font-size-xl);
+    opacity: 0.9;
+    margin-bottom: var(--space-4);
+}
+
+.hero-description {
+    font-size: var(--font-size-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-6) 0;
+    }
+    
+    .logo {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .tagline {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-base);
+        padding: 0 var(--space-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .tagline {
+        font-size: var(--font-size-base);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-sm);
+    }
+}

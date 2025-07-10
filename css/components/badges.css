@@ -1,0 +1,37 @@
+/* components/badges.css - Badge Components */
+.badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-xl);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge {
+    background: var(--color-success);
+    color: var(--color-white);
+}
+
+.beta-badge {
+    background: var(--color-warning);
+    color: var(--color-warning-text);
+}
+
+.ai-badge {
+    background: var(--accent-primary);
+    color: var(--color-white);
+    margin-top: var(--space-2);
+}
+
+/* Badge Animations */
+.badge {
+    animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
