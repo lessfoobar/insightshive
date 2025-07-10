@@ -1,0 +1,191 @@
+/* Typography Styles */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-primary);
+}
+
+/* Links */
+a {
+  color: var(--accent-primary);
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul,
+ol {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+/* Strong and emphasis */
+strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+em {
+  font-style: italic;
+}
+
+/* Code and preformatted text */
+code {
+  font-family: 'Courier New', monospace;
+  background: var(--bg-card);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+pre {
+  background: var(--bg-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--accent-primary);
+  padding-left: var(--space-4);
+  margin: var(--space-8) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Small text */
+small {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  body {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+}
