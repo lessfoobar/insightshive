@@ -1,0 +1,242 @@
+/* CSS Custom Properties (Variables) - Design System */
+
+:root {
+  /* ================================
+     COLOR SYSTEM
+     ================================ */
+  
+  /* Primary Brand Colors */
+  --color-primary-50: #f9f7fb;
+  --color-primary-100: #f4e1f5;
+  --color-primary-200: #e8c3eb;
+  --color-primary-300: #dca5e1;
+  --color-primary-400: #c081d1;
+  --color-primary-500: #a359bc;  /* Main brand color */
+  --color-primary-600: #8f4ca3;
+  --color-primary-700: #7a408a;
+  --color-primary-800: #653471;
+  --color-primary-900: #4a2757;
+
+  /* Neutral Colors */
+  --color-neutral-50: #f9f9f9;
+  --color-neutral-100: #f0f0f0;
+  --color-neutral-200: #e0e0e0;
+  --color-neutral-300: #c8c8c8;
+  --color-neutral-400: #a8a8a8;
+  --color-neutral-500: #888888;
+  --color-neutral-600: #666666;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-800: #2d2d2d;
+  --color-neutral-900: #1a1a1a;
+
+  /* Semantic Colors */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+
+  /* ================================
+     LIGHT THEME TOKENS
+     ================================ */
+  
+  /* Backgrounds */
+  --bg-primary: var(--color-primary-50);
+  --bg-secondary: #ffffff;
+  --bg-tertiary: var(--color-primary-100);
+  --bg-card: var(--color-primary-100);
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Text Colors */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-tertiary: var(--color-neutral-500);
+  --text-inverse: #ffffff;
+
+  /* Interactive Colors */
+  --color-interactive-primary: var(--color-primary-500);
+  --color-interactive-primary-hover: var(--color-primary-600);
+  --color-interactive-secondary: var(--color-neutral-200);
+  --color-interactive-secondary-hover: var(--color-neutral-300);
+
+  /* Border Colors */
+  --border-primary: rgba(0, 0, 0, 0.1);
+  --border-secondary: rgba(0, 0, 0, 0.05);
+  --border-focus: var(--color-primary-500);
+
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.25);
+
+  /* Navigation */
+  --nav-bg: #ffffff;
+  --nav-text: var(--text-primary);
+  --nav-border: var(--border-primary);
+
+  /* Footer */
+  --footer-bg: var(--color-primary-500);
+  --footer-text: #ffffff;
+
+  /* ================================
+     TYPOGRAPHY SCALE
+     ================================ */
+  
+  /* Font Families */
+  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-heading: var(--font-family-primary);
+  --font-family-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ================================
+     SPACING SCALE
+     ================================ */
+  
+  /* Consistent spacing system */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* ================================
+     BORDER RADIUS
+     ================================ */
+  
+  --radius-none: 0;
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-full: 9999px;
+
+  /* ================================
+     TRANSITIONS
+     ================================ */
+  
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  --transition-bounce: 350ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ================================
+     Z-INDEX SCALE
+     ================================ */
+  
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* ================================
+     BREAKPOINTS
+     ================================ */
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ================================
+     LAYOUT
+     ================================ */
+  
+  --container-max-width: 1200px;
+  --container-padding: var(--space-5);
+  --header-height: auto;
+  --footer-height: auto;
+}
+
+/* ================================
+   DARK THEME OVERRIDES
+   ================================ */
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: var(--color-neutral-900);
+  --bg-secondary: var(--color-neutral-800);
+  --bg-tertiary: var(--color-neutral-700);
+  --bg-card: #3a2f3f;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Text Colors */
+  --text-primary: #e8dff2;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --text-inverse: var(--color-neutral-900);
+
+  /* Interactive Colors */
+  --color-interactive-primary: var(--color-primary-400);
+  --color-interactive-primary-hover: var(--color-primary-300);
+  --color-interactive-secondary: var(--color-neutral-700);
+  --color-interactive-secondary-hover: var(--color-neutral-600);
+
+  /* Border Colors */
+  --border-primary: rgba(255, 255, 255, 0.2);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --border-focus: var(--color-primary-400);
+
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-heavy: rgba(0, 0, 0, 0.6);
+
+  /* Navigation */
+  --nav-bg: var(--color-neutral-800);
+  --nav-text: var(--text-primary);
+  --nav-border: var(--border-primary);
+
+  /* Footer */
+  --footer-bg: var(--color-neutral-900);
+  --footer-text: var(--text-primary);
+}
+
+/* ================================
+   REDUCED MOTION PREFERENCES
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+    --transition-bounce: 0ms;
+  }
+}
