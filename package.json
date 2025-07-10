@@ -1,0 +1,46 @@
+{
+  "name": "insightshive-website",
+  "version": "1.0.0",
+  "description": "AI-Powered Retail Intelligence Platform Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=8080 --open=/index.html",
+    "build": "npm run css:build && npm run js:build",
+    "css:build": "postcss css/main.css -o dist/css/main.css",
+    "css:watch": "postcss css/main.css -o dist/css/main.css --watch",
+    "js:build": "mkdir -p dist/js && cp -r js/* dist/js/",
+    "lint": "eslint js/**/*.js",
+    "lint:fix": "eslint js/**/*.js --fix",
+    "validate": "html-validate *.html",
+    "serve": "live-server --port=3000",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "ai",
+    "retail",
+    "computer-vision",
+    "analytics",
+    "insightshive"
+  ],
+  "author": "InsightsHive Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.7.4",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insightshive/website"
+  },
+  "homepage": "https://insightshive.com"
+}

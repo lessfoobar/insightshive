@@ -1,0 +1,218 @@
+/* Button Components - BEM Methodology */
+
+/* Base button class */
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  line-height: 1;
+  user-select: none;
+}
+
+.btn:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Button variants */
+.btn--primary {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background: var(--color-primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus {
+  background: var(--bg-card);
+  border-color: var(--accent-primary);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Button sizes */
+.btn--small {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.btn--large {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-lg);
+}
+
+.btn--full {
+  width: 100%;
+  display: block;
+}
+
+/* Special buttons */
+.btn--cta {
+  background: white;
+  color: var(--accent-primary);
+  padding: var(--space-4) var(--space-8);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  margin: var(--space-4) var(--space-2);
+  transition: transform var(--transition-base);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn--cta:hover,
+.btn--cta:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Theme toggle button */
+.btn--theme-toggle {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: var(--z-fixed);
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  width: 50px;
+  height: 50px;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--theme-toggle:hover,
+.btn--theme-toggle:focus {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Menu toggle button (hamburger) */
+.btn--menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: var(--space-2);
+  background: none;
+  border: none;
+  z-index: var(--z-fixed);
+}
+
+.btn--menu-toggle__line {
+  width: 25px;
+  height: 3px;
+  background: var(--text-primary);
+  margin: 3px 0;
+  transition: var(--transition-base);
+  display: block;
+}
+
+/* Hamburger menu animation */
+.btn--menu-toggle--active .btn--menu-toggle__line:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.btn--menu-toggle--active .btn--menu-toggle__line:nth-child(2) {
+  opacity: 0;
+}
+
+.btn--menu-toggle--active .btn--menu-toggle__line:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Button groups */
+.btn-group {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.btn-group--center {
+  justify-content: center;
+}
+
+.btn-group--end {
+  justify-content: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn--theme-toggle {
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 45px;
+    height: 45px;
+    font-size: var(--font-size-base);
+  }
+
+  .btn--menu-toggle {
+    display: flex;
+  }
+
+  .btn--cta {
+    display: block;
+    width: 100%;
+    margin: var(--space-2) 0;
+    padding: var(--space-4);
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn--theme-toggle {
+    top: var(--space-3);
+    right: var(--space-3);
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-sm);
+  }
+}
