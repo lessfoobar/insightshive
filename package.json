@@ -4,19 +4,12 @@
   "description": "AI-Powered Retail Intelligence Platform Website",
   "main": "index.html",
   "scripts": {
-    "dev": "npm run css:build && live-server --port=8080 --open=/index.html",
-    "build": "npm run clean && npm run css:build && npm run js:build && npm run copy:assets",
-    "css:build": "postcss css/main.css -o css/main.css --config postcss.config.js",
-    "css:watch": "postcss css/main.css -o css/main.css --watch --config postcss.config.js",
-    "css:dev": "postcss css/main.css -o css/main.css --config postcss.config.js --watch",
-    "js:build": "mkdir -p dist/js && cp -r js/* dist/js/",
-    "copy:assets": "cp -r images dist/ && cp *.html dist/",
-    "lint": "eslint js/**/*.js",
-    "lint:fix": "eslint js/**/*.js --fix",
-    "validate": "html-validate *.html",
-    "serve": "live-server --port=3000",
-    "clean": "rm -rf dist",
-    "deploy:prepare": "npm run build && cp css/main.css dist/css/main.css"
+    "build": "npm run css:build",
+    "css:build": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer",
+    "css:minify": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer cssnano",
+    "lint": "eslint js/**/*.js --no-eslintrc --config .eslintrc.js",
+    "lint:fix": "eslint js/**/*.js --fix --no-eslintrc --config .eslintrc.js",
+    "validate": "html-validate *.html --config .htmlvalidate.json"
   },
   "keywords": [
     "ai",
@@ -27,14 +20,14 @@
   ],
   "author": "InsightsHive Team",
   "license": "MIT",
-  "devDependencies": {
-    "live-server": "^1.2.2",
-    "eslint": "^8.57.0",
-    "html-validate": "^8.7.4",
+  "dependencies": {
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0",
+    "postcss-import": "^15.1.0",
     "autoprefixer": "^10.4.16",
-    "cssnano": "^6.0.2"
+    "cssnano": "^6.0.2",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.7.4"
   },
   "browserslist": [
     "> 1%",
@@ -43,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/insightshive/website"
+    "url": "https://github.com/YOUR_USERNAME/insightshive"
   },
-  "homepage": "https://insightshive.com"
+  "homepage": "https://YOUR_USERNAME.github.io/insightshive"
 }

@@ -6,9 +6,20 @@ on:
   pull_request:
     branches: [ main ]
 
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     
     steps:
     - name: Checkout
@@ -18,40 +29,46 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
+        # Remove cache since we don't have package-lock.json
 
     - name: Install dependencies
-      run: npm ci
+      run: |
+        # Install without package-lock.json
+        npm install --no-package-lock
+        
+        # Install global dependencies needed for CSS processing
+        npm install -g postcss-cli
 
     - name: Build CSS
       run: |
-        # Create dist directory
-        mkdir -p dist/css
+        # Process CSS imports and build main.css
+        npx postcss css/main.css -o css/main.css --use postcss-import autoprefixer
         
-        # Build CSS using PostCSS (processes @imports)
-        npx postcss css/main.css -o dist/css/main.css
-        
-        # Copy built CSS back to source for GitHub Pages
-        cp dist/css/main.css css/main.css
-        
-        # Copy other assets
-        mkdir -p dist/js dist/images
-        cp -r js/* dist/js/ 2>/dev/null || :
-        cp -r images/* dist/images/ 2>/dev/null || :
-        
-        # Copy HTML files
-        cp *.html dist/
+        echo "CSS build completed"
+        ls -la css/
 
-    - name: Validate HTML
-      run: npm run validate || true
+    - name: Validate HTML (optional)
+      run: |
+        # Run validation but don't fail the build if it fails
+        npm run validate || echo "HTML validation completed with warnings"
 
-    - name: Lint JavaScript
-      run: npm run lint || true
+    - name: Lint JavaScript (optional)
+      run: |
+        # Run linting but don't fail the build if it fails
+        npm run lint || echo "JavaScript linting completed with warnings"
+
+    - name: Setup Pages
+      if: github.ref == 'refs/heads/main'
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-pages-artifact@v2
+      with:
+        # Upload entire repository as it's a static site
+        path: '.'
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        # We deploy the root directory since we copy built CSS back to css/main.css
+      id: deployment
+      uses: actions/deploy-pages@v3

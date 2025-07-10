@@ -1,15 +1,22 @@
-name: Build CSS for GitHub Pages
+name: Build CSS
 
 on:
   push:
     branches: [ main ]
+    paths: 
+      - 'css/**/*.css'
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-css:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+    
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         
@@ -18,19 +25,32 @@ jobs:
       with:
         node-version: '18'
         
-    - name: Install postcss-cli and postcss-import
+    - name: Install CSS build tools
       run: |
-        npm install -g postcss-cli
-        npm install postcss-import autoprefixer
+        npm install --no-package-lock postcss-import autoprefixer postcss-cli
         
     - name: Build CSS
       run: |
-        npx postcss css/main.css -o css/main.css --use postcss-import
+        # Backup original main.css
+        cp css/main.css css/main.css.backup
+        
+        # Build CSS with imports processed
+        npx postcss css/main.css -o css/main.css.built --use postcss-import autoprefixer
+        
+        # Replace main.css with built version
+        mv css/main.css.built css/main.css
+        
+        echo "CSS built successfully!"
+        echo "File size: $(wc -c < css/main.css) bytes"
         
     - name: Commit built CSS
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add css/main.css
-        git diff --staged --quiet || git commit -m "Build CSS for deployment"
-        git push
+        if git diff --staged --quiet; then
+          echo "No changes to CSS"
+        else
+          git commit -m "🎨 Build CSS with processed imports [skip ci]"
+          git push
+        fi
