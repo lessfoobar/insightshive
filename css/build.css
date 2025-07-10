@@ -1,0 +1,21 @@
+
+/* InsightsHive Build CSS - Source file with imports */
+/* This file contains @import statements and gets compiled to main.css */
+
+/* Import Base Styles */
+@import 'base/reset.css';
+@import 'base/variables.css';
+@import 'base/typography.css';
+
+/* Import Layout Styles */
+@import 'layout/grid.css';
+@import 'layout/header.css';
+@import 'layout/footer.css';
+
+/* Import Component Styles */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/navigation.css';
+
+/* Import Utilities */
+@import 'utilities/spacing.css';

@@ -4,7 +4,11 @@ on:
   push:
     branches: [ main ]
     paths: 
-      - 'css/**/*.css'
+      - 'css/build.css'
+      - 'css/base/**/*.css'
+      - 'css/components/**/*.css'
+      - 'css/layout/**/*.css'
+      - 'css/utilities/**/*.css'
   workflow_dispatch:
 
 jobs:
@@ -31,17 +35,15 @@ jobs:
         
     - name: Build CSS
       run: |
-        # Backup original main.css
-        cp css/main.css css/main.css.backup
+        echo "Building CSS from build.css to main.css..."
         
-        # Build CSS with imports processed
-        npx postcss css/main.css -o css/main.css.built --use postcss-import autoprefixer
-        
-        # Replace main.css with built version
-        mv css/main.css.built css/main.css
+        # Build CSS with imports processed from build.css to main.css
+        npx postcss css/build.css -o css/main.css --use postcss-import autoprefixer
         
         echo "CSS built successfully!"
-        echo "File size: $(wc -c < css/main.css) bytes"
+        echo "Source file: css/build.css"
+        echo "Output file: css/main.css"
+        echo "Output size: $(wc -c < css/main.css) bytes"
         
     - name: Commit built CSS
       run: |
@@ -49,8 +51,8 @@ jobs:
         git config --local user.name "GitHub Action"
         git add css/main.css
         if git diff --staged --quiet; then
-          echo "No changes to CSS"
+          echo "No changes to compiled CSS"
         else
-          git commit -m "🎨 Build CSS with processed imports [skip ci]"
+          git commit -m "🎨 Auto-build CSS from build.css [skip ci]"
           git push
         fi

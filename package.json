@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "npm run css:build",
-    "css:build": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer",
-    "css:minify": "postcss css/main.css -o css/main.css --use postcss-import autoprefixer cssnano",
+    "css:build": "postcss css/build.css -o css/main.css --use postcss-import autoprefixer",
+    "css:minify": "postcss css/build.css -o css/main.css --use postcss-import autoprefixer cssnano",
+    "css:watch": "postcss css/build.css -o css/main.css --use postcss-import autoprefixer --watch",
     "lint": "eslint js/**/*.js --config .eslintrc.cjs",
     "lint:fix": "eslint js/**/*.js --fix --config .eslintrc.cjs",
     "lint:modules": "eslint js/modules/*.js js/main.js --config .eslintrc.cjs",
