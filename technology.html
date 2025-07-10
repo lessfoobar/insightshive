@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsightsHive - AI &amp; Competitive Advantage</title>
-    <meta name="description" content="Your page description">
+    <title>AI Technology & Competitive Advantage - InsightsHive</title>
+    <meta name="description" content="Advanced AI computer vision and machine learning technologies that power our retail intelligence platform">
     <link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg">
     <link rel="icon" type="image/x-icon" href="images/favicons/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
@@ -20,35 +20,17 @@
     <script nomodule src="js/legacy/app-legacy.js"></script>
 </head>
 <body class="dark-theme">
-    <header class="header header--technology">
-        <div class="container">
-            <div class="header__logo">InsightsHive</div>
-            <div class="header__tagline">AI Technology &amp; Competitive Advantage</div>
-            <div class="header__description">
-                Advanced AI computer vision and machine learning technologies that power our retail intelligence platform and deliver superior accuracy and insights.
-            </div>
-        </div>
-    </header>
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
 
-    <nav class="nav">
-        <div class="nav__container">
-            <button type="button" class="btn--menu-toggle" aria-label="Toggle navigation menu">
-                <span class="btn--menu-toggle__line"></span>
-                <span class="btn--menu-toggle__line"></span>
-                <span class="btn--menu-toggle__line"></span>
-            </button>
-            <ul class="nav__links">
-                <li><a href="index.html" class="nav__link">Home</a></li>
-                <li><a href="about.html" class="nav__link">About Us</a></li>
-                <li><a href="products.html" class="nav__link">Products</a></li>
-                <li><a href="team.html" class="nav__link">Our Team</a></li>
-                <li><a href="technology.html" class="nav__link nav__link--active">Technology</a></li>
-                <li><a href="contact.html" class="nav__link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navigation will be injected here -->
+    <div id="nav-placeholder"></div>
 
-    <main class="container">
+    <!-- Breadcrumbs will be injected here -->
+    <div id="breadcrumbs-placeholder"></div>
+
+    <!-- Main Content - Unique to this page -->
+    <main id="main" class="container" role="main">
         <h1 class="page-title">AI Technology &amp; Competitive Advantage</h1>
 
         <!-- AI Overview -->
@@ -424,20 +406,15 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__contact">
-                <h3 class="footer__contact-title">Contact InsightsHive</h3>
-                <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
-                <div class="footer__contact-info">
-                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
-                    <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Page-specific configuration -->
+    <script type="module">
+        import { PageRenderer } from './js/components/page-components.js';
+        import { pageConfigs } from './js/config/page-configs.js';
+        
+        new PageRenderer(pageConfigs.technology);
+    </script>
 </body>
 </html>

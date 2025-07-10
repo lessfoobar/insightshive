@@ -1,0 +1,67 @@
+name: Build HTML from Templates
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'templates/**/*.html'
+      - 'partials/**/*.html'
+      - 'data/**/*.json'
+  workflow_dispatch:
+
+jobs:
+  build-html:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install HTML build tools
+      run: |
+        npm install -g mustache
+        
+    - name: Build HTML files from templates
+      run: |
+        echo "Building HTML files from templates..."
+        
+        # Create output directory
+        mkdir -p dist
+        
+        # Build each page
+        for template in templates/*.mustache; do
+          basename=$(basename "$template" .mustache)
+          echo "Building $basename.html..."
+          
+          # Use corresponding JSON data file
+          if [ -f "data/$basename.json" ]; then
+            mustache "data/$basename.json" "$template" > "$basename.html"
+          else
+            # Use default data
+            mustache "data/default.json" "$template" > "$basename.html"
+          fi
+        done
+        
+        echo "HTML build completed!"
+        
+    - name: Commit built HTML files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add *.html
+        if git diff --staged --quiet; then
+          echo "No changes to HTML files"
+        else
+          git commit -m "🏗️ Auto-build HTML from templates [skip ci]"
+          git push
+        fi

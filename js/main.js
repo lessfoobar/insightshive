@@ -1,12 +1,14 @@
 /*
- * Main Application Entry Point - Enhanced with new modules
- * Initializes all application modules
+ * Main Application Entry Point - Enhanced with component system
+ * Initializes all application modules including page components
  */
 
 import { ThemeManager } from './modules/theme-manager.js';
 import { MobileMenu } from './modules/mobile-menu.js';
 import { ImageFallback } from './modules/image-fallback.js';
 import { AnimationManager } from './modules/animation-manager.js';
+import { PageRenderer } from './components/page-components.js';
+import { getCurrentPageConfig } from './config/page-configs.js';
 
 class InsightsHiveApp {
   constructor() {
@@ -14,6 +16,7 @@ class InsightsHiveApp {
     this.mobileMenu = null;
     this.imageFallback = null;
     this.animationManager = null;
+    this.pageRenderer = null;
     this.init();
   }
 
@@ -28,22 +31,27 @@ class InsightsHiveApp {
 
   initializeModules() {
     try {
-      // Initialize theme management first (affects visual appearance)
-      this.themeManager = new ThemeManager();
+      // Initialize page components first (injects header, nav, footer)
+      this.pageRenderer = new PageRenderer(getCurrentPageConfig());
       
-      // Initialize mobile navigation
-      this.mobileMenu = new MobileMenu();
-      
-      // Initialize image fallback handling
-      this.imageFallback = new ImageFallback();
+      // Initialize theme management after page components are rendered
+      setTimeout(() => {
+        this.themeManager = new ThemeManager();
+        
+        // Initialize mobile navigation
+        this.mobileMenu = new MobileMenu();
+        
+        // Initialize image fallback handling
+        this.imageFallback = new ImageFallback();
 
-      // Initialize animations and scroll effects
-      this.animationManager = new AnimationManager();
+        // Initialize animations and scroll effects
+        this.animationManager = new AnimationManager();
 
-      // Initialize additional features
-      this.initializeUtilities();
-      
-      console.log('🚀 InsightsHive app initialized successfully');
+        // Initialize additional features
+        this.initializeUtilities();
+        
+        console.log('🚀 InsightsHive app initialized successfully');
+      }, 100); // Small delay to ensure DOM elements are rendered
 
     } catch (error) {
       console.error('Error initializing InsightsHive app:', error);
