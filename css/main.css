@@ -1,27 +1,299 @@
-/* main.css - Import structure following best practices */
+/* InsightsHive Main Stylesheet - BEM Methodology */
 
-/* 1. Base Styles (Foundation) */
+/* Import Base Styles */
 @import 'base/reset.css';
 @import 'base/variables.css';
 @import 'base/typography.css';
 
-/* 2. Layout Styles */
+/* Import Layout Styles */
 @import 'layout/grid.css';
 @import 'layout/header.css';
 @import 'layout/footer.css';
-@import 'layout/sections.css';
 
-/* 3. Component Styles */
-@import 'components/navigation.css';
-@import 'components/cards.css';
+/* Import Component Styles */
 @import 'components/buttons.css';
-@import 'components/badges.css';
-@import 'components/team.css';
+@import 'components/cards.css';
+@import 'components/navigation.css';
 
-/* 4. Utility Styles */
-@import 'utilities/theme.css';
+/* Import Utilities */
 @import 'utilities/spacing.css';
-@import 'utilities/responsive.css';
 
-/* 5. Page-specific Styles */
-@import 'pages/home.css';
+/* ===========================================
+   LEGACY CLASS MAPPINGS
+   These map old classes to new BEM classes
+   for backward compatibility
+   =========================================== */
+
+/* Legacy header mappings */
+header { @apply header; }
+.logo { @apply header__logo; }
+.tagline { @apply header__tagline; }
+.hero-description { @apply header__description; }
+
+/* Legacy navigation mappings */
+nav { @apply nav; }
+.nav-container { @apply nav__container; }
+.nav-links { @apply nav__links; }
+.nav-links a { @apply nav__link; }
+.nav-links a.active { @apply nav__link nav__link--active; }
+.menu-toggle { @apply nav__toggle btn--menu-toggle; }
+.menu-toggle span { @apply nav__toggle-line btn--menu-toggle__line; }
+.menu-toggle.active { @apply nav__toggle--active btn--menu-toggle--active; }
+
+/* Legacy main content mappings */
+main { @apply main; }
+.container { @apply container; }
+.page-title { 
+  text-align: center;
+  color: var(--accent-primary);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-8);
+  border-bottom: 3px solid var(--accent-primary);
+  padding-bottom: var(--space-4);
+}
+
+/* Legacy section mappings */
+.section { @apply card--section; }
+
+/* Legacy grid mappings */
+.grid { @apply grid; }
+.grid-2 { @apply grid--2; }
+.grid-3 { @apply grid--3; }
+.team-grid { @apply grid--team; }
+
+/* Legacy card mappings */
+.card { @apply card; }
+
+/* Legacy team member mappings */
+.team-member { @apply card--team-member; }
+.team-photo { @apply team-member__photo; }
+.team-photo.default { 
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+/* Legacy button mappings */
+.cta-section { @apply card--cta; }
+.cta-button { @apply btn--cta; }
+
+/* Legacy theme toggle mappings */
+.theme-toggle { @apply btn--theme-toggle; }
+
+/* Legacy footer mappings */
+footer { @apply footer; }
+
+/* Legacy badge mappings */
+.status-badge { @apply badge badge--status; }
+.beta-badge { @apply badge badge--beta; }
+.ai-badge { @apply badge badge--ai; }
+
+/* ===========================================
+   COMPONENT-SPECIFIC STYLES
+   Styles that are specific to the current
+   implementation and don't fit into the
+   general BEM components
+   =========================================== */
+
+/* Page title component */
+.page-title {
+  text-align: center;
+  color: var(--accent-primary);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-8);
+  border-bottom: 3px solid var(--accent-primary);
+  padding-bottom: var(--space-4);
+}
+
+/* Badge components */
+.badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-top: var(--space-2);
+}
+
+.badge--status {
+  background: #28a745;
+  color: white;
+}
+
+.badge--beta {
+  background: #ffc107;
+  color: #333;
+}
+
+.badge--ai {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Team member photo hover effects */
+.team-member:hover .team-member__photo {
+  transform: scale(1.05);
+  transition: transform var(--transition-base);
+}
+
+/* Mobile navigation specific styles */
+@media (max-width: 768px) {
+  .nav__links.active { @apply nav__links--active; }
+  .nav__toggle.active { @apply nav__toggle--active; }
+  
+  /* Mobile menu body scroll lock */
+  body.nav-open {
+    overflow: hidden;
+  }
+}
+
+/* Dark theme body class compatibility */
+body.dark-theme {
+  /* This class is applied by JavaScript for theme switching */
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   Additional utilities not covered in
+   utilities/spacing.css
+   =========================================== */
+
+/* Text alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Color utilities */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-accent { color: var(--accent-primary); }
+
+/* Background utilities */
+.bg-primary { background: var(--bg-primary); }
+.bg-secondary { background: var(--bg-secondary); }
+.bg-card { background: var(--bg-card); }
+
+/* Border utilities */
+.border { border: 1px solid var(--border-color); }
+.border-accent { border: 1px solid var(--accent-primary); }
+.border-radius { border-radius: var(--radius-md); }
+.border-radius-lg { border-radius: var(--radius-lg); }
+.border-radius-full { border-radius: var(--radius-full); }
+
+/* Shadow utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Transition utilities */
+.transition { transition: all var(--transition-base); }
+.transition-fast { transition: all var(--transition-fast); }
+.transition-slow { transition: all var(--transition-slow); }
+
+/* Transform utilities */
+.transform { transform: none; }
+.scale-105 { transform: scale(1.05); }
+.scale-110 { transform: scale(1.1); }
+.translate-y-1 { transform: translateY(-0.25rem); }
+.translate-y-2 { transform: translateY(-0.5rem); }
+
+/* Opacity utilities */
+.opacity-0 { opacity: 0; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-90 { opacity: 0.9; }
+.opacity-100 { opacity: 1; }
+
+/* Cursor utilities */
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+/* User select utilities */
+.select-none { user-select: none; }
+.select-text { user-select: text; }
+.select-all { user-select: all; }
+
+/* Overflow utilities */
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.overflow-auto { overflow: auto; }
+
+/* Z-index utilities */
+.z-0 { z-index: 0; }
+.z-10 { z-index: var(--z-dropdown); }
+.z-20 { z-index: var(--z-sticky); }
+.z-30 { z-index: var(--z-fixed); }
+.z-40 { z-index: var(--z-modal); }
+.z-50 { z-index: var(--z-toast); }
+
+/* ===========================================
+   PRINT STYLES
+   =========================================== */
+
+@media print {
+  .btn--theme-toggle,
+  .nav__toggle,
+  .no-print {
+    display: none !important;
+  }
+  
+  .page-title {
+    color: black !important;
+    border-bottom-color: black !important;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  
+  .header {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .footer {
+    background: white !important;
+    color: black !important;
+    border-top: 1px solid #ccc !important;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY IMPROVEMENTS
+   =========================================== */
+
+/* Focus styles for better accessibility */
+*:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid var(--border-color);
+  }
+  
+  .btn {
+    border: 2px solid currentColor;
+  }
+}

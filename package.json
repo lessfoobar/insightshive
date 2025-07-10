@@ -4,36 +4,43 @@
   "description": "AI-Powered Retail Intelligence Platform Website",
   "main": "index.html",
   "scripts": {
-    "start": "live-server --port=3000",
-    "dev": "live-server --port=3000 --watch=css,js,*.html",
-    "lint:css": "stylelint css/**/*.css",
-    "lint:js": "eslint js/**/*.js",
-    "lint:html": "html-validate *.html",
-    "lint": "npm run lint:css && npm run lint:js && npm run lint:html",
-    "format": "prettier --write *.html css/**/*.css js/**/*.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "dev": "live-server --port=8080 --open=/index.html",
+    "build": "npm run css:build && npm run js:build",
+    "css:build": "postcss css/main.css -o dist/css/main.css",
+    "css:watch": "postcss css/main.css -o dist/css/main.css --watch",
+    "js:build": "mkdir -p dist/js && cp -r js/* dist/js/",
+    "lint": "eslint js/**/*.js",
+    "lint:fix": "eslint js/**/*.js --fix",
+    "validate": "html-validate *.html",
+    "serve": "live-server --port=3000",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "ai",
     "retail",
     "computer-vision",
-    "machine-learning",
     "analytics",
-    "saas"
+    "insightshive"
   ],
   "author": "InsightsHive Team",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2",
     "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "stylelint": "^16.2.1",
-    "stylelint-config-standard": "^36.0.0",
-    "html-validate": "^8.9.1"
+    "html-validate": "^8.7.4",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2"
   },
   "browserslist": [
-    "defaults",
-    "not IE 11"
-  ]
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insightshive/website"
+  },
+  "homepage": "https://insightshive.com"
 }
