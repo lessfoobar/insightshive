@@ -185,6 +185,26 @@
   margin-bottom: var(--space-2);
 }
 
+/* Dark mode specific adjustments for better readability */
+[data-theme="dark"] .metric-number {
+  background: linear-gradient(135deg, #e0a3f0, #c084d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .metric-number {
+    background: none;
+    color: var(--accent-primary);
+  }
+  
+  [data-theme="dark"] .metric-number {
+    color: #e0a3f0;
+  }
+}
+
 .metric-label {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
