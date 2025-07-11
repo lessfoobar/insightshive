@@ -191,7 +191,7 @@ export class AnimationManager {
       return;
     }
 
-    const finalNumber = parseInt(numberMatch[0]);
+    const finalNumber = parseInt(numberMatch[0], 10);
     const prefix = text.substring(0, numberMatch.index);
     const suffix = text.substring(numberMatch.index + numberMatch[0].length);
 

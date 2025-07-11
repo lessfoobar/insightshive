@@ -6,6 +6,7 @@ export class MobileMenu {
     this.navLinks = null;
     this.backdrop = null;
     this.isOpen = false;
+    this.focusTrapHandler = null;
     this.init();
   }
 
@@ -102,7 +103,9 @@ export class MobileMenu {
   }
 
   closeMenu() {
-    if (!this.isOpen) return;
+    if (!this.isOpen) {
+      return;
+    }
 
     // Remove classes for closed state
     this.menuToggle.classList.remove('btn--menu-toggle--active');
@@ -120,7 +123,7 @@ export class MobileMenu {
     document.body.style.width = '';
     
     if (scrollY) {
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     }
 
     this.isOpen = false;
@@ -139,7 +142,9 @@ export class MobileMenu {
       'a[href], button, [tabindex]:not([tabindex="-1"])'
     );
     
-    if (focusableElements.length === 0) return;
+    if (focusableElements.length === 0) {
+      return;
+    }
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
@@ -149,7 +154,9 @@ export class MobileMenu {
 
     // Handle tab key to trap focus
     const handleTabKey = (e) => {
-      if (e.key !== 'Tab') return;
+      if (e.key !== 'Tab') {
+        return;
+      }
 
       if (e.shiftKey) {
         // Shift + Tab
@@ -157,12 +164,10 @@ export class MobileMenu {
           e.preventDefault();
           lastElement.focus();
         }
-      } else {
+      } else if (document.activeElement === lastElement) {
         // Tab
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
+        e.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -172,7 +177,8 @@ export class MobileMenu {
     this.focusTrapHandler = handleTabKey;
   }
 
-  handleEscapeKey = (e) => {
+  // Fixed: Convert arrow function to regular method
+  handleEscapeKey(e) {
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
@@ -238,6 +244,9 @@ export class MobileMenu {
         this.focusTrapHandler = null;
       }
     });
+
+    // Bind escape key handler to this instance
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
   }
 
   // Public method to close menu (can be called from other modules)

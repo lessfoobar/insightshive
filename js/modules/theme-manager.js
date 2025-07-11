@@ -150,8 +150,6 @@ export class ThemeManager {
 
   initScrollEffects() {
     // Add scroll effect to navigation
-    let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const nav = document.querySelector('.nav');
       if (!nav) {
@@ -166,8 +164,6 @@ export class ThemeManager {
       } else {
         nav.classList.remove('nav--scrolled');
       }
-
-      lastScrollY = currentScrollY;
     };
 
     // Throttle scroll events for better performance
