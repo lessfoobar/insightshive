@@ -45,7 +45,7 @@
   ThemeManager.prototype.initializeTheme = function () {
     // Remove any existing class-based theme
     document.body.classList.remove('dark-theme', 'light-theme');
-    
+
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
