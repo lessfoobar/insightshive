@@ -170,7 +170,7 @@
 
 /* Dark mode specific adjustments for better readability */
 [data-theme="dark"] .card--metric {
-  background: linear-gradient(135deg,  var(--bg-card) 0%, var(--color-primary-50) 100%);
+  background: linear-gradient(135deg,  var(--bg-card) 40%, var(--color-primary-50) 100%);
   text-align: center;
   transition: all 0.3s ease;
   border-left: none;
