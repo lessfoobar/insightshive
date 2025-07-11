@@ -177,8 +177,8 @@ export class MobileMenu {
     this.focusTrapHandler = handleTabKey;
   }
 
-  // Fixed: Convert arrow function to regular method
   handleEscapeKey(e) {
+    // Convert arrow function to regular method
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
@@ -207,7 +207,7 @@ export class MobileMenu {
     navLinksItems.forEach((link) => {
       link.addEventListener('click', () => {
         // Add a small delay to allow navigation to start
-        setTimeout(() => this.closeMenu(), 100);
+        setTimeout(() => this.closeMenu(), 50);
       });
     });
 

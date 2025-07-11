@@ -1,4 +1,4 @@
-/* Grid Layout System - Fixed for equal height cards */
+/* Grid Layout - BEM Methodology */
 
 /* Container */
 .container {
@@ -7,11 +7,11 @@
   padding: 0 var(--space-5);
 }
 
-/* Base grid - FIXED for equal height cards */
+/* Base grid */
 .grid {
   display: grid;
   gap: var(--space-6);
-  align-items: stretch; /* This makes all grid items the same height */
+  align-items: stretch;
 }
 
 /* Grid items should fill the full height */
@@ -60,7 +60,7 @@
 }
 
 .grid .card .card__body {
-  flex: 1; /* This makes the card body expand to fill available space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -74,7 +74,7 @@
 }
 
 .grid .card--team-member .team-member__bio {
-  flex: 1; /* Expand to fill remaining space */
+  flex: 1;
 }
 
 /* Responsive grid adjustments */
