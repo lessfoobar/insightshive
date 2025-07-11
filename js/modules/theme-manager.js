@@ -35,7 +35,7 @@ export class ThemeManager {
   initializeTheme() {
     // Remove any existing class-based theme
     document.body.classList.remove('dark-theme', 'light-theme');
-    
+
     // Check for saved theme preference or default to system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -65,10 +65,10 @@ export class ThemeManager {
   setTheme(theme) {
     // Set the data-theme attribute on html element
     document.documentElement.setAttribute('data-theme', theme);
-    
+
     // Remove any old class-based themes
     document.body.classList.remove('dark-theme', 'light-theme');
-    
+
     // Save to localStorage
     localStorage.setItem('theme', theme);
 
@@ -83,7 +83,7 @@ export class ThemeManager {
     const themeToggle = document.querySelector('.btn--theme-toggle');
     if (themeToggle) {
       themeToggle.innerHTML = this.getThemeIcon();
-      
+
       // Add a subtle rotation animation
       themeToggle.style.transform = 'rotate(180deg) scale(1.1)';
       setTimeout(() => {
@@ -106,7 +106,7 @@ export class ThemeManager {
 
   updateCSSProperties(theme) {
     const root = document.documentElement;
-    
+
     if (theme === 'dark') {
       root.style.setProperty('--nav-bg-rgb', '45, 45, 45');
     } else {
@@ -129,9 +129,9 @@ export class ThemeManager {
       opacity: 0;
       transition: opacity 0.3s ease;
     `;
-    
+
     document.body.appendChild(overlay);
-    
+
     // Trigger animation
     requestAnimationFrame(() => {
       overlay.style.opacity = '1';
@@ -151,13 +151,15 @@ export class ThemeManager {
   initScrollEffects() {
     // Add scroll effect to navigation
     let lastScrollY = window.scrollY;
-    
+
     const handleScroll = () => {
       const nav = document.querySelector('.nav');
-      if (!nav) return;
+      if (!nav) {
+        return;
+      }
 
       const currentScrollY = window.scrollY;
-      
+
       // Add scrolled class when scrolling down
       if (currentScrollY > 50) {
         nav.classList.add('nav--scrolled');

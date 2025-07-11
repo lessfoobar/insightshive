@@ -186,20 +186,22 @@ export class AnimationManager {
   animateCounter(element) {
     const text = element.textContent;
     const numberMatch = text.match(/\d+/);
-    
-    if (!numberMatch) return;
+
+    if (!numberMatch) {
+      return;
+    }
 
     const finalNumber = parseInt(numberMatch[0]);
     const prefix = text.substring(0, numberMatch.index);
     const suffix = text.substring(numberMatch.index + numberMatch[0].length);
-    
+
     element.classList.add('counting');
-    
+
     let current = 0;
     const increment = finalNumber / 30;
     const duration = 1500;
     const stepTime = duration / 30;
-    
+
     const timer = setInterval(() => {
       current += increment;
       if (current >= finalNumber) {
@@ -207,7 +209,7 @@ export class AnimationManager {
         clearInterval(timer);
         element.classList.remove('counting');
       }
-      
+
       element.textContent = prefix + Math.floor(current) + suffix;
     }, stepTime);
   }
@@ -226,7 +228,7 @@ export class AnimationManager {
     element.style.opacity = '0';
     element.style.transform = 'translateY(20px)';
     element.style.transition = `opacity 0.4s ease ${delay}ms, transform 0.4s ease ${delay}ms`;
-    
+
     requestAnimationFrame(() => {
       element.style.opacity = '1';
       element.style.transform = 'translateY(0)';
