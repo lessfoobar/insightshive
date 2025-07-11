@@ -133,7 +133,9 @@ export class PageComponents {
   }
 
   static createBreadcrumbs(breadcrumbs) {
-    if (!breadcrumbs || breadcrumbs.length === 0) return '';
+    if (!breadcrumbs || breadcrumbs.length === 0) {
+      return '';
+    }
 
     const breadcrumbItems = breadcrumbs.map((crumb, index) => {
       const isLast = index === breadcrumbs.length - 1;

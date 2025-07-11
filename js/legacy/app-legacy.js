@@ -1,5 +1,5 @@
 /*
- * js/legacy/app-legacy.js - Updated to use BEM classes
+ * js/legacy/app-legacy.js
  * Legacy Browser Support - Non-module version
  */
 
@@ -25,7 +25,7 @@
     }
 
     const themeToggle = document.createElement('button');
-    themeToggle.className = 'btn btn--theme-toggle';es
+    themeToggle.className = 'btn btn--theme-toggle';
     themeToggle.setAttribute('aria-label', 'Toggle dark mode');
     themeToggle.innerHTML = this.getThemeIcon();
 
@@ -143,9 +143,9 @@
 
       const newMenuToggle = document.createElement('button');
       newMenuToggle.type = 'button';
-      newMenuToggle.className = 'btn btn--menu-toggle';es
+      newMenuToggle.className = 'btn btn--menu-toggle';
       newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
-      newMenuToggle.innerHTML = '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>'; es
+      newMenuToggle.innerHTML = '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>';
       navContainer.appendChild(newMenuToggle);
 
       this.menuToggle = newMenuToggle;

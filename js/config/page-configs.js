@@ -1,6 +1,6 @@
 /*
  * Page Configurations - Define page-specific settings
-*/
+ */
 
 export const pageConfigs = {
   home: {
