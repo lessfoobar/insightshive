@@ -32,14 +32,14 @@ export class MobileMenu {
       newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
       newMenuToggle.setAttribute('aria-expanded', 'false');
       newMenuToggle.setAttribute('aria-controls', 'navigation-menu');
-      
+
       // Create hamburger lines using BEM classes
       newMenuToggle.innerHTML = `
         <span class="btn--menu-toggle__line"></span>
         <span class="btn--menu-toggle__line"></span>
         <span class="btn--menu-toggle__line"></span>
       `;
-      
+
       navContainer.appendChild(newMenuToggle);
       this.menuToggle = newMenuToggle;
     } else {
@@ -84,7 +84,7 @@ export class MobileMenu {
     // Add classes for open state
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
-    
+
     if (this.backdrop) {
       this.backdrop.classList.add('nav__backdrop--active');
     }
@@ -110,7 +110,7 @@ export class MobileMenu {
     // Remove classes for closed state
     this.menuToggle.classList.remove('btn--menu-toggle--active');
     this.navLinks.classList.remove('nav__links--active');
-    
+
     if (this.backdrop) {
       this.backdrop.classList.remove('nav__backdrop--active');
     }
@@ -121,7 +121,7 @@ export class MobileMenu {
     document.body.style.top = '';
     document.body.style.overflow = '';
     document.body.style.width = '';
-    
+
     if (scrollY) {
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     }
@@ -141,7 +141,7 @@ export class MobileMenu {
     const focusableElements = this.navLinks.querySelectorAll(
       'a[href], button, [tabindex]:not([tabindex="-1"])'
     );
-    
+
     if (focusableElements.length === 0) {
       return;
     }
@@ -172,7 +172,7 @@ export class MobileMenu {
     };
 
     document.addEventListener('keydown', handleTabKey);
-    
+
     // Store the handler to remove it later
     this.focusTrapHandler = handleTabKey;
   }
@@ -218,8 +218,8 @@ export class MobileMenu {
 
     // Close menu when clicking outside (fallback)
     document.addEventListener('click', (event) => {
-      if (this.isOpen && 
-          this.menuToggle && 
+      if (this.isOpen &&
+          this.menuToggle &&
           this.navLinks &&
           !this.menuToggle.contains(event.target) &&
           !this.navLinks.contains(event.target)) {
