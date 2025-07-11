@@ -1,9 +1,5 @@
-/*
- * js/legacy/app-legacy.js
- * Legacy Browser Support - Non-module version
- */
-
-/* eslint-disable prefer-arrow-callback */
+/* js/legacy/app-legacy.js */
+/* Legacy Browser Support - Non-module version */
 
 (function () {
   'use strict';
@@ -214,10 +210,8 @@
 
   // Initialize when DOM is ready
   function initApp() {
-    /* eslint-disable no-new */
     new ThemeManager();
     new MobileMenu();
-    /* eslint-enable no-new */
   }
 
   if (document.readyState === 'loading') {
@@ -226,5 +220,3 @@
     initApp();
   }
 }());
-
-/* eslint-enable prefer-arrow-callback */
