@@ -194,8 +194,8 @@ export class AnimationManager {
     element.classList.add('counting');
     
     let current = 0;
-    const increment = finalNumber / 30; // 30 frames
-    const duration = 1500; // 1.5 seconds
+    const increment = finalNumber / 30;
+    const duration = 1500;
     const stepTime = duration / 30;
     
     const timer = setInterval(() => {
