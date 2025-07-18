@@ -183,49 +183,5 @@
         
         new PageRenderer(pageConfigs.home);
     </script>
-    <!-- TEMPORARY DEBUG SCRIPT - Remove after fixing --><!-- UPDATED DEBUG SCRIPT -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Create debug button
-    const debugBtn = document.createElement('button');
-    debugBtn.textContent = 'DEBUG CLICKS';
-    debugBtn.style.cssText = `
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 9999;
-        background: red;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-    `;
-    
-    debugBtn.onclick = function() {
-        console.log("=== CLICK DEBUG ACTIVE ===");
-        
-        // Track ALL clicks on the page
-        document.addEventListener('click', function(e) {
-        console.log('🎯 CLICK DETECTED:');
-        console.log('- Element:', e.target.tagName);
-        console.log('- Classes:', e.target.className);
-        console.log('- Text:', e.target.textContent.trim().substring(0, 50));
-        console.log('- Position:', e.clientX, e.clientY);
-        
-        // Check if it's a nav link
-        if (e.target.closest('.nav__link')) {
-            console.log('🔥 NAV LINK DETECTED!');
-            alert('Nav link clicked: ' + e.target.textContent);
-        } else {
-            console.log('❌ Not a nav link');
-        }
-        });
-        
-        alert("Click debugging active - now try clicking nav links");
-    };
-    
-    document.body.appendChild(debugBtn);
-    });
-    </script>
 </body>
 </html>

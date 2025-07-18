@@ -7,6 +7,7 @@ export class MobileMenu {
     this.backdrop = null;
     this.isOpen = false;
     this.focusTrapHandler = null;
+    this.linkClickHandler = null;
     this.init();
   }
 
@@ -81,8 +82,6 @@ export class MobileMenu {
   }
 
   openMenu() {
-    console.log('Opening mobile menu');
-
     // Add classes for open state
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
@@ -104,14 +103,12 @@ export class MobileMenu {
     // Add escape key listener
     this.handleEscapeKey = this.handleEscapeKey.bind(this);
     document.addEventListener('keydown', this.handleEscapeKey);
-    this.bindLinkEvents();
   }
 
   closeMenu() {
     if (!this.isOpen) {
       return;
     }
-    console.log('Closing mobile menu');
 
     // Remove classes for closed state
     this.menuToggle.classList.remove('btn--menu-toggle--active');
@@ -145,32 +142,6 @@ export class MobileMenu {
     }
   }
 
-  // Separate method to bind link events
-  bindLinkEvents() {
-    const navLinksItems = this.navLinks.querySelectorAll('a');
-    console.log('Found', navLinksItems.length, 'navigation links');
-
-    navLinksItems.forEach((link, index) => {
-      // Remove any existing event listeners
-      const newLink = link.cloneNode(true);
-      link.parentNode.replaceChild(newLink, link);
-      
-      // Add new event listener
-      newLink.addEventListener('click', (e) => {
-        console.log('Navigation link clicked:', newLink.href);
-        
-        // Don't prevent default - allow navigation
-        // Close menu immediately
-        this.closeMenu();
-      });
-
-      // Also add touch events for mobile
-      newLink.addEventListener('touchstart', (e) => {
-        console.log('Navigation link touched:', newLink.href);
-      });
-    });
-  }
-
   handleEscapeKey(e) {
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
@@ -192,17 +163,23 @@ export class MobileMenu {
       this.menuToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Menu toggle clicked');
         this.toggleMenu();
       });
     }
 
-    // Close menu when clicking backdrop
-    if (this.backdrop) {
-      this.backdrop.addEventListener('click', (e) => {
-        console.log('Backdrop clicked');
-        this.closeMenu();
-      });
+    // Navigation link click handling using event delegation
+    if (this.navLinks) {
+      if (this.linkClickHandler) {
+        this.navLinks.removeEventListener('click', this.linkClickHandler);
+      }
+      this.linkClickHandler = (e) => {
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          this.closeMenu();
+        }
+      };
+
+      // Add the event listener using delegation
+      this.navLinks.addEventListener('click', this.linkClickHandler);
     }
 
     // Handle orientation change on mobile
@@ -213,9 +190,6 @@ export class MobileMenu {
         }, 200);
       }
     });
-
-    // Initial bind of link events
-    this.bindLinkEvents();
   }
 
   // Public method to close menu (can be called from other modules)

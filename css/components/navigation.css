@@ -319,8 +319,6 @@
     position: relative;
     z-index: 10;
     cursor: pointer;
-    outline: 3px solid red;
-    outline-offset: 2px;
   }
 
   .nav__link:hover,
@@ -366,19 +364,7 @@
   .nav__backdrop--active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
-  }
-}
-
-/* Additional debug styles - remove after fixing */
-@media (max-width: 768px) {
-  .nav__link {
-    outline: 2px solid red !important;
-    outline-offset: 2px;
-  }
-  
-  .nav__link:active {
-    background: lime !important;
+    pointer-events: none;
   }
 }
 
