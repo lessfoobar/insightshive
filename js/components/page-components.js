@@ -97,6 +97,7 @@ export class PageComponents {
     return `
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav__container">
+            <a href="index.html" class="nav__logo">InsightsHive</a>
             <button type="button" 
                     class="btn--menu-toggle" 
                     aria-label="Toggle navigation menu"
@@ -233,6 +234,9 @@ export class PageRenderer {
     const navPlaceholder = document.getElementById('nav-placeholder');
     if (navPlaceholder) {
       navPlaceholder.outerHTML = PageComponents.createNavigation(this.pageConfig.pageType);
+      
+      // Initialize scroll detection after navigation is rendered
+      this.initScrollDetection();
     }
 
     // Render breadcrumbs if placeholder exists
@@ -253,5 +257,51 @@ export class PageRenderer {
       structuredDataScript.innerHTML = PageComponents.createStructuredData();
       document.head.appendChild(structuredDataScript.firstElementChild);
     }
+  }
+
+  initScrollDetection() {
+    // Detect when header is out of view to show/hide nav logo
+    const header = document.querySelector('.header');
+    const nav = document.querySelector('.nav');
+    
+    if (!header || !nav) {
+      return;
+    }
+
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const headerHeight = header.offsetHeight;
+      
+      // Add scrolled class when header is mostly out of view
+      if (currentScrollY > headerHeight * 0.7) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Handle resize to recalculate header position
+    window.addEventListener('resize', () => {
+      handleScroll();
+    });
+
+    // Initial check
+    handleScroll();
   }
 }
