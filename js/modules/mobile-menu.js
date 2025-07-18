@@ -5,7 +5,6 @@ export class MobileMenu {
     this.menuToggle = null;
     this.navLinks = null;
     this.backdrop = null;
-    this.closeButton = null;
     this.isOpen = false;
     this.focusTrapHandler = null;
     this.linkClickHandler = null;
@@ -15,7 +14,6 @@ export class MobileMenu {
   init() {
     this.createMenuToggle();
     this.createBackdrop();
-    this.createCloseButton();
     this.bindEvents();
     this.handleResize();
   }
@@ -64,9 +62,6 @@ export class MobileMenu {
       document.body.appendChild(backdrop);
     }
     this.backdrop = document.querySelector('.nav__backdrop');
-  }
-
-  createCloseButton() {
   }
 
   toggleMenu() {
