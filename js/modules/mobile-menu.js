@@ -96,7 +96,6 @@ export class MobileMenu {
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
-    
     // Store scroll position for restoration
     document.body.dataset.scrollY = scrollY.toString();
 
@@ -182,12 +181,6 @@ export class MobileMenu {
       this.navLinks.addEventListener('click', this.linkClickHandler);
     }
 
-    // Handle backdrop click to close menu
-    if (this.backdrop) {
-      this.backdrop.addEventListener('click', () => {
-        this.closeMenu();
-      });
-    }
 
     // Handle orientation change on mobile
     window.addEventListener('orientationchange', () => {
