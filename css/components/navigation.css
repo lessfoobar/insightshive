@@ -44,17 +44,19 @@
   opacity: 0;
   transform: translateX(-20px);
   z-index: 1;
+  pointer-events: none;
 }
 
 .nav__logo:hover {
   color: var(--color-primary-600);
-  transform: translateX(-20px) scale(1.05);
+  transform: translateX(0) scale(1.05);
 }
 
-/* Show logo when scrolled */
+/* Show logo when scrolled - DESKTOP ONLY */
 .nav--scrolled .nav__logo {
   opacity: 1;
   transform: translateX(0);
+  pointer-events: auto;
 }
 
 /* Adjust container when logo is visible */
@@ -293,13 +295,19 @@
     display: flex;
   }
 
-  /* Mobile logo positioning */
+  /* Mobile logo positioning - OVERRIDE desktop behavior */
   .nav__logo {
-    position: static;
-    opacity: 1;
-    transform: none;
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
     margin-right: auto;
     font-size: var(--font-size-lg);
+    pointer-events: auto !important;
+  }
+
+  /* Override hover for mobile */
+  .nav__logo:hover {
+    transform: scale(1.05);
   }
 
   .nav__container {
