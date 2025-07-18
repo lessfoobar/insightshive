@@ -67,15 +67,6 @@ export class MobileMenu {
   }
 
   createCloseButton() {
-    // Create close button if it doesn't exist
-    if (!document.querySelector('.nav__close')) {
-      const closeButton = document.createElement('button');
-      closeButton.className = 'nav__close';
-      closeButton.setAttribute('aria-label', 'Close navigation menu');
-      closeButton.innerHTML = '×';
-      document.body.appendChild(closeButton);
-    }
-    this.closeButton = document.querySelector('.nav__close');
   }
 
   toggleMenu() {
@@ -104,11 +95,6 @@ export class MobileMenu {
       this.backdrop.classList.add('nav__backdrop--active');
     }
 
-    // Show close button
-    if (this.closeButton) {
-      this.closeButton.style.display = 'flex';
-    }
-
     // Prevent body scroll
     const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
@@ -135,11 +121,6 @@ export class MobileMenu {
 
     if (this.backdrop) {
       this.backdrop.classList.remove('nav__backdrop--active');
-    }
-
-    // Hide close button
-    if (this.closeButton) {
-      this.closeButton.style.display = 'none';
     }
 
     // Restore body scroll
@@ -188,15 +169,6 @@ export class MobileMenu {
         e.preventDefault();
         e.stopPropagation();
         this.toggleMenu();
-      });
-    }
-
-    // Bind close button click
-    if (this.closeButton) {
-      this.closeButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.closeMenu();
       });
     }
 
