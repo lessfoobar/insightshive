@@ -183,12 +183,12 @@
         
         new PageRenderer(pageConfigs.home);
     </script>
-    <!-- TEMPORARY DEBUG SCRIPT - Remove after fixing -->
+    <!-- TEMPORARY DEBUG SCRIPT - Remove after fixing --><!-- UPDATED DEBUG SCRIPT -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     // Create debug button
     const debugBtn = document.createElement('button');
-    debugBtn.textContent = 'DEBUG NAV';
+    debugBtn.textContent = 'DEBUG CLICKS';
     debugBtn.style.cssText = `
         position: fixed;
         top: 10px;
@@ -202,23 +202,26 @@
     `;
     
     debugBtn.onclick = function() {
-        console.log("=== NAV DEBUG START ===");
+        console.log("=== CLICK DEBUG ACTIVE ===");
         
-        const navLinks = document.querySelectorAll('.nav__links a');
-        console.log("Found nav links:", navLinks.length);
+        // Track ALL clicks on the page
+        document.addEventListener('click', function(e) {
+        console.log('🎯 CLICK DETECTED:');
+        console.log('- Element:', e.target.tagName);
+        console.log('- Classes:', e.target.className);
+        console.log('- Text:', e.target.textContent.trim().substring(0, 50));
+        console.log('- Position:', e.clientX, e.clientY);
         
-        navLinks.forEach((link, i) => {
-        console.log(`Link ${i}: ${link.textContent.trim()} -> ${link.href}`);
-        
-        // Add temporary click handler
-        link.addEventListener('click', function(e) {
-            console.log(`🔥 LINK ${i} CLICKED!`);
-            alert(`Link clicked: ${this.textContent.trim()}`);
+        // Check if it's a nav link
+        if (e.target.closest('.nav__link')) {
+            console.log('🔥 NAV LINK DETECTED!');
+            alert('Nav link clicked: ' + e.target.textContent);
+        } else {
+            console.log('❌ Not a nav link');
+        }
         });
-        });
         
-        console.log("Debug handlers added!");
-        alert("Debug complete - check console and try clicking nav links");
+        alert("Click debugging active - now try clicking nav links");
     };
     
     document.body.appendChild(debugBtn);
