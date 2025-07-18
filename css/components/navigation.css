@@ -35,34 +35,36 @@
 /* Logo that appears when header is not visible */
 .nav__logo {
   position: absolute;
-  left: var(--space-5);
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(-20px);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--accent-primary);
   text-decoration: none;
   transition: all var(--transition-base);
   opacity: 0;
-  transform: translateX(-20px);
   z-index: 1;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .nav__logo:hover {
   color: var(--color-primary-600);
-  transform: translateX(0) scale(1.05);
+  transform: translateY(-50%) translateX(0) scale(1.05);
 }
 
 /* Show logo when scrolled - DESKTOP ONLY */
 .nav--scrolled .nav__logo {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
   pointer-events: auto;
 }
 
 /* Adjust container when logo is visible */
 .nav--scrolled .nav__container {
   justify-content: center;
-  padding-left: calc(var(--space-5) + 120px); /* Make room for logo */
+  padding-left: 140px;
 }
 
 /* Navigation links */
@@ -307,7 +309,7 @@
 
   /* Override hover for mobile */
   .nav__logo:hover {
-    transform: scale(1.05);
+    transform: translateY(-50%) scale(1.05);
   }
 
   .nav__container {
@@ -427,7 +429,7 @@
   }
 
   .nav--scrolled .nav__container {
-    padding-left: calc(var(--space-5) + 100px);
+    padding-left: 120px;
   }
 
   .nav__search-input {
@@ -447,12 +449,11 @@
   }
 
   .nav__logo {
-    left: var(--space-8);
     font-size: var(--font-size-2xl);
   }
 
   .nav--scrolled .nav__container {
-    padding-left: calc(var(--space-8) + 140px);
+    padding-left: 160px;
   }
 
   .nav__links {
