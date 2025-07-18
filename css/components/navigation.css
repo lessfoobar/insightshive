@@ -23,17 +23,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-4) var(--space-5) var(--space-4) 0;
+  padding: var(--space-4) var(--space-5);
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   transition: all var(--transition-base);
 }
 
-/* When scrolled, change to space-between layout */
+/* When scrolled, change to flex-start layout */
 .nav--scrolled .nav__container {
-  justify-content: space-between;
-  padding-left: var(--space-3);
+  justify-content: flex-start;
+  gap: var(--space-8);
 }
 
 /* Logo that appears when header is not visible */
@@ -430,11 +430,11 @@
 /* Large screen optimizations */
 @media (min-width: 1200px) {
   .nav__container {
-    padding: var(--space-4) var(--space-8) var(--space-4) 0;
+    padding: var(--space-4) var(--space-8);
   }
 
   .nav--scrolled .nav__container {
-    padding-left: var(--space-4);
+    gap: var(--space-12);
   }
 
   .nav__logo {
