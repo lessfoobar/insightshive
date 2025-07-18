@@ -81,6 +81,8 @@ export class MobileMenu {
   }
 
   openMenu() {
+    console.log('Opening mobile menu');
+
     // Add classes for open state
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
@@ -89,7 +91,7 @@ export class MobileMenu {
       this.backdrop.classList.add('nav__backdrop--active');
     }
 
-    // Prevent body scroll with better handling
+    // Prevent body scroll
     const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -99,17 +101,17 @@ export class MobileMenu {
     // Store scroll position for restoration
     document.body.dataset.scrollY = scrollY.toString();
 
-    // Focus management for accessibility
-    this.trapFocus();
-
     // Add escape key listener
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
     document.addEventListener('keydown', this.handleEscapeKey);
+    this.bindLinkEvents();
   }
 
   closeMenu() {
     if (!this.isOpen) {
       return;
     }
+    console.log('Closing mobile menu');
 
     // Remove classes for closed state
     this.menuToggle.classList.remove('btn--menu-toggle--active');
@@ -119,7 +121,7 @@ export class MobileMenu {
       this.backdrop.classList.remove('nav__backdrop--active');
     }
 
-    // Restore body scroll with better handling
+    // Restore body scroll
     const scrollY = document.body.dataset.scrollY;
     document.body.style.position = '';
     document.body.style.top = '';
@@ -143,45 +145,30 @@ export class MobileMenu {
     }
   }
 
-  trapFocus() {
-    // Get all focusable elements within the nav
-    const focusableElements = this.navLinks.querySelectorAll(
-      'a[href], button, [tabindex]:not([tabindex="-1"])'
-    );
+  // Separate method to bind link events
+  bindLinkEvents() {
+    const navLinksItems = this.navLinks.querySelectorAll('a');
+    console.log('Found', navLinksItems.length, 'navigation links');
 
-    if (focusableElements.length === 0) {
-      return;
-    }
+    navLinksItems.forEach((link, index) => {
+      // Remove any existing event listeners
+      const newLink = link.cloneNode(true);
+      link.parentNode.replaceChild(newLink, link);
+      
+      // Add new event listener
+      newLink.addEventListener('click', (e) => {
+        console.log('Navigation link clicked:', newLink.href);
+        
+        // Don't prevent default - allow navigation
+        // Close menu immediately
+        this.closeMenu();
+      });
 
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    // Focus first element
-    setTimeout(() => firstElement.focus(), 100);
-
-    // Handle tab key to trap focus
-    const handleTabKey = (e) => {
-      if (e.key !== 'Tab') {
-        return;
-      }
-
-      if (e.shiftKey) {
-        // Shift + Tab
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        }
-      } else if (document.activeElement === lastElement) {
-        // Tab
-        e.preventDefault();
-        firstElement.focus();
-      }
-    };
-
-    document.addEventListener('keydown', handleTabKey);
-
-    // Store the handler to remove it later
-    this.focusTrapHandler = handleTabKey;
+      // Also add touch events for mobile
+      newLink.addEventListener('touchstart', (e) => {
+        console.log('Navigation link touched:', newLink.href);
+      });
+    });
   }
 
   handleEscapeKey(e) {
@@ -204,57 +191,31 @@ export class MobileMenu {
     if (this.menuToggle) {
       this.menuToggle.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
+        console.log('Menu toggle clicked');
         this.toggleMenu();
       });
     }
 
-    // Handle menu link clicks properly
-    const navLinksItems = document.querySelectorAll('.nav__links a');
-    navLinksItems.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        setTimeout(() => {
-          this.closeMenu();
-        }, 100);
-      });
-    });
-
     // Close menu when clicking backdrop
     if (this.backdrop) {
-      this.backdrop.addEventListener('click', () => this.closeMenu());
-    }
-
-    // Close menu when clicking outside (fallback)
-    document.addEventListener('click', (event) => {
-      if (this.isOpen &&
-          this.menuToggle &&
-          this.navLinks &&
-          !this.menuToggle.contains(event.target) &&
-          !this.navLinks.contains(event.target) &&
-          !event.target.closest('.nav__links')) {
+      this.backdrop.addEventListener('click', (e) => {
+        console.log('Backdrop clicked');
         this.closeMenu();
-      }
-    });
+      });
+    }
 
     // Handle orientation change on mobile
     window.addEventListener('orientationchange', () => {
       if (this.isOpen) {
-        // Small delay to let orientation change complete
         setTimeout(() => {
           this.closeMenu();
         }, 200);
       }
     });
 
-    // Clean up focus trap when menu closes
-    this.navLinks?.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'left' && !this.isOpen && this.focusTrapHandler) {
-        document.removeEventListener('keydown', this.focusTrapHandler);
-        this.focusTrapHandler = null;
-      }
-    });
-
-    // Bind escape key handler to this instance
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
+    // Initial bind of link events
+    this.bindLinkEvents();
   }
 
   // Public method to close menu (can be called from other modules)
