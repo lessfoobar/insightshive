@@ -181,7 +181,7 @@
 /* Theme toggle button */
 .btn--theme-toggle {
   position: fixed;
-  top: var(--space-5);
+  bottom: var(--space-5);
   right: var(--space-5);
   z-index: var(--z-fixed);
   background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
@@ -439,7 +439,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .btn--theme-toggle {
-    top: var(--space-4);
+    bottom: var(--space-4);
     right: var(--space-4);
     width: 45px;
     height: 45px;
@@ -500,7 +500,7 @@
 
 @media (max-width: 480px) {
   .btn--theme-toggle {
-    top: var(--space-3);
+    bottom: var(--space-3);
     right: var(--space-3);
     width: 40px;
     height: 40px;
