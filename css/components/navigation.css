@@ -23,48 +23,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-4) 0;
+  padding: var(--space-4) var(--space-5);
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
   transition: all var(--transition-base);
+}
+
+/* When scrolled, change to space-between layout */
+.nav--scrolled .nav__container {
+  justify-content: space-between;
 }
 
 /* Logo that appears when header is not visible */
 .nav__logo {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) translateX(-20px);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--accent-primary);
   text-decoration: none;
   transition: all var(--transition-base);
   opacity: 0;
-  z-index: 1;
+  transform: translateX(-20px);
   pointer-events: none;
   white-space: nowrap;
+  order: -1;
 }
 
 .nav__logo:hover {
   color: var(--color-primary-600);
-  transform: translateY(-50%) translateX(0) scale(1.05);
+  transform: translateX(0) scale(1.05);
 }
 
 /* Show logo when scrolled - DESKTOP ONLY */
 .nav--scrolled .nav__logo {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  transform: translateX(0);
   pointer-events: auto;
-}
-
-/* Adjust container when logo is visible */
-.nav--scrolled .nav__container {
-  justify-content: center;
-  padding-left: 140px;
 }
 
 /* Navigation links */
@@ -302,24 +296,19 @@
     position: static !important;
     opacity: 1 !important;
     transform: none !important;
-    margin-right: auto;
     font-size: var(--font-size-lg);
     pointer-events: auto !important;
+    order: -1 !important;
   }
 
   /* Override hover for mobile */
   .nav__logo:hover {
-    transform: translateY(-50%) scale(1.05);
+    transform: scale(1.05);
   }
 
   .nav__container {
     justify-content: space-between;
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
-  }
-
-  .nav--scrolled .nav__container {
-    padding-left: var(--space-4);
+    padding: var(--space-3) var(--space-4);
   }
 
   .nav__links {
@@ -428,10 +417,6 @@
     font-size: var(--font-size-lg);
   }
 
-  .nav--scrolled .nav__container {
-    padding-left: 120px;
-  }
-
   .nav__search-input {
     width: 150px;
   }
@@ -444,16 +429,11 @@
 /* Large screen optimizations */
 @media (min-width: 1200px) {
   .nav__container {
-    padding-left: var(--space-8);
-    padding-right: var(--space-8);
+    padding: var(--space-4) var(--space-8);
   }
 
   .nav__logo {
     font-size: var(--font-size-2xl);
-  }
-
-  .nav--scrolled .nav__container {
-    padding-left: 160px;
   }
 
   .nav__links {
