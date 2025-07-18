@@ -1,4 +1,4 @@
-// js/modules/mobile-menu.js - Enhanced with better UX and animations
+// js/modules/mobile-menu.js - Fixed link navigation
 
 export class MobileMenu {
   constructor() {
@@ -90,10 +90,14 @@ export class MobileMenu {
     }
 
     // Prevent body scroll with better handling
+    const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
+    document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
+    
+    // Store scroll position for restoration
+    document.body.dataset.scrollY = scrollY.toString();
 
     // Focus management for accessibility
     this.trapFocus();
@@ -116,14 +120,14 @@ export class MobileMenu {
     }
 
     // Restore body scroll with better handling
-    const scrollY = document.body.style.top;
+    const scrollY = document.body.dataset.scrollY;
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.overflow = '';
     document.body.style.width = '';
 
     if (scrollY) {
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      window.scrollTo(0, parseInt(scrollY || '0', 10));
     }
 
     this.isOpen = false;
@@ -132,8 +136,11 @@ export class MobileMenu {
     // Remove escape key listener
     document.removeEventListener('keydown', this.handleEscapeKey);
 
-    // Return focus to toggle button
-    this.menuToggle.focus();
+    // Clean up focus trap
+    if (this.focusTrapHandler) {
+      document.removeEventListener('keydown', this.focusTrapHandler);
+      this.focusTrapHandler = null;
+    }
   }
 
   trapFocus() {
@@ -178,7 +185,6 @@ export class MobileMenu {
   }
 
   handleEscapeKey(e) {
-    // Convert arrow function to regular method
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
@@ -202,12 +208,15 @@ export class MobileMenu {
       });
     }
 
-    // Close menu when clicking on a link
+    // FIXED: Handle menu link clicks properly
     const navLinksItems = document.querySelectorAll('.nav__links a');
     navLinksItems.forEach((link) => {
-      link.addEventListener('click', () => {
-        // Add a small delay to allow navigation to start
-        setTimeout(() => this.closeMenu(), 50);
+      link.addEventListener('click', (e) => {
+        // Don't prevent default - let the navigation happen
+        // Just close the menu after a short delay to allow navigation to start
+        setTimeout(() => {
+          this.closeMenu();
+        }, 100);
       });
     });
 
@@ -216,13 +225,14 @@ export class MobileMenu {
       this.backdrop.addEventListener('click', () => this.closeMenu());
     }
 
-    // Close menu when clicking outside (fallback)
+    // FIXED: Better outside click detection
     document.addEventListener('click', (event) => {
       if (this.isOpen &&
           this.menuToggle &&
           this.navLinks &&
           !this.menuToggle.contains(event.target) &&
-          !this.navLinks.contains(event.target)) {
+          !this.navLinks.contains(event.target) &&
+          !event.target.closest('.nav__links')) {
         this.closeMenu();
       }
     });
