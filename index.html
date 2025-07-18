@@ -183,5 +183,46 @@
         
         new PageRenderer(pageConfigs.home);
     </script>
+    <!-- TEMPORARY DEBUG SCRIPT - Remove after fixing -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Create debug button
+    const debugBtn = document.createElement('button');
+    debugBtn.textContent = 'DEBUG NAV';
+    debugBtn.style.cssText = `
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+        background: red;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+    `;
+    
+    debugBtn.onclick = function() {
+        console.log("=== NAV DEBUG START ===");
+        
+        const navLinks = document.querySelectorAll('.nav__links a');
+        console.log("Found nav links:", navLinks.length);
+        
+        navLinks.forEach((link, i) => {
+        console.log(`Link ${i}: ${link.textContent.trim()} -> ${link.href}`);
+        
+        // Add temporary click handler
+        link.addEventListener('click', function(e) {
+            console.log(`🔥 LINK ${i} CLICKED!`);
+            alert(`Link clicked: ${this.textContent.trim()}`);
+        });
+        });
+        
+        console.log("Debug handlers added!");
+        alert("Debug complete - check console and try clicking nav links");
+    };
+    
+    document.body.appendChild(debugBtn);
+    });
+    </script>
 </body>
 </html>
