@@ -1,4 +1,4 @@
-// js/modules/mobile-menu.js - Fixed link navigation
+// js/modules/mobile-menu.js
 
 export class MobileMenu {
   constructor() {
@@ -208,12 +208,10 @@ export class MobileMenu {
       });
     }
 
-    // FIXED: Handle menu link clicks properly
+    // Handle menu link clicks properly
     const navLinksItems = document.querySelectorAll('.nav__links a');
     navLinksItems.forEach((link) => {
       link.addEventListener('click', (e) => {
-        // Don't prevent default - let the navigation happen
-        // Just close the menu after a short delay to allow navigation to start
         setTimeout(() => {
           this.closeMenu();
         }, 100);
@@ -225,7 +223,7 @@ export class MobileMenu {
       this.backdrop.addEventListener('click', () => this.closeMenu());
     }
 
-    // FIXED: Better outside click detection
+    // Close menu when clicking outside (fallback)
     document.addEventListener('click', (event) => {
       if (this.isOpen &&
           this.menuToggle &&
