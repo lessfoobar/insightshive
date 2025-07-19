@@ -26,16 +26,25 @@
   grid-template-columns: 1fr 1fr;
 }
 
-/* Exception for workflow cards - allow natural height and add row separation */
-.grid-2 > .card:nth-child(1),
-.grid-2 > .card:nth-child(2),
-.grid-2 > .card:nth-child(3),
-.grid-2 > .card:nth-child(4) {
+/* Grid items should fill the full height */
+.grid > * {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Two column grid */
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Workflow grid spacing - specific class for workflow sections */
+.grid--workflow .grid-2 > .card {
   height: auto;
 }
 
-.grid-2 > .card:nth-child(3),
-.grid-2 > .card:nth-child(4) {
+.grid--workflow .grid-2 > .card:nth-child(3),
+.grid--workflow .grid-2 > .card:nth-child(4) {
   margin-top: var(--space-6);
 }
 
@@ -111,9 +120,9 @@
     height: auto;
   }
 
-  /* Remove row separation on mobile since it becomes single column */
-  .grid-2 > .card:nth-child(3),
-  .grid-2 > .card:nth-child(4) {
+  /* Remove workflow spacing on mobile */
+  .grid--workflow .grid-2 > .card:nth-child(3),
+  .grid--workflow .grid-2 > .card:nth-child(4) {
     margin-top: 0;
   }
 }
