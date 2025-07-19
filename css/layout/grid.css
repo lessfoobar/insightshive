@@ -27,8 +27,9 @@
 }
 
 /* Grid row separation for 2-column grids - adds space between rows */
-.grid-2 > .card:nth-child(n+3) {
-  margin-top: var(--space-6);
+.grid-2 > .card:nth-child(3),
+.grid-2 > .card:nth-child(4) {
+  margin-top: var(--space-4);
 }
 
 /* Three column grid */
@@ -104,7 +105,8 @@
   }
 
   /* Remove row separation on mobile since it becomes single column */
-  .grid-2 > .card:nth-child(n+3) {
+  .grid-2 > .card:nth-child(3),
+  .grid-2 > .card:nth-child(4) {
     margin-top: 0;
   }
 }
