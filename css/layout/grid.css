@@ -26,6 +26,15 @@
   grid-template-columns: 1fr 1fr;
 }
 
+/* Grid row separation for 2-column grids - adds space between rows */
+.grid-2 > .card:nth-child(2n-1):nth-child(n+3) {
+  margin-top: var(--space-6);
+}
+
+.grid-2 > .card:nth-child(2n):nth-child(n+4) {
+  margin-top: var(--space-6);
+}
+
 /* Three column grid */
 .grid-3 {
   grid-template-columns: 1fr 1fr 1fr;
@@ -96,6 +105,12 @@
   
   .grid > * {
     height: auto;
+  }
+
+  /* Remove row separation on mobile since it becomes single column */
+  .grid-2 > .card:nth-child(2n-1):nth-child(n+3),
+  .grid-2 > .card:nth-child(2n):nth-child(n+4) {
+    margin-top: 0;
   }
 }
 
