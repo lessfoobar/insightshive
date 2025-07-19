@@ -38,13 +38,8 @@
   grid-template-columns: 1fr 1fr;
 }
 
-/* Workflow grid spacing - specific class for workflow sections */
-.grid--workflow.grid-2 > .card {
-  height: auto !important;
-}
-
-.grid--workflow.grid-2 > .card:nth-child(3),
-.grid--workflow.grid-2 > .card:nth-child(4) {
+/* Workflow grid spacing - target the second grid container */
+.grid-2 + .grid-2 {
   margin-top: var(--space-6);
 }
 
@@ -121,9 +116,8 @@
   }
 
   /* Remove workflow spacing on mobile */
-  .grid--workflow .grid-2 > .card:nth-child(3),
-  .grid--workflow .grid-2 > .card:nth-child(4) {
-    margin-top: 0;
+  .grid-2 + .grid-2 {
+    margin-top: var(--space-4);
   }
 }
 
