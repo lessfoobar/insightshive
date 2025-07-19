@@ -39,8 +39,14 @@
 }
 
 /* Workflow grid spacing - target the second grid container */
-.grid-2 + .grid-2 {
-  margin-top: var(--space-6);
+.card--section .grid-2 + .grid-2 {
+  margin-top: var(--space-8);
+}
+
+/* Override equal height for workflow cards - let them be natural height */
+.card--section .grid-2 .card {
+  height: auto !important;
+  align-self: start;
 }
 
 /* Three column grid */
