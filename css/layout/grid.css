@@ -39,12 +39,12 @@
 }
 
 /* Workflow grid spacing - specific class for workflow sections */
-.grid--workflow .grid-2 > .card {
-  height: auto;
+.grid--workflow.grid-2 > .card {
+  height: auto !important;
 }
 
-.grid--workflow .grid-2 > .card:nth-child(3),
-.grid--workflow .grid-2 > .card:nth-child(4) {
+.grid--workflow.grid-2 > .card:nth-child(3),
+.grid--workflow.grid-2 > .card:nth-child(4) {
   margin-top: var(--space-6);
 }
 
