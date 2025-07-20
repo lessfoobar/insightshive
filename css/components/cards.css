@@ -151,6 +151,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  gap: var(--space-4);
 }
 
 .card--team-member::before {
@@ -226,7 +227,48 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Nested cards within team member cards */
+.card--team-member .card {
+  margin-bottom: 0;
+  padding: var(--space-4);
+  border-left: 2px solid var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--team-member .card:last-child {
+  margin-bottom: 0;
+}
+
+.card--team-member .card .card__header {
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.card--team-member .card .card__title {
+  font-size: var(--font-size-base);
+  color: var(--accent-primary);
+}
+
+.card--team-member .card .card__body {
+  flex: none;
+}
+
+.card--team-member .card .card__body p {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.card--team-member .card .card__body ul {
+  margin-bottom: 0;
+}
+
+.card--team-member .card .card__body li {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
 }
 
 /* Testimonial cards */
@@ -399,6 +441,18 @@
     font-size: var(--font-size-xl);
   }
 
+  .card--team-member {
+    gap: var(--space-3);
+  }
+
+  .card--team-member .team-member__bio {
+    gap: var(--space-3);
+  }
+
+  .card--team-member .card {
+    padding: var(--space-3);
+  }
+
   .card--cta {
     padding: var(--space-6);
   }
@@ -439,6 +493,18 @@
     width: 80px;
     height: 80px;
     font-size: var(--font-size-lg);
+  }
+
+  .card--team-member {
+    gap: var(--space-2);
+  }
+
+  .card--team-member .team-member__bio {
+    gap: var(--space-2);
+  }
+
+  .card--team-member .card {
+    padding: var(--space-2);
   }
 
   .card--cta {
