@@ -64,8 +64,27 @@
   flex: 1;
 }
 
-/* Workflow grid spacing */
-.card--section .grid-2 + .grid-2 {
+/* Grid spacing within card sections - FIX THE PADDING ISSUE */
+.card--section .grid,
+.card--section .grid-2,
+.card--section .grid-3,
+.card--section .grid-4 {
+  margin-bottom: var(--space-6);
+}
+
+/* Remove bottom margin from last grid in a card section */
+.card--section .grid:last-child,
+.card--section .grid-2:last-child,
+.card--section .grid-3:last-child,
+.card--section .grid-4:last-child {
+  margin-bottom: 0;
+}
+
+/* Additional spacing between consecutive grids */
+.card--section .grid + .grid,
+.card--section .grid-2 + .grid-2,
+.card--section .grid-3 + .grid-3,
+.card--section .grid-4 + .grid-4 {
   margin-top: var(--space-8);
 }
 
@@ -81,8 +100,18 @@
     gap: var(--space-4);
   }
 
-  /* Remove workflow spacing on mobile */
-  .card--section .grid-2 + .grid-2 {
+  /* Adjust grid spacing on mobile */
+  .card--section .grid,
+  .card--section .grid-2,
+  .card--section .grid-3,
+  .card--section .grid-4 {
+    margin-bottom: var(--space-4);
+  }
+
+  .card--section .grid + .grid,
+  .card--section .grid-2 + .grid-2,
+  .card--section .grid-3 + .grid-3,
+  .card--section .grid-4 + .grid-4 {
     margin-top: var(--space-4);
   }
 }
