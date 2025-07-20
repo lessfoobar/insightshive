@@ -26,29 +26,6 @@
   grid-template-columns: 1fr 1fr;
 }
 
-/* Grid items should fill the full height */
-.grid > * {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Two column grid */
-.grid-2 {
-  grid-template-columns: 1fr 1fr;
-}
-
-/* Workflow grid spacing - target the second grid container */
-.card--section .grid-2 + .grid-2 {
-  margin-top: var(--space-8);
-}
-
-/* Override equal height for workflow cards - let them be natural height */
-.card--section .grid-2 .card {
-  height: auto !important;
-  align-self: start;
-}
-
 /* Three column grid */
 .grid-3 {
   grid-template-columns: 1fr 1fr 1fr;
@@ -62,17 +39,6 @@
 /* Auto-fit grid for responsive cards */
 .grid-auto {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-/* Special class for equal height enforcement */
-.grid--equal-height {
-  align-items: stretch;
-}
-
-.grid--equal-height > * {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Card body should expand to fill available space */
@@ -89,7 +55,7 @@
   justify-content: space-between;
 }
 
-/* Team member cards specific fixes */
+/* Team member cards specific layout */
 .grid .card--team-member {
   display: flex;
   flex-direction: column;
@@ -98,6 +64,11 @@
 
 .grid .card--team-member .team-member__bio {
   flex: 1;
+}
+
+/* Workflow grid spacing */
+.card--section .grid-2 + .grid-2 {
+  margin-top: var(--space-8);
 }
 
 /* Responsive grid adjustments */
@@ -111,18 +82,9 @@
   .grid {
     gap: var(--space-4);
   }
-  
-  /* On mobile, remove equal height constraint for better readability */
-  .grid {
-    align-items: start;
-  }
-  
-  .grid > * {
-    height: auto;
-  }
 
   /* Remove workflow spacing on mobile */
-  .grid-2 + .grid-2 {
+  .card--section .grid-2 + .grid-2 {
     margin-top: var(--space-4);
   }
 }

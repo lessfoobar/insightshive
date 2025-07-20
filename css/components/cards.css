@@ -377,7 +377,6 @@
 @media (max-width: 768px) {
   .card {
     padding: var(--space-4);
-    height: auto;
   }
 
   .card--section {
@@ -407,11 +406,6 @@
   .card__footer {
     flex-direction: column;
     gap: var(--space-2);
-  }
-
-  /* On mobile, cards don't need to be equal height */
-  .grid .card {
-    height: auto;
   }
 
   .metric-number {
