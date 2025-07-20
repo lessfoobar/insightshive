@@ -148,10 +148,9 @@
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 100%;
   position: relative;
-  overflow: visible;
-  z-index: 1;
+  overflow: hidden;
 }
 
 .card--team-member::before {
@@ -177,7 +176,6 @@
 .card--team-member:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
-  z-index: 10;
 }
 
 .card--team-member .team-member__photo {
@@ -225,44 +223,10 @@
 
 .card--team-member .team-member__bio {
   text-align: left;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  position: relative;
-  z-index: 2;
-}
-
-/* Ensure nested cards in team member bio have consistent spacing */
-.card--team-member .team-member__bio .card {
-  margin-bottom: var(--space-4);
-  position: relative;
-  z-index: auto;
-  overflow: visible;
-  box-shadow: var(--shadow-sm);
-}
-
-.card--team-member .team-member__bio .card:last-child {
-  margin-bottom: 0;
-}
-
-/* Ensure nested card headers and bodies have proper spacing */
-.card--team-member .team-member__bio .card .card__header {
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-2);
-}
-
-.card--team-member .team-member__bio .card .card__body {
-  padding-bottom: var(--space-2);
-}
-
-/* Override any transform that might cause positioning issues */
-.card--team-member .card {
-  transform: none !important;
-}
-
-.card--team-member .card:hover {
-  transform: none !important;
-  box-shadow: var(--shadow-md);
+  justify-content: space-between;
 }
 
 /* Testimonial cards */
@@ -299,7 +263,7 @@
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
   text-align: center;
-  padding: var(--space-12) var(--space-8);
+  padding: var(--space-12) var(--space-6);
   border-radius: var(--radius-xl);
   margin: var(--space-12) 0;
   border: none;
@@ -343,8 +307,8 @@
 /* Section card (main content areas) */
 .card--section {
   background: var(--bg-secondary);
-  margin-bottom: var(--space-8);
-  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+  padding: var(--space-6);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   border-left: none;
@@ -436,7 +400,7 @@
   }
 
   .card--cta {
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-6);
   }
 
   .card__footer {

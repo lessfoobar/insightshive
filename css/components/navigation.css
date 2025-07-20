@@ -61,7 +61,7 @@
 .nav__links {
   display: flex;
   list-style: none;
-  gap: var(--space-8);
+  gap: var(--space-6);
   margin: 0;
   padding: 0;
   align-items: center;
@@ -367,7 +367,7 @@
 /* Large screen optimizations */
 @media (min-width: 1200px) {
   .nav__container {
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-4) var(--space-6);
     justify-content: center;
   }
 

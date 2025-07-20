@@ -3,7 +3,7 @@
 .header {
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
-  padding: var(--space-8) 0;
+  padding: var(--space-6) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -103,7 +103,7 @@
 
 /* Header CTA buttons */
 .header__cta {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 .header__cta-button {
@@ -164,7 +164,7 @@
   }
 
   .header--home {
-    padding: var(--space-8) 0;
+    padding: var(--space-6) 0;
   }
 
   .header__cta {

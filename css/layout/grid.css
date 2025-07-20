@@ -85,7 +85,7 @@
 .card--section .grid-2 + .grid-2,
 .card--section .grid-3 + .grid-3,
 .card--section .grid-4 + .grid-4 {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 /* Responsive grid adjustments */
@@ -232,7 +232,7 @@
 }
 
 .gap-8 {
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
 /* Row and column gaps */

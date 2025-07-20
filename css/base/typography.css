@@ -113,7 +113,7 @@ pre code {
 blockquote {
   border-left: 4px solid var(--accent-primary);
   padding-left: var(--space-4);
-  margin: var(--space-8) 0;
+  margin: var(--space-6) 0;
   font-style: italic;
   color: var(--text-secondary);
 }
