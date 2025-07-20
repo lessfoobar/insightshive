@@ -100,7 +100,7 @@
 /* Top CTA Button */
 .card--highlight {
   border-left-color: var(--color-primary-600);
-  background: linear-gradient(135deg, var(--bg-card) 0%, var(--color-primary-50) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 45%, var(--color-primary-50) 100%);
   margin-bottom: var(--space-6);
 }
 
@@ -191,7 +191,7 @@
   font-weight: var(--font-weight-bold);
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 45%, var(--accent-secondary) 100%);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -260,7 +260,7 @@
 
 /* CTA section card */
 .card--cta {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 45%, var(--accent-secondary) 100%);
   color: white;
   text-align: center;
   padding: var(--space-12) var(--space-6);
