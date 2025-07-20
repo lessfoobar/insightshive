@@ -328,7 +328,6 @@
 .card--section h3 {
   color: var(--text-primary);
   font-size: var(--font-size-2xl);
-  margin: var(--space-6) 0 var(--space-4) 0;
 }
 
 /* Badge System */
