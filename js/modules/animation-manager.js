@@ -1,4 +1,4 @@
-// js/modules/animation-manager.js - New module for enhanced animations
+// js/modules/animation-manager.js - module for enhanced animations
 
 export class AnimationManager {
   constructor() {
@@ -10,82 +10,8 @@ export class AnimationManager {
   }
 
   init() {
-    this.initScrollAnimations();
     this.initCardAnimations();
-    this.initLoadingStates();
     this.initCounterAnimations();
-  }
-
-  initScrollAnimations() {
-    // Only run if Intersection Observer is supported
-    if (!('IntersectionObserver' in window)) {
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          // Stop observing once animated
-          observer.unobserve(entry.target);
-        }
-      });
-    }, this.observerOptions);
-
-    // Observe cards for scroll animations
-    const animatableElements = document.querySelectorAll(
-      '.card, .card--team-member, .card--section, .btn--cta'
-    );
-
-    animatableElements.forEach((el, index) => {
-      // Add initial state
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-
-      // Observe for intersection
-      observer.observe(el);
-    });
-
-    // Add CSS for animate-in state
-    this.addAnimationStyles();
-  }
-
-  addAnimationStyles() {
-    if (document.querySelector('#animation-styles')) {
-      return;
-    }
-
-    const styles = document.createElement('style');
-    styles.id = 'animation-styles';
-    styles.textContent = `
-      .animate-in {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-      }
-      
-      .card--loading {
-        pointer-events: none;
-      }
-      
-      .metric-number {
-        transition: all 0.6s ease;
-      }
-      
-      .metric-number.counting {
-        color: var(--accent-primary);
-        transform: scale(1.1);
-      }
-      
-      @media (prefers-reduced-motion: reduce) {
-        .card, .card--team-member, .card--section, .btn--cta {
-          opacity: 1 !important;
-          transform: none !important;
-          transition: none !important;
-        }
-      }
-    `;
-    document.head.appendChild(styles);
   }
 
   initCardAnimations() {
@@ -142,23 +68,6 @@ export class AnimationManager {
         }
       }, 300);
     }
-  }
-
-  initLoadingStates() {
-    // Simulate loading states for demo purposes
-    const cards = document.querySelectorAll('.card');
-
-    // Add loading class initially
-    cards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add('card--loading');
-
-        // Remove loading after delay
-        setTimeout(() => {
-          card.classList.remove('card--loading');
-        }, 1000 + (index * 200));
-      }, index * 100);
-    });
   }
 
   initCounterAnimations() {
@@ -237,10 +146,5 @@ export class AnimationManager {
 
   // Cleanup method
   destroy() {
-    // Remove added styles
-    const styles = document.querySelector('#animation-styles');
-    if (styles) {
-      styles.remove();
-    }
   }
 }

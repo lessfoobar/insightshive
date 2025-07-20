@@ -370,7 +370,7 @@
 
 /* Grid-specific card adjustments */
 .grid .card {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 /* Responsive adjustments */
