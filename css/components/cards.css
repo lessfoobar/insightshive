@@ -148,9 +148,10 @@
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  height: auto;
   position: relative;
-  overflow: hidden;
-  align-self: start;
+  overflow: visible;
+  z-index: 1;
 }
 
 .card--team-member::before {
@@ -176,6 +177,7 @@
 .card--team-member:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+  z-index: 10;
 }
 
 .card--team-member .team-member__photo {
@@ -226,15 +228,41 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  position: relative;
+  z-index: 2;
 }
 
 /* Ensure nested cards in team member bio have consistent spacing */
 .card--team-member .team-member__bio .card {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+  position: relative;
+  z-index: auto;
+  overflow: visible;
+  box-shadow: var(--shadow-sm);
 }
 
 .card--team-member .team-member__bio .card:last-child {
   margin-bottom: 0;
+}
+
+/* Ensure nested card headers and bodies have proper spacing */
+.card--team-member .team-member__bio .card .card__header {
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+
+.card--team-member .team-member__bio .card .card__body {
+  padding-bottom: var(--space-2);
+}
+
+/* Override any transform that might cause positioning issues */
+.card--team-member .card {
+  transform: none !important;
+}
+
+.card--team-member .card:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-md);
 }
 
 /* Testimonial cards */
