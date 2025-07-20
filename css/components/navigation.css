@@ -30,7 +30,6 @@
   transition: all var(--transition-base);
 }
 
-
 /* Logo that appears when header is not visible */
 .nav__logo {
   font-size: var(--font-size-xl);
@@ -220,25 +219,6 @@
   text-decoration: underline;
 }
 
-/* Skip navigation for accessibility */
-.nav__skip {
-  position: absolute;
-  top: -40px;
-  left: var(--space-2);
-  background: var(--accent-primary);
-  color: white;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  z-index: var(--z-modal);
-  transition: top var(--transition-fast);
-  font-weight: var(--font-weight-medium);
-}
-
-.nav__skip:focus {
-  top: var(--space-2);
-}
-
 /* Mobile navigation styles */
 @media (max-width: 768px) {
   .btn--menu-toggle {
@@ -255,7 +235,6 @@
     order: -1 !important;
   }
 
-  /* Override hover for mobile */
   .nav__logo:hover {
     transform: scale(1.05);
   }
@@ -345,30 +324,9 @@
     margin-right: var(--space-2);
     pointer-events: none;
   }
-
-  /* Enhanced mobile backdrop */
-  .nav__backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: var(--z-modal);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-base);
-    pointer-events: none;
-  }
-
-  .nav__backdrop--active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: none;
-  }
 }
 
-/* Even smaller screens - further optimize */
+/* Even smaller screens */
 @media (max-width: 480px) {
   .nav__links {
     gap: var(--space-2);
@@ -406,22 +364,6 @@
   }
 }
 
-/* Tablet adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .nav__links {
-    gap: var(--space-4);
-  }
-
-  .nav__link {
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--font-size-sm);
-  }
-
-  .nav__logo {
-    font-size: var(--font-size-lg);
-  }
-}
-
 /* Large screen optimizations */
 @media (min-width: 1200px) {
   .nav__container {
@@ -447,42 +389,6 @@
   }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .nav {
-    border-bottom: 2px solid var(--border-color);
-  }
-
-  .nav__link {
-    border: 1px solid transparent;
-  }
-
-  .nav__link:hover,
-  .nav__link:focus,
-  .nav__link--active {
-    border-color: var(--accent-primary);
-    background: var(--accent-primary);
-    color: white;
-  }
-
-  .btn--menu-toggle__line {
-    background: var(--text-primary);
-    height: 4px;
-  }
-
-  .nav__logo {
-    border: 1px solid var(--accent-primary);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
-  }
-
-  @media (max-width: 768px) {
-    .nav__link {
-      border-width: 3px;
-    }
-  }
-}
-
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .nav,
@@ -490,7 +396,6 @@
   .nav__logo,
   .btn--menu-toggle__line,
   .nav__links,
-  .nav__backdrop,
   .nav__link::before,
   .nav__container {
     transition: none;
@@ -501,48 +406,4 @@
   .nav__logo:hover {
     transform: none;
   }
-}
-
-/* Print styles */
-@media print {
-  .nav {
-    position: static;
-    background: white !important;
-    box-shadow: none !important;
-    border-bottom: 1px solid black !important;
-  }
-
-  .btn--menu-toggle {
-    display: none;
-  }
-
-  .nav__logo {
-    opacity: 1 !important;
-    position: static;
-    color: black !important;
-  }
-
-  .nav__links {
-    position: static;
-    background: transparent !important;
-    flex-direction: row;
-    height: auto;
-    width: auto;
-    gap: var(--space-4);
-  }
-
-  .nav__link {
-    color: black !important;
-    background: transparent !important;
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* Focus management for accessibility */
-.nav__links a:focus,
-.btn--menu-toggle:focus,
-.nav__logo:focus {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
 }
