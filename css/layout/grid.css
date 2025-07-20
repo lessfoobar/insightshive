@@ -16,8 +16,6 @@
 
 /* Grid items should fill the full height */
 .grid > * {
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
