@@ -148,9 +148,9 @@
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  height: 100%;
   position: relative;
   overflow: hidden;
+  align-self: start;
 }
 
 .card--team-member::before {
@@ -223,10 +223,18 @@
 
 .card--team-member .team-member__bio {
   text-align: left;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Ensure nested cards in team member bio have consistent spacing */
+.card--team-member .team-member__bio .card {
+  margin-bottom: var(--space-3);
+}
+
+.card--team-member .team-member__bio .card:last-child {
+  margin-bottom: 0;
 }
 
 /* Testimonial cards */
