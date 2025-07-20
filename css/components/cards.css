@@ -328,8 +328,7 @@
 .card--section h3 {
   color: var(--text-primary);
   font-size: var(--font-size-2xl);
-  margin-top: var(--space-6);
-  margin-bottom: var(--space-4);
+  margin: var(--space-6) 0 var(--space-4) 0;
 }
 
 /* Badge System */
@@ -372,6 +371,7 @@
 /* Grid-specific card adjustments */
 .grid .card {
   margin-bottom: 0;
+  margin-top: var(--space-4);
 }
 
 /* Responsive adjustments */
