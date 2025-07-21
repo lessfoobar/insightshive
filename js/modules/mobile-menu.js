@@ -31,7 +31,6 @@ export class MobileMenu {
     if (!existingToggle) {
       const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
-        console.warn('Navigation container not found');
         return;
       }
 
@@ -131,7 +130,6 @@ export class MobileMenu {
 
   toggleMenu() {
     if (!this.menuToggle || !this.navLinks) {
-      console.warn('Menu elements not found');
       return;
     }
 
