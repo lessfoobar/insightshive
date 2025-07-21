@@ -32,7 +32,6 @@ export class MobileMenu {
     if (!this.menuToggle) {
       const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
-        console.warn('No nav container found');
         return;
       }
 
@@ -73,7 +72,6 @@ export class MobileMenu {
 
   toggleMenu(force = null) {
     if (!this.menuToggle || !this.navLinks || !this.backdrop) {
-      console.warn('Menu elements not found');
       return;
     }
 
@@ -91,7 +89,9 @@ export class MobileMenu {
   }
 
   openMenu() {
-    if (!this.menuToggle || !this.navLinks || !this.backdrop) return;
+    if (!this.menuToggle || !this.navLinks || !this.backdrop) {
+      return;
+    }
 
     // Save current scroll position
     this.savedScrollY = window.scrollY;
@@ -112,7 +112,9 @@ export class MobileMenu {
   }
 
   closeMenu() {
-    if (!this.isOpen) return;
+    if (!this.isOpen) {
+      return;
+    }
 
     // Remove active classes
     if (this.menuToggle) {
@@ -150,7 +152,7 @@ export class MobileMenu {
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
-  }
+  };
 
   handleResize() {
     window.addEventListener('resize', () => {
