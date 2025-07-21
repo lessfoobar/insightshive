@@ -11,6 +11,11 @@ on:
       - 'css/utilities/**/*.css'
   workflow_dispatch:
 
+# Prevent concurrent CSS builds
+concurrency:
+  group: "css-build"
+  cancel-in-progress: true
+
 jobs:
   build-css:
     runs-on: ubuntu-latest

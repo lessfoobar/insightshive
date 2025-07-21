@@ -10,10 +10,10 @@ on:
     types:
       - completed
 
-# Allow one concurrent deployment
+# Prevent concurrent deployments
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
