@@ -1,47 +1,55 @@
-// js/modules/mobile-menu.js - MINIMAL FIX VERSION
+// js/modules/mobile-menu.js
 
 export class MobileMenu {
   constructor() {
     this.menuToggle = null;
     this.navLinks = null;
+    this.backdrop = null;
     this.isOpen = false;
-    this.linkClickHandler = null;
+    this.savedScrollY = 0;
     this.init();
   }
 
   init() {
-    this.createMenuToggle();
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setup());
+    } else {
+      this.setup();
+    }
+  }
+
+  setup() {
+    this.findOrCreateMenuToggle();
+    this.createBackdrop();
     this.bindEvents();
     this.handleResize();
   }
 
-  createMenuToggle() {
-    const existingToggle = document.querySelector('.btn--menu-toggle');
-
-    if (!existingToggle) {
+  findOrCreateMenuToggle() {
+    this.menuToggle = document.querySelector('.btn--menu-toggle');
+    
+    if (!this.menuToggle) {
       const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
+        console.warn('No nav container found');
         return;
       }
 
-      const newMenuToggle = document.createElement('button');
-      newMenuToggle.type = 'button';
-      newMenuToggle.className = 'btn--menu-toggle';
-      newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
-      newMenuToggle.setAttribute('aria-expanded', 'false');
-      newMenuToggle.setAttribute('aria-controls', 'navigation-menu');
+      this.menuToggle = document.createElement('button');
+      this.menuToggle.type = 'button';
+      this.menuToggle.className = 'btn--menu-toggle';
+      this.menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+      this.menuToggle.setAttribute('aria-expanded', 'false');
+      this.menuToggle.setAttribute('aria-controls', 'navigation-menu');
 
-      // Create hamburger lines using BEM classes
-      newMenuToggle.innerHTML = `
+      this.menuToggle.innerHTML = `
         <span class="btn--menu-toggle__line"></span>
         <span class="btn--menu-toggle__line"></span>
         <span class="btn--menu-toggle__line"></span>
       `;
 
-      navContainer.appendChild(newMenuToggle);
-      this.menuToggle = newMenuToggle;
-    } else {
-      this.menuToggle = existingToggle;
+      navContainer.appendChild(this.menuToggle);
     }
 
     this.navLinks = document.querySelector('.nav__links');
@@ -50,14 +58,29 @@ export class MobileMenu {
     }
   }
 
-  toggleMenu() {
-    if (!this.menuToggle || !this.navLinks) {
+  createBackdrop() {
+    // Remove existing backdrop if any
+    const existingBackdrop = document.querySelector('.nav__backdrop');
+    if (existingBackdrop) {
+      existingBackdrop.remove();
+    }
+
+    // Create new backdrop
+    this.backdrop = document.createElement('div');
+    this.backdrop.className = 'nav__backdrop';
+    document.body.appendChild(this.backdrop);
+  }
+
+  toggleMenu(force = null) {
+    if (!this.menuToggle || !this.navLinks || !this.backdrop) {
+      console.warn('Menu elements not found');
       return;
     }
 
-    this.isOpen = !this.isOpen;
+    // Force parameter allows external control
+    this.isOpen = force !== null ? !force : !this.isOpen;
 
-    // Update ARIA attributes
+    // Update ARIA
     this.menuToggle.setAttribute('aria-expanded', this.isOpen.toString());
 
     if (this.isOpen) {
@@ -68,70 +91,88 @@ export class MobileMenu {
   }
 
   openMenu() {
-    // Add classes for open state
+    if (!this.menuToggle || !this.navLinks || !this.backdrop) return;
+
+    // Save current scroll position
+    this.savedScrollY = window.scrollY;
+
+    // Add active classes
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
+    this.backdrop.classList.add('nav__backdrop--active');
 
     // Prevent body scroll
-    const scrollY = window.scrollY;
-    document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
+    document.body.style.top = `-${this.savedScrollY}px`;
     document.body.style.width = '100%';
-    // Store scroll position for restoration
-    document.body.dataset.scrollY = scrollY.toString();
+    document.body.style.overflow = 'hidden';
 
     // Add escape key listener
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
     document.addEventListener('keydown', this.handleEscapeKey);
   }
 
   closeMenu() {
-    if (!this.isOpen) {
-      return;
+    if (!this.isOpen) return;
+
+    // Remove active classes
+    if (this.menuToggle) {
+      this.menuToggle.classList.remove('btn--menu-toggle--active');
+      this.menuToggle.setAttribute('aria-expanded', 'false');
     }
 
-    // Remove classes for closed state
-    this.menuToggle.classList.remove('btn--menu-toggle--active');
-    this.navLinks.classList.remove('nav__links--active');
+    if (this.navLinks) {
+      this.navLinks.classList.remove('nav__links--active');
+    }
+
+    if (this.backdrop) {
+      this.backdrop.classList.remove('nav__backdrop--active');
+    }
 
     // Restore body scroll
-    const scrollY = document.body.dataset.scrollY;
     document.body.style.position = '';
     document.body.style.top = '';
-    document.body.style.overflow = '';
     document.body.style.width = '';
+    document.body.style.overflow = '';
 
-    if (scrollY) {
-      window.scrollTo(0, parseInt(scrollY || '0', 10));
+    // Restore scroll position
+    if (this.savedScrollY) {
+      window.scrollTo(0, this.savedScrollY);
+      this.savedScrollY = 0;
     }
 
     this.isOpen = false;
-    this.menuToggle.setAttribute('aria-expanded', 'false');
 
     // Remove escape key listener
-    if (this.handleEscapeKey) {
-      document.removeEventListener('keydown', this.handleEscapeKey);
-    }
+    document.removeEventListener('keydown', this.handleEscapeKey);
   }
 
-  handleEscapeKey(e) {
+  handleEscapeKey = (e) => {
     if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
   }
 
   handleResize() {
-    // Close menu when resizing to desktop
     window.addEventListener('resize', () => {
+      // Close menu when resizing to desktop
       if (window.innerWidth > 768 && this.isOpen) {
         this.closeMenu();
+      }
+    });
+
+    // Handle orientation change
+    window.addEventListener('orientationchange', () => {
+      if (this.isOpen) {
+        // Small delay to let orientation change complete
+        setTimeout(() => {
+          this.closeMenu();
+        }, 200);
       }
     });
   }
 
   bindEvents() {
-    // Bind menu toggle click
+    // Menu toggle click
     if (this.menuToggle) {
       this.menuToggle.addEventListener('click', (e) => {
         e.preventDefault();
@@ -140,51 +181,50 @@ export class MobileMenu {
       });
     }
 
-    // Navigation link click handling using event delegation
-    if (this.navLinks) {
-      if (this.linkClickHandler) {
-        this.navLinks.removeEventListener('click', this.linkClickHandler);
-      }
-      this.linkClickHandler = (e) => {
-        if (e.target.tagName === 'A' || e.target.closest('a')) {
-          this.closeMenu();
-        }
-      };
-
-      // Add the event listener using delegation
-      this.navLinks.addEventListener('click', this.linkClickHandler);
+    // Backdrop click (outside click)
+    if (this.backdrop) {
+      this.backdrop.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.closeMenu();
+      });
     }
 
-    // Close menu when clicking outside - FIXED
-    document.addEventListener('click', (event) => {
-      if (this.isOpen &&
-          this.menuToggle &&
-          this.navLinks &&
-          !this.menuToggle.contains(event.target) &&
-          !this.navLinks.contains(event.target)) {
-        this.closeMenu();
-      }
-    });
-
-    // Handle orientation change on mobile
-    window.addEventListener('orientationchange', () => {
-      if (this.isOpen) {
-        setTimeout(() => {
+    // Navigation link clicks
+    if (this.navLinks) {
+      this.navLinks.addEventListener('click', (e) => {
+        // Close menu when clicking any navigation link
+        if (e.target.matches('.nav__link') || e.target.closest('.nav__link')) {
           this.closeMenu();
-        }, 200);
-      }
-    });
+        }
+      });
+    }
   }
 
-  // Public method to close menu (can be called from other modules)
+  // Public methods for external control
   close() {
     if (this.isOpen) {
       this.closeMenu();
     }
   }
 
-  // Public method to check if menu is open
+  open() {
+    if (!this.isOpen) {
+      this.toggleMenu();
+    }
+  }
+
   get isMenuOpen() {
     return this.isOpen;
+  }
+
+  // Cleanup method
+  destroy() {
+    this.closeMenu();
+    
+    if (this.backdrop) {
+      this.backdrop.remove();
+    }
+
+    document.removeEventListener('keydown', this.handleEscapeKey);
   }
 }
