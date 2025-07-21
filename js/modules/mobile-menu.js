@@ -1,26 +1,16 @@
-// js/modules/mobile-menu.js
+// js/modules/mobile-menu.js - MINIMAL FIX VERSION
 
 export class MobileMenu {
   constructor() {
     this.menuToggle = null;
     this.navLinks = null;
-    this.backdrop = null;
     this.isOpen = false;
-    this.scrollPosition = 0;
-
-    // Bound methods to prevent memory leaks
-    this.handleToggleClick = this.handleToggleClick.bind(this);
-    this.handleLinkClick = this.handleLinkClick.bind(this);
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-
+    this.linkClickHandler = null;
     this.init();
   }
 
   init() {
     this.createMenuToggle();
-    this.createBackdrop();
     this.bindEvents();
     this.handleResize();
   }
@@ -57,74 +47,6 @@ export class MobileMenu {
     this.navLinks = document.querySelector('.nav__links');
     if (this.navLinks) {
       this.navLinks.id = 'navigation-menu';
-      this.navLinks.setAttribute('role', 'menu');
-    }
-  }
-
-  createBackdrop() {
-    // Remove existing backdrop
-    const existingBackdrop = document.querySelector('.nav__backdrop');
-    if (existingBackdrop) {
-      existingBackdrop.remove();
-    }
-
-    // Create new backdrop
-    const backdrop = document.createElement('div');
-    backdrop.className = 'nav__backdrop';
-    backdrop.setAttribute('aria-hidden', 'true');
-    backdrop.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1040;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      backdrop-filter: blur(5px);
-    `;
-
-    document.body.appendChild(backdrop);
-    this.backdrop = backdrop;
-  }
-
-  handleToggleClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.toggleMenu();
-  }
-
-  handleLinkClick(e) {
-    // Only close if clicking on an actual link, not nested elements
-    if (e.target.tagName === 'A' || e.target.closest('a')) {
-      this.closeMenu();
-    }
-  }
-
-  handleEscapeKey(e) {
-    if (e.key === 'Escape' && this.isOpen) {
-      e.preventDefault();
-      this.closeMenu();
-    }
-  }
-
-  handleOutsideClick(e) {
-    // Only close if clicking outside the navigation area
-    if (this.isOpen &&
-        this.menuToggle &&
-        this.navLinks &&
-        !this.menuToggle.contains(e.target) &&
-        !this.navLinks.contains(e.target)) {
-      this.closeMenu();
-    }
-  }
-
-  handleResize() {
-    // Close menu when resizing to desktop
-    if (window.innerWidth > 768 && this.isOpen) {
-      this.closeMenu();
     }
   }
 
@@ -134,6 +56,8 @@ export class MobileMenu {
     }
 
     this.isOpen = !this.isOpen;
+
+    // Update ARIA attributes
     this.menuToggle.setAttribute('aria-expanded', this.isOpen.toString());
 
     if (this.isOpen) {
@@ -144,32 +68,22 @@ export class MobileMenu {
   }
 
   openMenu() {
-    // Store current scroll position
-    this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
     // Add classes for open state
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
 
-    // Show backdrop
-    if (this.backdrop) {
-      this.backdrop.style.visibility = 'visible';
-      this.backdrop.style.opacity = '1';
-    }
-
     // Prevent body scroll
+    const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
-    document.body.style.top = `-${this.scrollPosition}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
+    document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
+    // Store scroll position for restoration
+    document.body.dataset.scrollY = scrollY.toString();
 
-    // Add event listeners
-    document.addEventListener('keydown', this.handleEscapeKey, { passive: false });
-    document.addEventListener('click', this.handleOutsideClick, { passive: true });
-
-    this.isOpen = true;
+    // Add escape key listener
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
+    document.addEventListener('keydown', this.handleEscapeKey);
   }
 
   closeMenu() {
@@ -181,53 +95,76 @@ export class MobileMenu {
     this.menuToggle.classList.remove('btn--menu-toggle--active');
     this.navLinks.classList.remove('nav__links--active');
 
-    // Hide backdrop
-    if (this.backdrop) {
-      this.backdrop.style.opacity = '0';
-      this.backdrop.style.visibility = 'hidden';
-    }
-
     // Restore body scroll
+    const scrollY = document.body.dataset.scrollY;
     document.body.style.position = '';
     document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
     document.body.style.overflow = '';
     document.body.style.width = '';
 
-    // Restore scroll position
-    if (this.scrollPosition) {
-      window.scrollTo(0, this.scrollPosition);
+    if (scrollY) {
+      window.scrollTo(0, parseInt(scrollY || '0', 10));
     }
-
-    // Remove event listeners
-    document.removeEventListener('keydown', this.handleEscapeKey);
-    document.removeEventListener('click', this.handleOutsideClick);
 
     this.isOpen = false;
     this.menuToggle.setAttribute('aria-expanded', 'false');
+
+    // Remove escape key listener
+    if (this.handleEscapeKey) {
+      document.removeEventListener('keydown', this.handleEscapeKey);
+    }
+  }
+
+  handleEscapeKey(e) {
+    if (e.key === 'Escape' && this.isOpen) {
+      this.closeMenu();
+    }
+  }
+
+  handleResize() {
+    // Close menu when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && this.isOpen) {
+        this.closeMenu();
+      }
+    });
   }
 
   bindEvents() {
     // Bind menu toggle click
     if (this.menuToggle) {
-      this.menuToggle.addEventListener('click', this.handleToggleClick, { passive: false });
+      this.menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.toggleMenu();
+      });
     }
 
     // Navigation link click handling using event delegation
     if (this.navLinks) {
-      this.navLinks.addEventListener('click', this.handleLinkClick, { passive: true });
+      if (this.linkClickHandler) {
+        this.navLinks.removeEventListener('click', this.linkClickHandler);
+      }
+      this.linkClickHandler = (e) => {
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          this.closeMenu();
+        }
+      };
+
+      // Add the event listener using delegation
+      this.navLinks.addEventListener('click', this.linkClickHandler);
     }
 
-    // Handle backdrop clicks
-    if (this.backdrop) {
-      this.backdrop.addEventListener('click', () => {
+    // Close menu when clicking outside - FIXED
+    document.addEventListener('click', (event) => {
+      if (this.isOpen && 
+          this.menuToggle && 
+          this.navLinks &&
+          !this.menuToggle.contains(event.target) &&
+          !this.navLinks.contains(event.target)) {
         this.closeMenu();
-      }, { passive: true });
-    }
-
-    // Handle window resize
-    window.addEventListener('resize', this.handleResize, { passive: true });
+      }
+    });
 
     // Handle orientation change on mobile
     window.addEventListener('orientationchange', () => {
@@ -236,7 +173,7 @@ export class MobileMenu {
           this.closeMenu();
         }, 200);
       }
-    }, { passive: true });
+    });
   }
 
   // Public method to close menu (can be called from other modules)
@@ -249,33 +186,5 @@ export class MobileMenu {
   // Public method to check if menu is open
   get isMenuOpen() {
     return this.isOpen;
-  }
-
-  // Cleanup method
-  destroy() {
-    // Remove event listeners
-    if (this.menuToggle) {
-      this.menuToggle.removeEventListener('click', this.handleToggleClick);
-    }
-    if (this.navLinks) {
-      this.navLinks.removeEventListener('click', this.handleLinkClick);
-    }
-    if (this.backdrop) {
-      this.backdrop.removeEventListener('click', this.closeMenu);
-    }
-
-    window.removeEventListener('resize', this.handleResize);
-    document.removeEventListener('keydown', this.handleEscapeKey);
-    document.removeEventListener('click', this.handleOutsideClick);
-
-    // Remove backdrop
-    if (this.backdrop && this.backdrop.parentNode) {
-      this.backdrop.parentNode.removeChild(this.backdrop);
-    }
-
-    // Close menu if open
-    if (this.isOpen) {
-      this.closeMenu();
-    }
   }
 }

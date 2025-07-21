@@ -141,7 +141,7 @@
   padding: var(--space-2);
   background: none;
   border: none;
-  z-index: 1060; /* Higher than nav links */
+  z-index: calc(var(--z-modal) + 10);
   position: relative;
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
@@ -253,8 +253,7 @@
     position: fixed;
     top: 0;
     left: -100%;
-    width: 280px;
-    max-width: 85vw;
+    width: 100%;
     height: 100vh;
     height: 100dvh;
     background: var(--bg-primary);
@@ -263,49 +262,31 @@
     align-items: center;
     gap: var(--space-3);
     transition: left var(--transition-base);
-    z-index: 1050;
-    box-shadow: var(--shadow-xl);
+    z-index: calc(var(--z-modal) + 5);
+    box-shadow: var(--shadow-lg);
     overflow-y: auto;
     overflow-x: hidden;
     border-right: 3px solid var(--accent-primary);
-    padding: calc(var(--space-8) + env(safe-area-inset-top, 0px)) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom, 0px)) var(--space-4);
+    padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom, 0px)) var(--space-4);
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-primary) transparent;
-  }
-
-  /* Webkit scrollbar styling */
-  .nav__links::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .nav__links::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .nav__links::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 3px;
-  }
-
-  .nav__links::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary-600);
+    pointer-events: none;
   }
 
   /* Active state positioning */
   .nav__links--active {
     left: 0;
+    pointer-events: auto;
   }
 
   /* Mobile navigation links styling */
   .nav__link {
     font-size: var(--font-size-base);
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-2) var(--space-4);
     width: 85%;
-    max-width: 220px;
+    max-width: 280px;
     text-align: center;
     border-radius: var(--radius-lg);
-    min-height: 48px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -316,9 +297,10 @@
     color: var(--text-primary);
     user-select: none;
     flex-shrink: 0;
+    pointer-events: auto;
     position: relative;
+    z-index: 10;
     cursor: pointer;
-    transition: all 0.2s ease;
   }
 
   .nav__link:hover,
@@ -327,7 +309,7 @@
     background: var(--accent-primary);
     color: white;
     border-color: var(--accent-primary);
-    transform: scale(1.02);
+    transform: scale(1.03);
     box-shadow: var(--shadow-lg);
   }
 
@@ -350,18 +332,15 @@
 /* Even smaller screens */
 @media (max-width: 480px) {
   .nav__links {
-    width: 260px;
-    max-width: 90vw;
     gap: var(--space-2);
-    padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-3) calc(var(--space-4) + env(safe-area-inset-bottom, 0px)) var(--space-3);
+    padding: calc(var(--space-4) + env(safe-area-inset-top, 0px)) var(--space-3) calc(var(--space-4) + env(safe-area-inset-bottom, 0px)) var(--space-3);
   }
 
   .nav__link {
     font-size: var(--font-size-sm);
     padding: var(--space-2) var(--space-3);
-    min-height: 44px;
+    min-height: 40px;
     width: 90%;
-    max-width: 200px;
   }
 
   .nav__link .nav__link-icon {
@@ -371,18 +350,20 @@
 }
 
 /* Landscape orientation on mobile */
-@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+@media (max-width: 768px) and (orientation: landscape) {
   .nav__links {
-    width: 240px;
-    max-width: 45vw;
-    padding: calc(var(--space-4) + env(safe-area-inset-top, 0px)) var(--space-2) calc(var(--space-4) + env(safe-area-inset-bottom, 0px)) var(--space-2);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding: calc(var(--space-3) + env(safe-area-inset-top, 0px)) var(--space-3) calc(var(--space-3) + env(safe-area-inset-bottom, 0px)) var(--space-3);
     gap: var(--space-2);
   }
 
   .nav__link {
-    min-height: 40px;
-    padding: var(--space-2);
-    font-size: var(--font-size-sm);
+    width: auto;
+    min-width: 120px;
+    flex: 0 0 auto;
   }
 }
 
@@ -427,10 +408,5 @@
   .nav__link:hover,
   .nav__logo:hover {
     transform: none;
-  }
-
-  /* Keep basic state changes without animations */
-  .nav__links--active {
-    left: 0;
   }
 }
