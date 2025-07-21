@@ -138,7 +138,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Team member card with equal height fix */
+/* Team member card */
 .card--team-member {
   text-align: center;
   background: var(--bg-secondary);
@@ -146,13 +146,12 @@
   border-radius: var(--radius-xl);
   transition: all var(--transition-base);
   padding: var(--space-6);
-  display: grid;
-  grid-template-rows: auto auto auto 1fr; /* photo, name, title, bio (flexible) */
-  gap: var(--space-4);
+  display: flex;
+  flex-direction: column;
   height: 100%;
   position: relative;
   overflow: hidden;
-  align-content: start;
+  gap: var(--space-4);
 }
 
 .card--team-member::before {
@@ -184,7 +183,7 @@
   width: 120px;
   height: 120px;
   border-radius: var(--radius-full);
-  margin: 0 auto;
+  margin: 0 auto var(--space-4) auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,66 +211,63 @@
 .card--team-member .team-member__name {
   color: var(--accent-primary);
   font-size: var(--font-size-xl);
-  margin-bottom: 0;
+  margin-bottom: var(--space-2);
   flex-shrink: 0;
 }
 
 .card--team-member .team-member__title {
   color: var(--text-primary);
   font-size: var(--font-size-lg);
-  margin-bottom: 0;
+  margin-bottom: var(--space-4);
   flex-shrink: 0;
 }
 
-/* Bio section with equal height nested cards */
 .card--team-member .team-member__bio {
   text-align: left;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr; /* Three equal sections for the nested cards */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
   align-items: stretch;
 }
 
-/* Nested cards within team member cards - equal height fix */
-.card--team-member .team-member__bio .card {
+/* Nested cards within team member cards */
+.card--team-member .card {
   margin-bottom: 0;
   padding: var(--space-4);
   border-left: 2px solid var(--accent-primary);
   box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Fill the grid cell */
 }
 
-.card--team-member .team-member__bio .card .card__header {
+.card--team-member .card:last-child {
+  margin-bottom: 0;
+}
+
+.card--team-member .card .card__header {
   margin-bottom: var(--space-2);
   padding-bottom: var(--space-2);
-  flex-shrink: 0;
 }
 
-.card--team-member .team-member__bio .card .card__title {
+.card--team-member .card .card__title {
   font-size: var(--font-size-base);
   color: var(--accent-primary);
 }
 
-.card--team-member .team-member__bio .card .card__body {
+.card--team-member .card .card__body {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
-.card--team-member .team-member__bio .card .card__body p {
+.card--team-member .card .card__body p {
   margin-bottom: var(--space-2);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
 }
 
-.card--team-member .team-member__bio .card .card__body ul {
+.card--team-member .card .card__body ul {
   margin-bottom: 0;
 }
 
-.card--team-member .team-member__bio .card .card__body li {
+.card--team-member .card .card__body li {
   margin-bottom: var(--space-1);
   font-size: var(--font-size-base);
 }
@@ -420,6 +416,11 @@
   margin: 0;
 }
 
+/* Override grid equal height for team member nested cards */
+.grid .card--team-member .card {
+  height: auto;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
@@ -440,29 +441,22 @@
     font-size: var(--font-size-xl);
   }
 
-  .card--team-member {
-    /* On mobile, switch to flex layout for natural flow */
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
   .card--team-member .team-member__photo {
     width: 100px;
     height: 100px;
     font-size: var(--font-size-xl);
   }
 
-  /* On mobile, allow natural height since cards are stacked */
-  .card--team-member .team-member__bio {
-    display: flex;
-    flex-direction: column;
+  .card--team-member {
     gap: var(--space-3);
   }
 
-  .card--team-member .team-member__bio .card {
+  .card--team-member .team-member__bio {
+    gap: var(--space-3);
+  }
+
+  .card--team-member .card {
     padding: var(--space-3);
-    height: auto; /* Natural height on mobile */
   }
 
   .card--cta {
@@ -515,7 +509,7 @@
     gap: var(--space-2);
   }
 
-  .card--team-member .team-member__bio .card {
+  .card--team-member .card {
     padding: var(--space-2);
   }
 
