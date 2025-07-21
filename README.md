@@ -206,7 +206,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Website:** [https://insightshive.com](https://insightshive.com)
 - **Email:** info@insightshive.com
-- **LinkedIn:** [Nikola Kalev](https://www.linkedin.com/in/nikola-k-393b18104/) | [Ognyan Vasilev](https://www.linkedin.com/in/ognyan-v-vasilev/)
+- **LinkedIn:** [Nikola Kalev](https://www.linkedin.com/in/nikola-kalev/) | [Ognyan Vasilev](https://www.linkedin.com/in/ognyan-v-vasilev/)
 
 ## 🏆 About InsightsHive
 

@@ -122,7 +122,7 @@ export class PageComponents {
                 <h3 class="footer__contact-title">Contact InsightsHive</h3>
                 <div class="footer__contact-info">Email: info@insightshive.com | Business Inquiries: info@insightshive.com</div>
                 <div class="footer__contact-info">
-                    <a href="https://www.linkedin.com/in/nikola-k-393b18104/" target="_blank">Nikola Kalev</a> |
+                    <a href="https://www.linkedin.com/in/nikola-kalev/" target="_blank">Nikola Kalev</a> |
                     <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
                 </div>
             </div>
@@ -177,7 +177,7 @@ export class PageComponents {
           "@type": "Person",
           "name": "Nikola Kalev",
           "jobTitle": "Co-Founder",
-          "sameAs": "https://www.linkedin.com/in/nikola-k-393b18104/"
+          "sameAs": "https://www.linkedin.com/in/nikola-kalev/"
         },
         {
           "@type": "Person", 
