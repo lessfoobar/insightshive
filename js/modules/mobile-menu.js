@@ -88,15 +88,12 @@ export class MobileMenu {
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
 
-    // Add escape key listener immediately
+    // Add event listeners
     document.addEventListener('keydown', this.handleEscapeKey);
-
-    // Add outside click listener with delay to prevent immediate closure
+    // Delay the outside click listener to prevent immediate closure
     setTimeout(() => {
-      if (this.isOpen) {
-        document.addEventListener('click', this.handleOutsideClick);
-      }
-    }, 150);
+      document.addEventListener('click', this.handleOutsideClick);
+    }, 100);
   }
 
   closeMenu() {
@@ -140,20 +137,18 @@ export class MobileMenu {
   };
 
   handleOutsideClick = (e) => {
-    // Don't close if clicking on the menu toggle button or its children
-    if (this.menuToggle && (this.menuToggle === e.target || this.menuToggle.contains(e.target))) {
-      return;
-    }
-
-    // Don't close if clicking inside the nav menu
-    if (this.navLinks && this.navLinks.contains(e.target)) {
-      return;
-    }
-
-    // Close menu for any other clicks
-    if (this.isOpen) {
+    // Only close if clicking outside both menu toggle and nav links
+    if (this.isOpen && 
+        !this.menuToggle.contains(e.target) &&
+        !this.navLinks.contains(e.target)) {
       this.closeMenu();
     }
+  };
+
+  handleMenuToggleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.toggleMenu();
   };
 
   handleResize() {
@@ -177,23 +172,15 @@ export class MobileMenu {
   bindEvents() {
     // Menu toggle click
     if (this.menuToggle) {
-      this.menuToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.toggleMenu();
-      });
+      this.menuToggle.addEventListener('click', this.handleMenuToggleClick);
     }
 
     // Navigation link clicks
     if (this.navLinks) {
       this.navLinks.addEventListener('click', (e) => {
-        // Only close if clicking a navigation link, not the container or scrollbar
-        const clickedLink = e.target.closest('.nav__link');
-        if (clickedLink) {
-          // Allow the navigation to happen, then close menu
-          setTimeout(() => {
-            this.closeMenu();
-          }, 100);
+        // Only close if clicking a navigation link, not the container
+        if (e.target.matches('.nav__link') || e.target.closest('.nav__link')) {
+          this.closeMenu();
         }
       });
     }
@@ -221,5 +208,9 @@ export class MobileMenu {
     this.closeMenu();
     document.removeEventListener('keydown', this.handleEscapeKey);
     document.removeEventListener('click', this.handleOutsideClick);
+
+    if (this.menuToggle) {
+      this.menuToggle.removeEventListener('click', this.handleMenuToggleClick);
+    }
   }
 }
