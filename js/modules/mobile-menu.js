@@ -28,7 +28,7 @@ export class MobileMenu {
 
   findOrCreateMenuToggle() {
     this.menuToggle = document.querySelector('.btn--menu-toggle');
-    
+
     if (!this.menuToggle) {
       const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
@@ -222,7 +222,7 @@ export class MobileMenu {
   // Cleanup method
   destroy() {
     this.closeMenu();
-    
+
     if (this.backdrop) {
       this.backdrop.remove();
     }
