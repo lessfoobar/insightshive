@@ -237,24 +237,6 @@
   padding: var(--space-4);
   border-left: 2px solid var(--accent-primary);
   box-shadow: var(--shadow-sm);
-  flex: 1;
-  height: auto;
-  min-height: 120px;
-}
-
-.card--team-member .card:nth-child(1) {
-  flex: 2;
-  min-height: 140px;
-}
-
-.card--team-member .card:nth-child(2) {
-  flex: 2;
-  min-height: 140px;
-}
-
-.card--team-member .card:nth-child(3) {
-  flex: 1;
-  min-height: 80px;
 }
 
 .card--team-member .card:last-child {
@@ -272,9 +254,7 @@
 }
 
 .card--team-member .card .card__body {
-  flex: none;
-  height: auto;
-  min-height: auto;
+  flex: 1;
 }
 
 .card--team-member .card .card__body p {
@@ -439,16 +419,6 @@
 /* Override grid equal height for team member nested cards */
 .grid .card--team-member .card {
   height: auto;
-  flex: 1;
-}
-
-.grid .card--team-member .card:nth-child(1),
-.grid .card--team-member .card:nth-child(2) {
-  flex: 2;
-}
-
-.grid .card--team-member .card:nth-child(3) {
-  flex: 1;
 }
 
 /* Responsive adjustments */
@@ -487,21 +457,6 @@
 
   .card--team-member .card {
     padding: var(--space-3);
-    min-height: 100px;
-  }
-
-  .card--team-member .card:nth-child(1),
-  .card--team-member .card:nth-child(2) {
-    min-height: 120px;
-  }
-
-  .card--team-member .card:nth-child(3) {
-    min-height: 70px;
-  }
-
-  .card--team-member .card .card__body p,
-  .card--team-member .card .card__body li {
-    font-size: var(--font-size-sm);
   }
 
   .card--cta {
@@ -556,21 +511,6 @@
 
   .card--team-member .card {
     padding: var(--space-2);
-    min-height: 80px;
-  }
-
-  .card--team-member .card:nth-child(1),
-  .card--team-member .card:nth-child(2) {
-    min-height: 100px;
-  }
-
-  .card--team-member .card:nth-child(3) {
-    min-height: 60px;
-  }
-
-  .card--team-member .card .card__body p,
-  .card--team-member .card .card__body li {
-    font-size: var(--font-size-xs);
   }
 
   .card--cta {
