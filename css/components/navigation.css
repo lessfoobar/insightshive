@@ -293,6 +293,23 @@
     padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom, 0px)) var(--space-4);
     -webkit-overflow-scrolling: touch;
     pointer-events: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) transparent;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  .nav__links::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .nav__links::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .nav__links::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 2px;
   }
 
   /* Active state positioning */

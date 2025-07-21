@@ -88,12 +88,15 @@ export class MobileMenu {
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
 
-    // Add event listeners
+    // Add escape key listener immediately
     document.addEventListener('keydown', this.handleEscapeKey);
-    // Delay the outside click listener to prevent immediate closure
+
+    // Add outside click listener with delay to prevent immediate closure
     setTimeout(() => {
-      document.addEventListener('click', this.handleOutsideClick);
-    }, 100);
+      if (this.isOpen) {
+        document.addEventListener('click', this.handleOutsideClick);
+      }
+    }, 150);
   }
 
   closeMenu() {
@@ -137,10 +140,18 @@ export class MobileMenu {
   };
 
   handleOutsideClick = (e) => {
-    // Only close if clicking outside both menu toggle and nav links
-    if (this.isOpen &&
-        !this.menuToggle.contains(e.target) &&
-        !this.navLinks.contains(e.target)) {
+    // Don't close if clicking on the menu toggle button or its children
+    if (this.menuToggle && (this.menuToggle === e.target || this.menuToggle.contains(e.target))) {
+      return;
+    }
+
+    // Don't close if clicking inside the nav menu
+    if (this.navLinks && this.navLinks.contains(e.target)) {
+      return;
+    }
+
+    // Close menu for any other clicks
+    if (this.isOpen) {
       this.closeMenu();
     }
   };
@@ -176,9 +187,13 @@ export class MobileMenu {
     // Navigation link clicks
     if (this.navLinks) {
       this.navLinks.addEventListener('click', (e) => {
-        // Only close if clicking a navigation link, not the container
-        if (e.target.matches('.nav__link') || e.target.closest('.nav__link')) {
-          this.closeMenu();
+        // Only close if clicking a navigation link, not the container or scrollbar
+        const clickedLink = e.target.closest('.nav__link');
+        if (clickedLink) {
+          // Allow the navigation to happen, then close menu
+          setTimeout(() => {
+            this.closeMenu();
+          }, 100);
         }
       });
     }
