@@ -14,7 +14,7 @@ export class MobileMenu {
     this.handleEscapeKey = this.handleEscapeKey.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleResize = this.handleResize.bind(this);
-    
+
     this.init();
   }
 
@@ -85,7 +85,7 @@ export class MobileMenu {
       transition: opacity 0.3s ease, visibility 0.3s ease;
       backdrop-filter: blur(5px);
     `;
-    
+
     document.body.appendChild(backdrop);
     this.backdrop = backdrop;
   }
@@ -169,7 +169,7 @@ export class MobileMenu {
     // Add event listeners
     document.addEventListener('keydown', this.handleEscapeKey, { passive: false });
     document.addEventListener('click', this.handleOutsideClick, { passive: true });
-    
+
     this.isOpen = true;
   }
 
@@ -264,7 +264,7 @@ export class MobileMenu {
     if (this.backdrop) {
       this.backdrop.removeEventListener('click', this.closeMenu);
     }
-    
+
     window.removeEventListener('resize', this.handleResize);
     document.removeEventListener('keydown', this.handleEscapeKey);
     document.removeEventListener('click', this.handleOutsideClick);
