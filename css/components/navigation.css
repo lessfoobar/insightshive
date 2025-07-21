@@ -190,11 +190,13 @@
   visibility: hidden;
   transition: all var(--transition-base);
   backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 
 .nav__backdrop--active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* Breadcrumbs */
@@ -283,7 +285,7 @@
     align-items: center;
     gap: var(--space-3);
     transition: left var(--transition-base);
-    z-index: calc(var(--z-modal) + 5);
+    z-index: calc(var(--z-modal) + 10);
     box-shadow: var(--shadow-lg);
     overflow-y: auto;
     overflow-x: hidden;

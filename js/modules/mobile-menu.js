@@ -4,7 +4,6 @@ export class MobileMenu {
   constructor() {
     this.menuToggle = null;
     this.navLinks = null;
-    this.backdrop = null;
     this.isOpen = false;
     this.savedScrollY = 0;
     this.init();
@@ -21,7 +20,6 @@ export class MobileMenu {
 
   setup() {
     this.findOrCreateMenuToggle();
-    this.createBackdrop();
     this.bindEvents();
     this.handleResize();
   }
@@ -57,28 +55,12 @@ export class MobileMenu {
     }
   }
 
-  createBackdrop() {
-    // Remove existing backdrop if any
-    const existingBackdrop = document.querySelector('.nav__backdrop');
-    if (existingBackdrop) {
-      existingBackdrop.remove();
-    }
-
-    // Create new backdrop
-    this.backdrop = document.createElement('div');
-    this.backdrop.className = 'nav__backdrop';
-    document.body.appendChild(this.backdrop);
-  }
-
-  toggleMenu(force = null) {
-    if (!this.menuToggle || !this.navLinks || !this.backdrop) {
+  toggleMenu() {
+    if (!this.menuToggle || !this.navLinks) {
       return;
     }
 
-    // Force parameter allows external control
-    this.isOpen = force !== null ? !force : !this.isOpen;
-
-    // Update ARIA
+    this.isOpen = !this.isOpen;
     this.menuToggle.setAttribute('aria-expanded', this.isOpen.toString());
 
     if (this.isOpen) {
@@ -89,7 +71,7 @@ export class MobileMenu {
   }
 
   openMenu() {
-    if (!this.menuToggle || !this.navLinks || !this.backdrop) {
+    if (!this.menuToggle || !this.navLinks) {
       return;
     }
 
@@ -99,7 +81,6 @@ export class MobileMenu {
     // Add active classes
     this.menuToggle.classList.add('btn--menu-toggle--active');
     this.navLinks.classList.add('nav__links--active');
-    this.backdrop.classList.add('nav__backdrop--active');
 
     // Prevent body scroll
     document.body.style.position = 'fixed';
@@ -107,8 +88,12 @@ export class MobileMenu {
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
 
-    // Add escape key listener
+    // Add event listeners
     document.addEventListener('keydown', this.handleEscapeKey);
+    // Delay the outside click listener to prevent immediate closure
+    setTimeout(() => {
+      document.addEventListener('click', this.handleOutsideClick);
+    }, 100);
   }
 
   closeMenu() {
@@ -126,10 +111,6 @@ export class MobileMenu {
       this.navLinks.classList.remove('nav__links--active');
     }
 
-    if (this.backdrop) {
-      this.backdrop.classList.remove('nav__backdrop--active');
-    }
-
     // Restore body scroll
     document.body.style.position = '';
     document.body.style.top = '';
@@ -144,12 +125,22 @@ export class MobileMenu {
 
     this.isOpen = false;
 
-    // Remove escape key listener
+    // Remove event listeners
     document.removeEventListener('keydown', this.handleEscapeKey);
+    document.removeEventListener('click', this.handleOutsideClick);
   }
 
   handleEscapeKey = (e) => {
     if (e.key === 'Escape' && this.isOpen) {
+      this.closeMenu();
+    }
+  };
+
+  handleOutsideClick = (e) => {
+    // Only close if clicking outside both menu toggle and nav links
+    if (this.isOpen && 
+        !this.menuToggle.contains(e.target) && 
+        !this.navLinks.contains(e.target)) {
       this.closeMenu();
     }
   };
@@ -165,7 +156,6 @@ export class MobileMenu {
     // Handle orientation change
     window.addEventListener('orientationchange', () => {
       if (this.isOpen) {
-        // Small delay to let orientation change complete
         setTimeout(() => {
           this.closeMenu();
         }, 200);
@@ -183,18 +173,10 @@ export class MobileMenu {
       });
     }
 
-    // Backdrop click (outside click)
-    if (this.backdrop) {
-      this.backdrop.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.closeMenu();
-      });
-    }
-
     // Navigation link clicks
     if (this.navLinks) {
       this.navLinks.addEventListener('click', (e) => {
-        // Close menu when clicking any navigation link
+        // Only close if clicking a navigation link, not the container
         if (e.target.matches('.nav__link') || e.target.closest('.nav__link')) {
           this.closeMenu();
         }
@@ -222,11 +204,7 @@ export class MobileMenu {
   // Cleanup method
   destroy() {
     this.closeMenu();
-
-    if (this.backdrop) {
-      this.backdrop.remove();
-    }
-
     document.removeEventListener('keydown', this.handleEscapeKey);
+    document.removeEventListener('click', this.handleOutsideClick);
   }
 }
