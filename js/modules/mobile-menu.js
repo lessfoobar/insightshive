@@ -7,7 +7,7 @@ export class MobileMenu {
     this.backdrop = null;
     this.isOpen = false;
     this.scrollPosition = 0;
-    
+
     // Bound methods to prevent memory leaks
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handleLinkClick = this.handleLinkClick.bind(this);

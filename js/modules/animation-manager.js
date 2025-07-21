@@ -150,12 +150,12 @@ export class AnimationManager {
     if (this.runningTimers) {
       this.runningTimers.forEach(timer => clearInterval(timer));
     }
-    
+
     // Disconnect intersection observers
     if (this.counterObserver) {
       this.counterObserver.disconnect();
     }
-    
+
     // Remove event listeners from cards
     const cards = document.querySelectorAll('.card, .card--team-member');
     cards.forEach(card => {
@@ -163,7 +163,7 @@ export class AnimationManager {
       card.removeEventListener('mouseenter', this.boundHoverHandler);
       card.removeEventListener('mouseleave', this.boundLeaveHandler);
     });
-    
+
     // Remove any glow elements we created
     document.querySelectorAll('.card-glow').forEach(glow => {
       glow.remove();
