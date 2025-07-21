@@ -60,13 +60,10 @@ export class MobileMenu {
       return;
     }
 
-    this.isOpen = !this.isOpen;
-    this.menuToggle.setAttribute('aria-expanded', this.isOpen.toString());
-
     if (this.isOpen) {
-      this.openMenu();
-    } else {
       this.closeMenu();
+    } else {
+      this.openMenu();
     }
   }
 
@@ -74,6 +71,9 @@ export class MobileMenu {
     if (!this.menuToggle || !this.navLinks) {
       return;
     }
+
+    this.isOpen = true;
+    this.menuToggle.setAttribute('aria-expanded', 'true');
 
     // Save current scroll position
     this.savedScrollY = window.scrollY;
@@ -90,16 +90,15 @@ export class MobileMenu {
 
     // Add event listeners
     document.addEventListener('keydown', this.handleEscapeKey);
-    // Delay the outside click listener to prevent immediate closure
-    setTimeout(() => {
-      document.addEventListener('click', this.handleOutsideClick);
-    }, 100);
+    document.addEventListener('click', this.handleOutsideClick);
   }
 
   closeMenu() {
     if (!this.isOpen) {
       return;
     }
+
+    this.isOpen = false;
 
     // Remove active classes
     if (this.menuToggle) {
@@ -123,8 +122,6 @@ export class MobileMenu {
       this.savedScrollY = 0;
     }
 
-    this.isOpen = false;
-
     // Remove event listeners
     document.removeEventListener('keydown', this.handleEscapeKey);
     document.removeEventListener('click', this.handleOutsideClick);
@@ -137,10 +134,13 @@ export class MobileMenu {
   };
 
   handleOutsideClick = (e) => {
-    // Only close if clicking outside both menu toggle and nav links
-    if (this.isOpen &&
-        !this.menuToggle.contains(e.target) &&
-        !this.navLinks.contains(e.target)) {
+    // Don't close if clicking the menu toggle button (let the button handler deal with it)
+    if (this.menuToggle && this.menuToggle.contains(e.target)) {
+      return;
+    }
+
+    // Only close if clicking outside the nav links
+    if (this.isOpen && !this.navLinks.contains(e.target)) {
       this.closeMenu();
     }
   };
@@ -148,7 +148,14 @@ export class MobileMenu {
   handleMenuToggleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.toggleMenu();
+    // Debug logging to see if click is being detected
+    if (this.isOpen) {
+      // Menu is open, so close it
+      this.closeMenu();
+    } else {
+      // Menu is closed, so open it
+      this.openMenu();
+    }
   };
 
   handleResize() {
@@ -172,6 +179,9 @@ export class MobileMenu {
   bindEvents() {
     // Menu toggle click
     if (this.menuToggle) {
+      // Remove any existing listeners first
+      this.menuToggle.removeEventListener('click', this.handleMenuToggleClick);
+      // Add the listener
       this.menuToggle.addEventListener('click', this.handleMenuToggleClick);
     }
 
