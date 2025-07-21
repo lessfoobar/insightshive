@@ -91,7 +91,7 @@ export class MobileMenu {
     }
 
     // Prevent body scroll
-    const scrollY = window.scrollY;
+    const { scrollY } = window;
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
@@ -118,7 +118,7 @@ export class MobileMenu {
     }
 
     // Restore body scroll
-    const scrollY = document.body.dataset.scrollY;
+    const { scrollY } = document.body.dataset;
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.overflow = '';

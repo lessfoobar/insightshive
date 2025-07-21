@@ -268,8 +268,6 @@ export class PageRenderer {
       return;
     }
 
-    let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const headerHeight = header.offsetHeight;
@@ -280,8 +278,6 @@ export class PageRenderer {
       } else {
         nav.classList.remove('nav--scrolled');
       }
-
-      lastScrollY = currentScrollY;
     };
 
     // Throttle scroll events for better performance

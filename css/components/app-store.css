@@ -73,6 +73,11 @@
   font-weight: var(--font-weight-bold);
 }
 
+/* Special spacing for nested app download cards */
+.card--app-download {
+  margin-top: var(--space-4);
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .app-store-links {
