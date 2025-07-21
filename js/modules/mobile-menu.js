@@ -138,7 +138,7 @@ export class MobileMenu {
 
   handleOutsideClick = (e) => {
     // Only close if clicking outside both menu toggle and nav links
-    if (this.isOpen && 
+    if (this.isOpen &&
         !this.menuToggle.contains(e.target) &&
         !this.navLinks.contains(e.target)) {
       this.closeMenu();
