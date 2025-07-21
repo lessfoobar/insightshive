@@ -157,8 +157,8 @@ export class MobileMenu {
 
     // Close menu when clicking outside - FIXED
     document.addEventListener('click', (event) => {
-      if (this.isOpen && 
-          this.menuToggle && 
+      if (this.isOpen &&
+          this.menuToggle &&
           this.navLinks &&
           !this.menuToggle.contains(event.target) &&
           !this.navLinks.contains(event.target)) {
