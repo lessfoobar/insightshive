@@ -56,9 +56,10 @@
 .btn--secondary:focus {
   background: var(--bg-card);
   border-color: var(--accent-primary);
-  color: var(--accent-primary);
+  color: #2d2d2d;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
+  text-decoration: none;
 }
 
 /* Button sizes */
@@ -96,6 +97,8 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   background: linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.95));
+  color: #2d2d2d;
+  text-decoration: none;
 }
 
 /* Top CTA button */
