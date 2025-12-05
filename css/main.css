@@ -2068,6 +2068,45 @@ small {
     transform: none;
   }
 }
+/* Banner Components - BEM Methodology */
+/* Supported by Google Banner */
+.supported-banner {
+  background: var(--bg-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+.supported-banner__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: nowrap;
+}
+.supported-banner__text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.supported-banner__logo {
+  height: 40px;
+  width: auto;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: transform var(--transition-fast);
+}
+.supported-banner__logo:hover {
+  transform: scale(1.02);
+}
+@media (max-width: 480px) {
+  .supported-banner {
+    padding: var(--space-2) var(--space-3);
+  }
+  .supported-banner__logo {
+    height: 32px;
+    padding: 6px 12px;
+  }
+}
 /* App Store Links and Download Components - BEM Methodology */
 /* App store links container */
 .app-store-links {
