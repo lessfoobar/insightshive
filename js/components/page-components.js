@@ -126,12 +126,14 @@ export class PageComponents {
                     <a href="https://www.linkedin.com/in/ognyan-v-vasilev/" target="_blank">Ognyan Vasilev</a>
                 </div>
             </div>
-            <div class="footer__supported-by">
-                <span class="footer__supported-by-text">Supported by</span>
-                <img src="images/logos/google-logo.svg" alt="Google" class="footer__supported-by-logo">
-            </div>
             <div class="footer__bottom">
-                <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+                <div class="footer__bottom-content">
+                    <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
+                    <div class="footer__supported-by">
+                        <span class="footer__supported-by-text">Supported by</span>
+                        <img src="images/logos/google-logo.svg" alt="Google for Startups" class="footer__supported-by-logo">
+                    </div>
+                </div>
             </div>
         </div>
     </footer>`;
