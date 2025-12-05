@@ -39,8 +39,10 @@
 .btn--primary:hover,
 .btn--primary:focus {
   background: linear-gradient(135deg, var(--color-primary-600), var(--accent-primary));
+  color: #2d2d2d;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(163, 89, 188, 0.4);
+  text-decoration: none;
 }
 
 .btn--secondary {
@@ -121,6 +123,8 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(163, 89, 188, 0.4);
   background: linear-gradient(135deg, var(--color-primary-600), var(--accent-primary));
+  color: #2d2d2d;
+  text-decoration: none;
 }
 
 /* Theme toggle button */

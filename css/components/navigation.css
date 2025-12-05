@@ -117,9 +117,10 @@
 .nav__link--active:hover,
 .nav__link--active:focus {
   background: var(--color-primary-600);
-  color: var(--nav-bg);
+  color: #2d2d2d;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(163, 89, 188, 0.4);
+  text-decoration: none;
 }
 
 /* Navigation icons */
@@ -354,8 +355,9 @@
   .nav__link--active:focus,
   .nav__link--active:active {
     background: var(--accent-primary);
-    color: var(--nav-bg);
+    color: #2d2d2d;
     border-color: var(--accent-primary);
+    text-decoration: none;
   }
 
   .nav__link .nav__link-icon {
