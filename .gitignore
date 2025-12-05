@@ -117,4 +117,4 @@ jspm_packages/
 *.sketch
 
 # Documentation generated files
-docs/generated/
+docs/generated/css/main.css
