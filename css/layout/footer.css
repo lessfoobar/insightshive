@@ -46,6 +46,34 @@
   text-decoration: underline;
 }
 
+/* Supported by section */
+.footer__supported-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+  padding: var(--space-4) 0;
+}
+
+.footer__supported-by-text {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__supported-by-logo {
+  height: 28px;
+  width: auto;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: transform var(--transition-fast);
+}
+
+.footer__supported-by-logo:hover {
+  transform: scale(1.02);
+}
+
 /* Footer bottom/legal */
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
