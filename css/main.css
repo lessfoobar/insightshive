@@ -1759,8 +1759,10 @@ small {
 .nav__link--active::before {
   display: none;
 }
-.nav__link--active:hover {
+.nav__link--active:hover,
+.nav__link--active:focus {
   background: var(--color-primary-600);
+  color: var(--nav-bg);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(163, 89, 188, 0.4);
 }
@@ -1975,6 +1977,14 @@ small {
     color: white;
     border-color: var(--accent-primary);
     box-shadow: var(--shadow-lg);
+  }
+
+  .nav__link--active:hover,
+  .nav__link--active:focus,
+  .nav__link--active:active {
+    background: var(--accent-primary);
+    color: var(--nav-bg);
+    border-color: var(--accent-primary);
   }
 
   .nav__link .nav__link-icon {
