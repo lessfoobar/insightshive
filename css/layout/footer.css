@@ -62,31 +62,6 @@
   flex-wrap: wrap;
 }
 
-/* Supported by section */
-.footer__supported-by {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.footer__supported-by-text {
-  font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.footer__supported-by-logo {
-  height: 40px;
-  width: auto;
-  background: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: transform var(--transition-fast);
-}
-
-.footer__supported-by-logo:hover {
-  transform: scale(1.02);
-}
-
 .footer__legal {
   display: flex;
   justify-content: center;

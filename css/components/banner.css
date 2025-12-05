@@ -1,0 +1,57 @@
+/* Banner Components - BEM Methodology */
+
+/* Supported by Google Banner */
+.supported-banner {
+  background: var(--bg-secondary);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.supported-banner__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.supported-banner__text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.supported-banner__logo {
+  height: 32px;
+  width: auto;
+  background: white;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast);
+}
+
+.supported-banner__logo:hover {
+  transform: scale(1.02);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .supported-banner {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .supported-banner__text {
+    font-size: var(--font-size-xs);
+  }
+
+  .supported-banner__logo {
+    height: 26px;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .supported-banner__logo {
+    height: 22px;
+    padding: 3px 8px;
+  }
+}

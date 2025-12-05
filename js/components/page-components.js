@@ -114,6 +114,16 @@ export class PageComponents {
     </nav>`;
   }
 
+  static createSupportedBanner() {
+    return `
+    <div class="supported-banner">
+        <div class="supported-banner__content">
+            <span class="supported-banner__text">Supported by</span>
+            <img src="images/logos/google-logo.svg" alt="Google for Startups" class="supported-banner__logo">
+        </div>
+    </div>`;
+  }
+
   static createFooter() {
     return `
     <footer class="footer">
@@ -129,10 +139,6 @@ export class PageComponents {
             <div class="footer__bottom">
                 <div class="footer__bottom-content">
                     <div class="footer__copyright">&copy; 2025 InsightsHive. All rights reserved. | <a href="#" class="footer__legal-link">Privacy Policy</a> | <a href="#" class="footer__legal-link">Terms of Service</a></div>
-                    <div class="footer__supported-by">
-                        <span class="footer__supported-by-text">Supported by</span>
-                        <img src="images/logos/google-logo.svg" alt="Google for Startups" class="footer__supported-by-logo">
-                    </div>
                 </div>
             </div>
         </div>
@@ -240,6 +246,12 @@ export class PageRenderer {
     const navPlaceholder = document.getElementById('nav-placeholder');
     if (navPlaceholder) {
       navPlaceholder.outerHTML = PageComponents.createNavigation(this.pageConfig.pageType);
+
+      // Insert supported banner after navigation
+      const nav = document.querySelector('.nav');
+      if (nav) {
+        nav.insertAdjacentHTML('afterend', PageComponents.createSupportedBanner());
+      }
 
       // Initialize scroll detection after navigation is rendered
       this.initScrollDetection();
