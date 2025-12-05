@@ -3,29 +3,30 @@
 /* Supported by Google Banner */
 .supported-banner {
   background: var(--bg-secondary);
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-2) var(--space-4);
   border-bottom: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .supported-banner__content {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  flex-wrap: nowrap;
 }
 
 .supported-banner__text {
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
-  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
 }
 
 .supported-banner__logo {
-  height: 32px;
+  height: 40px;
   width: auto;
   background: white;
-  padding: 6px 14px;
-  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  border-radius: 6px;
   transition: transform var(--transition-fast);
 }
 
@@ -34,24 +35,13 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .supported-banner {
     padding: var(--space-2) var(--space-3);
   }
 
-  .supported-banner__text {
-    font-size: var(--font-size-xs);
-  }
-
   .supported-banner__logo {
-    height: 26px;
-    padding: 4px 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .supported-banner__logo {
-    height: 22px;
-    padding: 3px 8px;
+    height: 32px;
+    padding: 6px 12px;
   }
 }
