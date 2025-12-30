@@ -17,7 +17,6 @@ export class ArticleLoader {
       const data = await response.json();
       return data.articles || [];
     } catch (error) {
-      console.error('Error loading articles:', error);
       return [];
     }
   }
@@ -61,18 +60,14 @@ export class ArticleLoader {
     const dateFormatted = this.formatDate(article.date);
     const categoryClass = this.getCategoryClass(article.category);
 
-    return `
-      <div class="card article-card" data-category="${categoryClass}">
-        ${
-          article.image
-            ? `
-        <div class="card__image-wrapper">
+    return (
+      `<div class="card article-card" data-category="${categoryClass}">` +
+      (article.image
+        ? `<div class="card__image-wrapper">
           <img src="${article.image}" alt="${article.title}" class="card__image" loading="lazy">
-        </div>
-        `
-            : ''
-        }
-        <div class="card__header">
+        </div>`
+        : '') +
+      `<div class="card__header">
           <h3 class="card__title">${article.title}</h3>
           <div class="card__meta">
             <span class="badge badge--${categoryClass}">${article.category}</span>
@@ -80,24 +75,20 @@ export class ArticleLoader {
           </div>
         </div>
         <div class="card__body">
-          <p>${article.excerpt}</p>
-          ${
-            article.tags && article.tags.length > 0
-              ? `
-          <div class="article-tags">
+          <p>${article.excerpt}</p>` +
+      (article.tags && article.tags.length > 0
+        ? `<div class="article-tags">
             ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          `
-              : ''
-          }
-        </div>
+          </div>`
+        : '') +
+      `</div>
         <div class="card__footer">
           <a href="articles/${article.filename}" class="btn btn--primary">
             Read Article →
           </a>
         </div>
-      </div>
-    `;
+      </div>`
+    );
   }
 
   /**
@@ -109,18 +100,14 @@ export class ArticleLoader {
     const dateFormatted = this.formatDate(article.date);
     const categoryClass = this.getCategoryClass(article.category);
 
-    return `
-      <div class="card card--highlight featured-article">
-        ${
-          article.image
-            ? `
-        <div class="card__image-wrapper">
+    return (
+      `<div class="card card--highlight featured-article">` +
+      (article.image
+        ? `<div class="card__image-wrapper">
           <img src="${article.image}" alt="${article.title}" class="card__image" loading="lazy">
-        </div>
-        `
-            : ''
-        }
-        <div class="card__header">
+        </div>`
+        : '') +
+      `<div class="card__header">
           <span class="badge badge--featured">Featured</span>
           <h2 class="card__title">${article.title}</h2>
           <div class="card__meta">
@@ -130,24 +117,20 @@ export class ArticleLoader {
           </div>
         </div>
         <div class="card__body">
-          <p class="featured-excerpt">${article.excerpt}</p>
-          ${
-            article.tags && article.tags.length > 0
-              ? `
-          <div class="article-tags">
+          <p class="featured-excerpt">${article.excerpt}</p>` +
+      (article.tags && article.tags.length > 0
+        ? `<div class="article-tags">
             ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          `
-              : ''
-          }
-        </div>
+          </div>`
+        : '') +
+      `</div>
         <div class="card__footer">
           <a href="articles/${article.filename}" class="btn btn--primary btn--large">
             Read Full Article →
           </a>
         </div>
-      </div>
-    `;
+      </div>`
+    );
   }
 
   /**
@@ -160,7 +143,6 @@ export class ArticleLoader {
 
     const container = document.getElementById(containerId);
     if (!container) {
-      console.error(`Container #${containerId} not found`);
       return;
     }
 
