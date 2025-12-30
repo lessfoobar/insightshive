@@ -47,8 +47,9 @@ function generateArticlePage(meta, content, slug) {
     <meta name="twitter:title" content="${meta.title}">
     <meta name="twitter:description" content="${meta.excerpt}">
 
-    <link rel="stylesheet" href="../css/main.css">
-    <script type="module" src="../js/main.js"></script>
+    <base href="../">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="js/main.js"></script>
 </head>
 <body class="dark-theme">
     <div id="header-placeholder"></div>
@@ -82,7 +83,7 @@ function generateArticlePage(meta, content, slug) {
             }
 
             <footer class="article__footer">
-                <a href="../news.html" class="btn btn--secondary">← Back to News</a>
+                <a href="news.html" class="btn btn--secondary">← Back to News</a>
             </footer>
         </article>
     </main>
