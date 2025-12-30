@@ -48,6 +48,13 @@ jobs:
           npm run build:articles
           echo "✅ Articles built"
 
+      - name: List built files
+        run: |
+          echo "Built files:"
+          ls -lh css/main.css
+          ls -lh data/articles.json
+          ls -lh articles/*.html | head -5
+
       - name: Validate HTML
         run: npm run validate
 
