@@ -133,11 +133,16 @@ async function buildArticles() {
       // Convert markdown to HTML
       const htmlContent = marked(markdown);
 
+      // Ensure date is in ISO format (YYYY-MM-DD)
+      const dateISO = meta.date instanceof Date
+        ? meta.date.toISOString().split('T')[0]
+        : meta.date;
+
       // Generate full HTML page
       const articleHtml = generateArticlePage(meta, htmlContent, slug);
 
       // Write HTML file
-      const outputFile = `${meta.date}-${slug}.html`;
+      const outputFile = `${dateISO}-${slug}.html`;
       const outputPath = path.join(outputDir, outputFile);
       await fs.writeFile(outputPath, articleHtml);
 
@@ -149,7 +154,7 @@ async function buildArticles() {
         slug: slug,
         filename: outputFile,
         title: meta.title,
-        date: meta.date,
+        date: dateISO,
         author: meta.author,
         category: meta.category || "Uncategorized",
         excerpt: meta.excerpt || "",
