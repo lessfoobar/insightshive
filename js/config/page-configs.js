@@ -71,6 +71,11 @@ export function getCurrentPageConfig() {
   const path = window.location.pathname;
   const filename = path.split('/').pop().replace('.html', '') || 'index';
 
+  // Article pages should use the news page config
+  if (path.includes('/articles/')) {
+    return pageConfigs.news;
+  }
+
   // Map filenames to config keys
   const pageMap = {
     index: 'home',

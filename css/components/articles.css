@@ -15,6 +15,22 @@
   box-shadow: 0 8px 16px rgba(163, 89, 188, 0.2);
 }
 
+/* Clickable Article Cards */
+.article-card--clickable {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.article-card--clickable:hover {
+  text-decoration: none;
+}
+
+.article-card--clickable .btn {
+  pointer-events: none;
+}
+
 .card__image-wrapper {
   overflow: hidden;
   border-radius: var(--radius-md) var(--radius-md) 0 0;

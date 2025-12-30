@@ -61,7 +61,7 @@ export class ArticleLoader {
     const categoryClass = this.getCategoryClass(article.category);
 
     return `
-      <div class="card article-card" data-category="${categoryClass}">
+      <a href="articles/${article.filename}" class="card article-card article-card--clickable" data-category="${categoryClass}">
         ${
           article.image
             ? `
@@ -91,11 +91,11 @@ export class ArticleLoader {
           }
         </div>
         <div class="card__footer">
-          <a href="articles/${article.filename}" class="btn btn--primary">
+          <span class="btn btn--primary">
             Read Article →
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
     `;
   }
 
@@ -109,7 +109,7 @@ export class ArticleLoader {
     const categoryClass = this.getCategoryClass(article.category);
 
     return `
-      <div class="card card--highlight featured-article">
+      <a href="articles/${article.filename}" class="card card--highlight featured-article article-card--clickable">
         ${
           article.image
             ? `
@@ -141,11 +141,11 @@ export class ArticleLoader {
           }
         </div>
         <div class="card__footer">
-          <a href="articles/${article.filename}" class="btn btn--primary btn--large">
+          <span class="btn btn--primary btn--large">
             Read Full Article →
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
     `;
   }
 
