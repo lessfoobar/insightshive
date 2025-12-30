@@ -8,7 +8,10 @@
     "require-csp-nonce": "off",
     "script-type": "off",
     "valid-id": "error",
-    "heading-level": "warn"
+    "heading-level": "warn",
+    "doctype-style": "off",
+    "void-style": ["error", { "style": "selfclosing" }],
+    "no-raw-characters": "off"
   },
   "elements": ["html5"]
 }
