@@ -3,12 +3,12 @@
  * Initializes all application modules including page components
  */
 
-import { ThemeManager } from "./modules/theme-manager.js";
-import { MobileMenu } from "./modules/mobile-menu.js";
-import { ImageFallback } from "./modules/image-fallback.js";
-import { AnimationManager } from "./modules/animation-manager.js";
-import { PageRenderer } from "./components/page-components.js";
-import { getCurrentPageConfig } from "./config/page-configs.js";
+import { ThemeManager } from './modules/theme-manager.js';
+import { MobileMenu } from './modules/mobile-menu.js';
+import { ImageFallback } from './modules/image-fallback.js';
+import { AnimationManager } from './modules/animation-manager.js';
+import { PageRenderer } from './components/page-components.js';
+import { getCurrentPageConfig } from './config/page-configs.js';
 
 class InsightsHiveApp {
   constructor() {
@@ -22,9 +22,9 @@ class InsightsHiveApp {
 
   init() {
     // Wait for DOM to be ready
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () =>
-        this.initializeModules(),
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () =>
+        this.initializeModules()
       );
     } else {
       this.initializeModules();
@@ -52,10 +52,10 @@ class InsightsHiveApp {
         // Initialize additional features
         this.initializeUtilities();
 
-        console.log("🚀 InsightsHive app initialized successfully");
+        console.log('🚀 InsightsHive app initialized successfully');
       }, 100); // Small delay to ensure DOM elements are rendered
     } catch (error) {
-      console.error("Error initializing InsightsHive app:", error);
+      console.error('Error initializing InsightsHive app:', error);
     }
   }
 
@@ -76,13 +76,13 @@ class InsightsHiveApp {
   initSmoothScroll() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const target = document.querySelector(this.getAttribute("href"));
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           e.preventDefault();
           target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
+            behavior: 'smooth',
+            block: 'start'
           });
         }
       });
@@ -91,14 +91,14 @@ class InsightsHiveApp {
 
   initFormEnhancements() {
     // Add loading states to buttons in forms
-    const forms = document.querySelectorAll("form");
+    const forms = document.querySelectorAll('form');
     forms.forEach((form) => {
-      form.addEventListener("submit", (e) => {
+      form.addEventListener('submit', (e) => {
         const submitButton = form.querySelector(
-          'button[type="submit"], input[type="submit"]',
+          'button[type="submit"], input[type="submit"]'
         );
         if (submitButton) {
-          submitButton.classList.add("btn--loading");
+          submitButton.classList.add('btn--loading');
           submitButton.disabled = true;
         }
       });
@@ -107,7 +107,7 @@ class InsightsHiveApp {
     // Email validation for contact forms
     const emailInputs = document.querySelectorAll('input[type="email"]');
     emailInputs.forEach((input) => {
-      input.addEventListener("blur", this.validateEmail);
+      input.addEventListener('blur', this.validateEmail);
     });
   }
 
@@ -116,19 +116,19 @@ class InsightsHiveApp {
     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     if (email && !isValid) {
-      e.target.style.borderColor = "var(--color-error, #dc3545)";
-      e.target.setAttribute("aria-invalid", "true");
+      e.target.style.borderColor = 'var(--color-error, #dc3545)';
+      e.target.setAttribute('aria-invalid', 'true');
     } else {
-      e.target.style.borderColor = "";
-      e.target.removeAttribute("aria-invalid");
+      e.target.style.borderColor = '';
+      e.target.removeAttribute('aria-invalid');
     }
   }
 
   initPerformanceOptimizations() {
     // Lazy load images if browser doesn't support it natively
-    if (!("loading" in HTMLImageElement.prototype)) {
+    if (!('loading' in HTMLImageElement.prototype)) {
       const images = document.querySelectorAll('img[loading="lazy"]');
-      if ("IntersectionObserver" in window) {
+      if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -150,15 +150,15 @@ class InsightsHiveApp {
   preloadCriticalResources() {
     // Preload team member images
     const teamImages = [
-      "images/team/nikola-kalev.jpg",
-      "images/team/ognyan-vasilev.jpg",
-      "images/team/ivan-ivanov.jpg",
+      'images/team/nikola-kalev.jpg',
+      'images/team/ognyan-vasilev.jpg',
+      'images/team/ivan-ivanov.jpg'
     ];
 
     teamImages.forEach((src) => {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
       link.href = src;
       document.head.appendChild(link);
     });
@@ -176,11 +176,11 @@ class InsightsHiveApp {
   }
 
   addSkipToMain() {
-    if (!document.querySelector(".skip-to-main")) {
-      const skipLink = document.createElement("a");
-      skipLink.href = "#main";
-      skipLink.className = "skip-to-main";
-      skipLink.textContent = "Skip to main content";
+    if (!document.querySelector('.skip-to-main')) {
+      const skipLink = document.createElement('a');
+      skipLink.href = '#main';
+      skipLink.className = 'skip-to-main';
+      skipLink.textContent = 'Skip to main content';
       skipLink.style.cssText = `
         position: absolute;
         top: -40px;
@@ -194,12 +194,12 @@ class InsightsHiveApp {
         transition: top 0.3s;
       `;
 
-      skipLink.addEventListener("focus", () => {
-        skipLink.style.top = "6px";
+      skipLink.addEventListener('focus', () => {
+        skipLink.style.top = '6px';
       });
 
-      skipLink.addEventListener("blur", () => {
-        skipLink.style.top = "-40px";
+      skipLink.addEventListener('blur', () => {
+        skipLink.style.top = '-40px';
       });
 
       document.body.insertBefore(skipLink, document.body.firstChild);
@@ -208,20 +208,20 @@ class InsightsHiveApp {
 
   improveFocusManagement() {
     // Ensure focus is visible for keyboard users
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Tab") {
-        document.body.classList.add("keyboard-navigation");
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-navigation');
       }
     });
 
-    document.addEventListener("mousedown", () => {
-      document.body.classList.remove("keyboard-navigation");
+    document.addEventListener('mousedown', () => {
+      document.body.classList.remove('keyboard-navigation');
     });
 
     // Add CSS for keyboard navigation
-    if (!document.querySelector("#keyboard-nav-styles")) {
-      const styles = document.createElement("style");
-      styles.id = "keyboard-nav-styles";
+    if (!document.querySelector('#keyboard-nav-styles')) {
+      const styles = document.createElement('style');
+      styles.id = 'keyboard-nav-styles';
       styles.textContent = `
         .keyboard-navigation *:focus {
           outline: 2px solid var(--accent-primary) !important;
@@ -238,27 +238,27 @@ class InsightsHiveApp {
   }
 
   addKeyboardShortcuts() {
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener('keydown', (e) => {
       // Alt + H = Home
-      if (e.altKey && e.key === "h") {
+      if (e.altKey && e.key === 'h') {
         e.preventDefault();
-        window.location.href = "index.html";
+        window.location.href = 'index.html';
       }
 
       // Alt + C = Contact
-      if (e.altKey && e.key === "c") {
+      if (e.altKey && e.key === 'c') {
         e.preventDefault();
-        window.location.href = "contact.html";
+        window.location.href = 'contact.html';
       }
 
       // Alt + T = Team
-      if (e.altKey && e.key === "t") {
+      if (e.altKey && e.key === 't') {
         e.preventDefault();
-        window.location.href = "team.html";
+        window.location.href = 'team.html';
       }
 
       // Escape = Close mobile menu
-      if (e.key === "Escape" && this.mobileMenu && this.mobileMenu.isMenuOpen) {
+      if (e.key === 'Escape' && this.mobileMenu && this.mobileMenu.isMenuOpen) {
         this.mobileMenu.close();
       }
     });

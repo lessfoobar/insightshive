@@ -4,84 +4,84 @@
 
 export const pageConfigs = {
   home: {
-    pageType: "home",
-    title: "InsightsHive - AI-Powered Retail Intelligence Platform",
+    pageType: 'home',
+    title: 'InsightsHive - AI-Powered Retail Intelligence Platform',
     description:
-      "Transform retail operations through AI-powered computer vision and automated KPI extraction",
-    includeStructuredData: true,
+      'Transform retail operations through AI-powered computer vision and automated KPI extraction',
+    includeStructuredData: true
   },
 
   about: {
-    pageType: "about",
-    title: "About InsightsHive - AI Retail Intelligence",
+    pageType: 'about',
+    title: 'About InsightsHive - AI Retail Intelligence',
     description:
-      "Learn about our mission to transform retail operations through AI-powered technology and automated insights",
-    breadcrumbs: [{ label: "Home", href: "index.html" }, { label: "About Us" }],
+      'Learn about our mission to transform retail operations through AI-powered technology and automated insights',
+    breadcrumbs: [{ label: 'Home', href: 'index.html' }, { label: 'About Us' }]
   },
 
   products: {
-    pageType: "products",
-    title: "InsightsHive Products - AI Mobile & Web Platform",
+    pageType: 'products',
+    title: 'InsightsHive Products - AI Mobile & Web Platform',
     description:
-      "Proprietary AI-powered mobile and web applications for automated retail data collection and intelligent analysis",
-    breadcrumbs: [{ label: "Home", href: "index.html" }, { label: "Products" }],
+      'Proprietary AI-powered mobile and web applications for automated retail data collection and intelligent analysis',
+    breadcrumbs: [{ label: 'Home', href: 'index.html' }, { label: 'Products' }]
   },
 
   team: {
-    pageType: "team",
-    title: "InsightsHive Team - Experienced AI & Retail Experts",
+    pageType: 'team',
+    title: 'InsightsHive Team - Experienced AI & Retail Experts',
     description:
       "Meet the experienced professionals driving InsightsHive's mission to transform retail operations through AI-powered technology",
-    breadcrumbs: [{ label: "Home", href: "index.html" }, { label: "Our Team" }],
+    breadcrumbs: [{ label: 'Home', href: 'index.html' }, { label: 'Our Team' }]
   },
 
   technology: {
-    pageType: "technology",
-    title: "AI Technology & Competitive Advantage - InsightsHive",
+    pageType: 'technology',
+    title: 'AI Technology & Competitive Advantage - InsightsHive',
     description:
-      "Advanced AI computer vision and machine learning technologies that power our retail intelligence platform",
+      'Advanced AI computer vision and machine learning technologies that power our retail intelligence platform',
     breadcrumbs: [
-      { label: "Home", href: "index.html" },
-      { label: "Technology" },
-    ],
+      { label: 'Home', href: 'index.html' },
+      { label: 'Technology' }
+    ]
   },
 
   contact: {
-    pageType: "contact",
-    title: "Contact InsightsHive - Schedule Demo & Get in Touch",
+    pageType: 'contact',
+    title: 'Contact InsightsHive - Schedule Demo & Get in Touch',
     description:
-      "Ready to transform your retail operations? Contact our team to schedule a demo or discuss partnership opportunities",
-    breadcrumbs: [{ label: "Home", href: "index.html" }, { label: "Contact" }],
+      'Ready to transform your retail operations? Contact our team to schedule a demo or discuss partnership opportunities',
+    breadcrumbs: [{ label: 'Home', href: 'index.html' }, { label: 'Contact' }]
   },
 
   news: {
-    pageType: "news",
-    title: "News & Insights - InsightsHive",
+    pageType: 'news',
+    title: 'News & Insights - InsightsHive',
     description:
-      "Latest news, insights, and thought leadership from InsightsHive. Learn about retail execution, AI technology, and industry trends.",
+      'Latest news, insights, and thought leadership from InsightsHive. Learn about retail execution, AI technology, and industry trends.',
     breadcrumbs: [
-      { label: "Home", href: "index.html" },
-      { label: "News & Insights" },
-    ],
-  },
+      { label: 'Home', href: 'index.html' },
+      { label: 'News & Insights' }
+    ]
+  }
 };
 
 // Helper function to get current page config
 export function getCurrentPageConfig() {
   const path = window.location.pathname;
-  const filename = path.split("/").pop().replace(".html", "") || "index";
+  const filename = path.split('/').pop().replace('.html', '') || 'index';
 
   // Map filenames to config keys
   const pageMap = {
-    index: "home",
-    about: "about",
-    products: "products",
-    team: "team",
-    technology: "technology",
-    contact: "contact",
-    news: "news",
+    index: 'home',
+    about: 'about',
+    products: 'products',
+    team: 'team',
+    technology: 'technology',
+    contact: 'contact',
+    news: 'news'
   };
 
-  const pageKey = pageMap[filename] || "home";
+  const pageKey = pageMap[filename] || 'home';
   return pageConfigs[pageKey];
 }

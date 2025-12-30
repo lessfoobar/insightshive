@@ -3,8 +3,8 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
-  "singleQuote": false,
-  "trailingComma": "es5",
+  "singleQuote": true,
+  "trailingComma": "none",
   "bracketSpacing": true,
   "arrowParens": "always",
   "htmlWhitespaceSensitivity": "css",
@@ -15,7 +15,7 @@
       "options": {
         "parser": "html",
         "htmlWhitespaceSensitivity": "ignore",
-        "voidTags": false
+        "singleQuote": false
       }
     }
   ]

@@ -2,7 +2,7 @@
 /* Legacy Browser Support - Non-module version */
 
 (function () {
-  "use strict";
+  'use strict';
 
   // Theme Manager
   function ThemeManager() {
@@ -16,17 +16,17 @@
   };
 
   ThemeManager.prototype.createThemeToggle = function () {
-    if (document.querySelector(".btn--theme-toggle")) {
+    if (document.querySelector('.btn--theme-toggle')) {
       return;
     }
 
-    const themeToggle = document.createElement("button");
-    themeToggle.className = "btn btn--theme-toggle";
-    themeToggle.setAttribute("aria-label", "Toggle dark mode");
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'btn btn--theme-toggle';
+    themeToggle.setAttribute('aria-label', 'Toggle dark mode');
     themeToggle.innerHTML = this.getThemeIcon();
 
     const self = this;
-    themeToggle.addEventListener("click", function () {
+    themeToggle.addEventListener('click', function () {
       self.toggleTheme();
     });
 
@@ -34,24 +34,24 @@
   };
 
   ThemeManager.prototype.getThemeIcon = function () {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    return currentTheme === "dark" ? "☀️" : "🌙";
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    return currentTheme === 'dark' ? '☀️' : '🌙';
   };
 
   ThemeManager.prototype.initializeTheme = function () {
     // Remove any existing class-based theme
-    document.body.classList.remove("dark-theme", "light-theme");
+    document.body.classList.remove('dark-theme', 'light-theme');
 
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
+      '(prefers-color-scheme: dark)'
     ).matches;
 
     let initialTheme;
     if (savedTheme) {
       initialTheme = savedTheme;
     } else {
-      initialTheme = systemPrefersDark ? "dark" : "light";
+      initialTheme = systemPrefersDark ? 'dark' : 'light';
     }
 
     this.setTheme(initialTheme);
@@ -59,8 +59,8 @@
   };
 
   ThemeManager.prototype.toggleTheme = function () {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     this.setTheme(newTheme);
     this.updateToggleIcon();
@@ -68,14 +68,14 @@
   };
 
   ThemeManager.prototype.setTheme = function (theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-    document.body.classList.remove("dark-theme", "light-theme");
-    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.classList.remove('dark-theme', 'light-theme');
+    localStorage.setItem('theme', theme);
     this.updateMetaThemeColor(theme);
   };
 
   ThemeManager.prototype.updateToggleIcon = function () {
-    const themeToggle = document.querySelector(".btn--theme-toggle");
+    const themeToggle = document.querySelector('.btn--theme-toggle');
     if (themeToggle) {
       themeToggle.innerHTML = this.getThemeIcon();
     }
@@ -84,19 +84,19 @@
   ThemeManager.prototype.updateMetaThemeColor = function (theme) {
     let metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (!metaThemeColor) {
-      metaThemeColor = document.createElement("meta");
-      metaThemeColor.name = "theme-color";
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.name = 'theme-color';
       document.head.appendChild(metaThemeColor);
     }
 
-    metaThemeColor.content = theme === "dark" ? "#2d2d2d" : "#ffffff";
+    metaThemeColor.content = theme === 'dark' ? '#2d2d2d' : '#ffffff';
   };
 
   ThemeManager.prototype.animateThemeChange = function () {
     document.body.style.transition =
-      "background-color 0.3s ease, color 0.3s ease";
+      'background-color 0.3s ease, color 0.3s ease';
     setTimeout(function () {
-      document.body.style.transition = "";
+      document.body.style.transition = '';
     }, 300);
   };
 
@@ -104,17 +104,17 @@
     const self = this;
 
     window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", function (e) {
-        if (!localStorage.getItem("theme")) {
-          const newTheme = e.matches ? "dark" : "light";
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          const newTheme = e.matches ? 'dark' : 'light';
           self.setTheme(newTheme);
           self.updateToggleIcon();
         }
       });
 
-    document.addEventListener("keydown", function (e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === "d") {
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
         e.preventDefault();
         self.toggleTheme();
       }
@@ -134,18 +134,18 @@
   };
 
   MobileMenu.prototype.createMenuToggle = function () {
-    const existingToggle = document.querySelector(".btn--menu-toggle");
+    const existingToggle = document.querySelector('.btn--menu-toggle');
 
     if (!existingToggle) {
-      const navContainer = document.querySelector(".nav__container");
+      const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
         return;
       }
 
-      const newMenuToggle = document.createElement("button");
-      newMenuToggle.type = "button";
-      newMenuToggle.className = "btn btn--menu-toggle";
-      newMenuToggle.setAttribute("aria-label", "Toggle navigation menu");
+      const newMenuToggle = document.createElement('button');
+      newMenuToggle.type = 'button';
+      newMenuToggle.className = 'btn btn--menu-toggle';
+      newMenuToggle.setAttribute('aria-label', 'Toggle navigation menu');
       newMenuToggle.innerHTML =
         '<span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span><span class="btn--menu-toggle__line"></span>';
       navContainer.appendChild(newMenuToggle);
@@ -155,7 +155,7 @@
       this.menuToggle = existingToggle;
     }
 
-    this.navLinks = document.querySelector(".nav__links");
+    this.navLinks = document.querySelector('.nav__links');
   };
 
   MobileMenu.prototype.toggleMenu = function () {
@@ -163,13 +163,13 @@
       return;
     }
 
-    this.menuToggle.classList.toggle("btn--menu-toggle--active");
-    this.navLinks.classList.toggle("nav__links--active");
+    this.menuToggle.classList.toggle('btn--menu-toggle--active');
+    this.navLinks.classList.toggle('nav__links--active');
 
-    if (this.navLinks.classList.contains("nav__links--active")) {
-      document.body.style.overflow = "hidden";
+    if (this.navLinks.classList.contains('nav__links--active')) {
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
   };
 
@@ -178,28 +178,28 @@
       return;
     }
 
-    this.menuToggle.classList.remove("btn--menu-toggle--active");
-    this.navLinks.classList.remove("nav__links--active");
-    document.body.style.overflow = "";
+    this.menuToggle.classList.remove('btn--menu-toggle--active');
+    this.navLinks.classList.remove('nav__links--active');
+    document.body.style.overflow = '';
   };
 
   MobileMenu.prototype.bindEvents = function () {
     const self = this;
 
     if (this.menuToggle) {
-      this.menuToggle.addEventListener("click", function () {
+      this.menuToggle.addEventListener('click', function () {
         self.toggleMenu();
       });
     }
 
-    const navLinksItems = document.querySelectorAll(".nav__links a");
+    const navLinksItems = document.querySelectorAll('.nav__links a');
     navLinksItems.forEach(function (link) {
-      link.addEventListener("click", function () {
+      link.addEventListener('click', function () {
         self.closeMenu();
       });
     });
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener('click', function (event) {
       if (
         self.menuToggle &&
         self.navLinks &&
@@ -210,11 +210,11 @@
       }
     });
 
-    document.addEventListener("keydown", function (e) {
+    document.addEventListener('keydown', function (e) {
       if (
-        e.key === "Escape" &&
+        e.key === 'Escape' &&
         self.navLinks &&
-        self.navLinks.classList.contains("nav__links--active")
+        self.navLinks.classList.contains('nav__links--active')
       ) {
         self.closeMenu();
       }
@@ -227,8 +227,8 @@
     new MobileMenu();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initApp);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
   } else {
     initApp();
   }

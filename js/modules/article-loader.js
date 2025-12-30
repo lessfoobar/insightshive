@@ -10,14 +10,14 @@ export class ArticleLoader {
    */
   static async loadArticles() {
     try {
-      const response = await fetch("data/articles.json");
+      const response = await fetch('data/articles.json');
       if (!response.ok) {
         throw new Error(`Failed to load articles: ${response.status}`);
       }
       const data = await response.json();
       return data.articles || [];
     } catch (error) {
-      console.error("Error loading articles:", error);
+      console.error('Error loading articles:', error);
       return [];
     }
   }
@@ -29,10 +29,10 @@ export class ArticleLoader {
    */
   static formatDate(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   }
 
@@ -43,13 +43,13 @@ export class ArticleLoader {
    */
   static getCategoryClass(category) {
     const categoryMap = {
-      "Industry Insights": "industry-insights",
-      Product: "product",
-      Announcements: "announcements",
-      Technology: "technology",
-      "Case Study": "case-study",
+      'Industry Insights': 'industry-insights',
+      Product: 'product',
+      Announcements: 'announcements',
+      Technology: 'technology',
+      'Case Study': 'case-study'
     };
-    return categoryMap[category] || category.toLowerCase().replace(/\s+/g, "-");
+    return categoryMap[category] || category.toLowerCase().replace(/\s+/g, '-');
   }
 
   /**
@@ -70,7 +70,7 @@ export class ArticleLoader {
           <img src="${article.image}" alt="${article.title}" class="card__image" loading="lazy">
         </div>
         `
-            : ""
+            : ''
         }
         <div class="card__header">
           <h3 class="card__title">${article.title}</h3>
@@ -85,10 +85,10 @@ export class ArticleLoader {
             article.tags && article.tags.length > 0
               ? `
           <div class="article-tags">
-            ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+            ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
           </div>
           `
-              : ""
+              : ''
           }
         </div>
         <div class="card__footer">
@@ -118,7 +118,7 @@ export class ArticleLoader {
           <img src="${article.image}" alt="${article.title}" class="card__image" loading="lazy">
         </div>
         `
-            : ""
+            : ''
         }
         <div class="card__header">
           <span class="badge badge--featured">Featured</span>
@@ -135,10 +135,10 @@ export class ArticleLoader {
             article.tags && article.tags.length > 0
               ? `
           <div class="article-tags">
-            ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+            ${article.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
           </div>
           `
-              : ""
+              : ''
           }
         </div>
         <div class="card__footer">
@@ -178,7 +178,7 @@ export class ArticleLoader {
     // Filter by category if specified
     if (category) {
       articles = articles.filter(
-        (article) => article.category.toLowerCase() === category.toLowerCase(),
+        (article) => article.category.toLowerCase() === category.toLowerCase()
       );
     }
 
@@ -186,16 +186,16 @@ export class ArticleLoader {
     const featuredArticles = articles.filter((article) => article.featured);
     const regularArticles = articles.filter((article) => !article.featured);
 
-    let html = "";
+    let html = '';
 
     // Render featured articles
     if (showFeatured && featuredArticles.length > 0) {
       html += '<section class="card--section featured-section">';
-      html += "<h2>Featured</h2>";
+      html += '<h2>Featured</h2>';
       html += featuredArticles
         .map((article) => this.renderFeaturedArticle(article))
-        .join("");
-      html += "</section>";
+        .join('');
+      html += '</section>';
     }
 
     // Render regular articles in grid
@@ -205,13 +205,13 @@ export class ArticleLoader {
         : regularArticles;
 
       html += '<section class="card--section">';
-      html += "<h2>Latest Articles</h2>";
+      html += '<h2>Latest Articles</h2>';
       html += '<div class="grid grid-3 articles-grid">';
       html += displayArticles
         .map((article) => this.renderArticleCard(article))
-        .join("");
-      html += "</div>";
-      html += "</section>";
+        .join('');
+      html += '</div>';
+      html += '</section>';
     }
 
     container.innerHTML = html;
@@ -224,7 +224,7 @@ export class ArticleLoader {
   static async getCategories() {
     const articles = await this.loadArticles();
     const categories = [
-      ...new Set(articles.map((article) => article.category)),
+      ...new Set(articles.map((article) => article.category))
     ];
     return categories.sort();
   }

@@ -11,8 +11,8 @@ export class MobileMenu {
 
   init() {
     // Wait for DOM to be ready
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => this.setup());
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setup());
     } else {
       this.setup();
     }
@@ -25,20 +25,20 @@ export class MobileMenu {
   }
 
   findOrCreateMenuToggle() {
-    this.menuToggle = document.querySelector(".btn--menu-toggle");
+    this.menuToggle = document.querySelector('.btn--menu-toggle');
 
     if (!this.menuToggle) {
-      const navContainer = document.querySelector(".nav__container");
+      const navContainer = document.querySelector('.nav__container');
       if (!navContainer) {
         return;
       }
 
-      this.menuToggle = document.createElement("button");
-      this.menuToggle.type = "button";
-      this.menuToggle.className = "btn--menu-toggle";
-      this.menuToggle.setAttribute("aria-label", "Toggle navigation menu");
-      this.menuToggle.setAttribute("aria-expanded", "false");
-      this.menuToggle.setAttribute("aria-controls", "navigation-menu");
+      this.menuToggle = document.createElement('button');
+      this.menuToggle.type = 'button';
+      this.menuToggle.className = 'btn--menu-toggle';
+      this.menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+      this.menuToggle.setAttribute('aria-expanded', 'false');
+      this.menuToggle.setAttribute('aria-controls', 'navigation-menu');
 
       this.menuToggle.innerHTML = `
         <span class="btn--menu-toggle__line"></span>
@@ -49,9 +49,9 @@ export class MobileMenu {
       navContainer.appendChild(this.menuToggle);
     }
 
-    this.navLinks = document.querySelector(".nav__links");
+    this.navLinks = document.querySelector('.nav__links');
     if (this.navLinks) {
-      this.navLinks.id = "navigation-menu";
+      this.navLinks.id = 'navigation-menu';
     }
   }
 
@@ -73,24 +73,24 @@ export class MobileMenu {
     }
 
     this.isOpen = true;
-    this.menuToggle.setAttribute("aria-expanded", "true");
+    this.menuToggle.setAttribute('aria-expanded', 'true');
 
     // Save current scroll position
     this.savedScrollY = window.scrollY;
 
     // Add active classes
-    this.menuToggle.classList.add("btn--menu-toggle--active");
-    this.navLinks.classList.add("nav__links--active");
+    this.menuToggle.classList.add('btn--menu-toggle--active');
+    this.navLinks.classList.add('nav__links--active');
 
     // Prevent body scroll
-    document.body.style.position = "fixed";
+    document.body.style.position = 'fixed';
     document.body.style.top = `-${this.savedScrollY}px`;
-    document.body.style.width = "100%";
-    document.body.style.overflow = "hidden";
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
 
     // Add event listeners
-    document.addEventListener("keydown", this.handleEscapeKey);
-    document.addEventListener("click", this.handleOutsideClick);
+    document.addEventListener('keydown', this.handleEscapeKey);
+    document.addEventListener('click', this.handleOutsideClick);
   }
 
   closeMenu() {
@@ -102,19 +102,19 @@ export class MobileMenu {
 
     // Remove active classes
     if (this.menuToggle) {
-      this.menuToggle.classList.remove("btn--menu-toggle--active");
-      this.menuToggle.setAttribute("aria-expanded", "false");
+      this.menuToggle.classList.remove('btn--menu-toggle--active');
+      this.menuToggle.setAttribute('aria-expanded', 'false');
     }
 
     if (this.navLinks) {
-      this.navLinks.classList.remove("nav__links--active");
+      this.navLinks.classList.remove('nav__links--active');
     }
 
     // Restore body scroll
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    document.body.style.overflow = "";
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
 
     // Restore scroll position
     if (this.savedScrollY) {
@@ -123,12 +123,12 @@ export class MobileMenu {
     }
 
     // Remove event listeners
-    document.removeEventListener("keydown", this.handleEscapeKey);
-    document.removeEventListener("click", this.handleOutsideClick);
+    document.removeEventListener('keydown', this.handleEscapeKey);
+    document.removeEventListener('click', this.handleOutsideClick);
   }
 
   handleEscapeKey = (e) => {
-    if (e.key === "Escape" && this.isOpen) {
+    if (e.key === 'Escape' && this.isOpen) {
       this.closeMenu();
     }
   };
@@ -159,7 +159,7 @@ export class MobileMenu {
   };
 
   handleResize() {
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       // Close menu when resizing to desktop
       if (window.innerWidth > 768 && this.isOpen) {
         this.closeMenu();
@@ -167,7 +167,7 @@ export class MobileMenu {
     });
 
     // Handle orientation change
-    window.addEventListener("orientationchange", () => {
+    window.addEventListener('orientationchange', () => {
       if (this.isOpen) {
         setTimeout(() => {
           this.closeMenu();
@@ -180,16 +180,16 @@ export class MobileMenu {
     // Menu toggle click
     if (this.menuToggle) {
       // Remove any existing listeners first
-      this.menuToggle.removeEventListener("click", this.handleMenuToggleClick);
+      this.menuToggle.removeEventListener('click', this.handleMenuToggleClick);
       // Add the listener
-      this.menuToggle.addEventListener("click", this.handleMenuToggleClick);
+      this.menuToggle.addEventListener('click', this.handleMenuToggleClick);
     }
 
     // Navigation link clicks
     if (this.navLinks) {
-      this.navLinks.addEventListener("click", (e) => {
+      this.navLinks.addEventListener('click', (e) => {
         // Only close if clicking a navigation link, not the container
-        if (e.target.matches(".nav__link") || e.target.closest(".nav__link")) {
+        if (e.target.matches('.nav__link') || e.target.closest('.nav__link')) {
           this.closeMenu();
         }
       });
@@ -216,11 +216,11 @@ export class MobileMenu {
   // Cleanup method
   destroy() {
     this.closeMenu();
-    document.removeEventListener("keydown", this.handleEscapeKey);
-    document.removeEventListener("click", this.handleOutsideClick);
+    document.removeEventListener('keydown', this.handleEscapeKey);
+    document.removeEventListener('click', this.handleOutsideClick);
 
     if (this.menuToggle) {
-      this.menuToggle.removeEventListener("click", this.handleMenuToggleClick);
+      this.menuToggle.removeEventListener('click', this.handleMenuToggleClick);
     }
   }
 }
