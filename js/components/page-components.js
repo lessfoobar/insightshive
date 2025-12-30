@@ -25,38 +25,49 @@ export class PageComponents {
     <script nomodule src="js/legacy/app-legacy.js"></script>`;
   }
 
-  static createHeader(pageType = 'home', customTitle = '', customTagline = '', customDescription = '') {
+  static createHeader(
+    pageType = "home",
+    customTitle = "",
+    customTagline = "",
+    customDescription = "",
+  ) {
     const headers = {
       home: {
-        title: 'InsightsHive',
-        tagline: 'AI-Powered Retail Intelligence Platform',
-        description: 'A digital-native tech startup offering proprietary mobile and web applications that leverage advanced AI computer vision to transform retail operations through automated KPI extraction and real-time insights.'
+        title: "InsightsHive",
+        tagline: "AI-Powered Retail Intelligence Platform",
+        description:
+          "A digital-native tech startup offering proprietary mobile and web applications that leverage advanced AI computer vision to transform retail operations through automated KPI extraction and real-time insights.",
       },
       about: {
-        title: 'InsightsHive',
-        tagline: 'About Our Company',
-        description: 'Learn about our mission to transform retail operations through AI-powered technology and automated insights.'
+        title: "InsightsHive",
+        tagline: "About Our Company",
+        description:
+          "Learn about our mission to transform retail operations through AI-powered technology and automated insights.",
       },
       products: {
-        title: 'InsightsHive',
-        tagline: 'Our Products',
-        description: 'Proprietary AI-powered mobile and web applications designed to revolutionize retail operations through automated data collection and intelligent analysis.'
+        title: "InsightsHive",
+        tagline: "Our Products",
+        description:
+          "Proprietary AI-powered mobile and web applications designed to revolutionize retail operations through automated data collection and intelligent analysis.",
       },
       team: {
-        title: 'InsightsHive',
-        tagline: 'Our Team',
-        description: 'Meet the experienced professionals driving InsightsHive\'s mission to transform retail operations through AI-powered technology.'
+        title: "InsightsHive",
+        tagline: "Our Team",
+        description:
+          "Meet the experienced professionals driving InsightsHive's mission to transform retail operations through AI-powered technology.",
       },
       technology: {
-        title: 'InsightsHive',
-        tagline: 'AI Technology & Competitive Advantage',
-        description: 'Advanced AI computer vision and machine learning technologies that power our retail intelligence platform and deliver superior accuracy and insights.'
+        title: "InsightsHive",
+        tagline: "AI Technology & Competitive Advantage",
+        description:
+          "Advanced AI computer vision and machine learning technologies that power our retail intelligence platform and deliver superior accuracy and insights.",
       },
       contact: {
-        title: 'InsightsHive',
-        tagline: 'Contact Us',
-        description: 'Ready to transform your retail operations? Get in touch with our team to schedule a demo or discuss how InsightsHive can benefit your business.'
-      }
+        title: "InsightsHive",
+        tagline: "Contact Us",
+        description:
+          "Ready to transform your retail operations? Get in touch with our team to schedule a demo or discuss how InsightsHive can benefit your business.",
+      },
     };
 
     const config = headers[pageType] || headers.home;
@@ -74,32 +85,42 @@ export class PageComponents {
     </header>`;
   }
 
-  static createNavigation(activePage = 'home') {
+  static createNavigation(activePage = "home") {
     const navItems = [
-      { id: 'home', label: 'Home', href: 'index.html', icon: '🏠' },
-      { id: 'about', label: 'About Us', href: 'about.html', icon: 'ℹ️' },
-      { id: 'products', label: 'Products', href: 'products.html', icon: '📱' },
-      { id: 'team', label: 'Our Team', href: 'team.html', icon: '👥' },
-      { id: 'technology', label: 'Technology', href: 'technology.html', icon: '🤖' },
-      { id: 'contact', label: 'Contact', href: 'contact.html', icon: '📞' }
+      { id: "home", label: "Home", href: "index.html", icon: "🏠" },
+      { id: "about", label: "About Us", href: "about.html", icon: "ℹ️" },
+      { id: "products", label: "Products", href: "products.html", icon: "📱" },
+      { id: "team", label: "Our Team", href: "team.html", icon: "👥" },
+      {
+        id: "technology",
+        label: "Technology",
+        href: "technology.html",
+        icon: "🤖",
+      },
+      { id: "news", label: "News", href: "news.html", icon: "📰" },
+      { id: "contact", label: "Contact", href: "contact.html", icon: "📞" },
     ];
 
-    const navLinks = navItems.map(item => `
+    const navLinks = navItems
+      .map(
+        (item) => `
       <li role="none">
-        <a href="${item.href}" 
-           class="nav__link ${item.id === activePage ? 'nav__link--active' : ''}" 
+        <a href="${item.href}"
+           class="nav__link ${item.id === activePage ? "nav__link--active" : ""}"
            role="menuitem">
           <span class="nav__link-icon">${item.icon}</span>${item.label}
         </a>
       </li>
-    `).join('');
+    `,
+      )
+      .join("");
 
     return `
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav__container">
             <a href="index.html" class="nav__logo">InsightsHive</a>
-            <button type="button" 
-                    class="btn--menu-toggle" 
+            <button type="button"
+                    class="btn--menu-toggle"
                     aria-label="Toggle navigation menu"
                     aria-expanded="false"
                     aria-controls="navigation-menu">
@@ -147,25 +168,27 @@ export class PageComponents {
 
   static createBreadcrumbs(breadcrumbs) {
     if (!breadcrumbs || breadcrumbs.length === 0) {
-      return '';
+      return "";
     }
 
-    const breadcrumbItems = breadcrumbs.map((crumb, index) => {
-      const isLast = index === breadcrumbs.length - 1;
+    const breadcrumbItems = breadcrumbs
+      .map((crumb, index) => {
+        const isLast = index === breadcrumbs.length - 1;
 
-      if (isLast) {
-        return `
+        if (isLast) {
+          return `
           <span class="breadcrumbs__item breadcrumbs__item--current" aria-current="page">
             ${crumb.label}
           </span>`;
-      } else {
-        return `
+        } else {
+          return `
           <span class="breadcrumbs__item">
             <a href="${crumb.href}" class="breadcrumbs__link">${crumb.label}</a>
           </span>
           <span class="breadcrumbs__separator" aria-hidden="true">›</span>`;
-      }
-    }).join('');
+        }
+      })
+      .join("");
 
     return `
     <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -192,7 +215,7 @@ export class PageComponents {
           "sameAs": "https://www.linkedin.com/in/nikola-kalev/"
         },
         {
-          "@type": "Person", 
+          "@type": "Person",
           "name": "Ognyan Vasilev",
           "jobTitle": "Co-Founder",
           "sameAs": "https://www.linkedin.com/in/ognyan-v-vasilev/"
@@ -213,8 +236,8 @@ export class PageRenderer {
   }
 
   init() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.render());
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => this.render());
     } else {
       this.render();
     }
@@ -223,34 +246,43 @@ export class PageRenderer {
   render() {
     // Update document head
     if (this.pageConfig.title || this.pageConfig.description) {
-      document.title = this.pageConfig.title || 'InsightsHive - AI-Powered Retail Intelligence Platform';
+      document.title =
+        this.pageConfig.title ||
+        "InsightsHive - AI-Powered Retail Intelligence Platform";
 
-      const metaDescription = document.querySelector('meta[name="description"]');
+      const metaDescription = document.querySelector(
+        'meta[name="description"]',
+      );
       if (metaDescription && this.pageConfig.description) {
         metaDescription.content = this.pageConfig.description;
       }
     }
 
     // Render header if placeholder exists
-    const headerPlaceholder = document.getElementById('header-placeholder');
+    const headerPlaceholder = document.getElementById("header-placeholder");
     if (headerPlaceholder) {
       headerPlaceholder.outerHTML = PageComponents.createHeader(
         this.pageConfig.pageType,
         this.pageConfig.headerTitle,
         this.pageConfig.headerTagline,
-        this.pageConfig.headerDescription
+        this.pageConfig.headerDescription,
       );
     }
 
     // Render navigation if placeholder exists
-    const navPlaceholder = document.getElementById('nav-placeholder');
+    const navPlaceholder = document.getElementById("nav-placeholder");
     if (navPlaceholder) {
-      navPlaceholder.outerHTML = PageComponents.createNavigation(this.pageConfig.pageType);
+      navPlaceholder.outerHTML = PageComponents.createNavigation(
+        this.pageConfig.pageType,
+      );
 
       // Insert supported banner after navigation
-      const nav = document.querySelector('.nav');
+      const nav = document.querySelector(".nav");
       if (nav) {
-        nav.insertAdjacentHTML('afterend', PageComponents.createSupportedBanner());
+        nav.insertAdjacentHTML(
+          "afterend",
+          PageComponents.createSupportedBanner(),
+        );
       }
 
       // Initialize scroll detection after navigation is rendered
@@ -258,20 +290,24 @@ export class PageRenderer {
     }
 
     // Render breadcrumbs if placeholder exists
-    const breadcrumbsPlaceholder = document.getElementById('breadcrumbs-placeholder');
+    const breadcrumbsPlaceholder = document.getElementById(
+      "breadcrumbs-placeholder",
+    );
     if (breadcrumbsPlaceholder && this.pageConfig.breadcrumbs) {
-      breadcrumbsPlaceholder.outerHTML = PageComponents.createBreadcrumbs(this.pageConfig.breadcrumbs);
+      breadcrumbsPlaceholder.outerHTML = PageComponents.createBreadcrumbs(
+        this.pageConfig.breadcrumbs,
+      );
     }
 
     // Render footer if placeholder exists
-    const footerPlaceholder = document.getElementById('footer-placeholder');
+    const footerPlaceholder = document.getElementById("footer-placeholder");
     if (footerPlaceholder) {
       footerPlaceholder.outerHTML = PageComponents.createFooter();
     }
 
     // Add structured data if needed
     if (this.pageConfig.includeStructuredData) {
-      const structuredDataScript = document.createElement('div');
+      const structuredDataScript = document.createElement("div");
       structuredDataScript.innerHTML = PageComponents.createStructuredData();
       document.head.appendChild(structuredDataScript.firstElementChild);
     }
@@ -279,8 +315,8 @@ export class PageRenderer {
 
   initScrollDetection() {
     // Detect when header is out of view to show/hide nav logo
-    const header = document.querySelector('.header');
-    const nav = document.querySelector('.nav');
+    const header = document.querySelector(".header");
+    const nav = document.querySelector(".nav");
 
     if (!header || !nav) {
       return;
@@ -292,15 +328,15 @@ export class PageRenderer {
 
       // Add scrolled class when header is mostly out of view
       if (currentScrollY > headerHeight * 0.7) {
-        nav.classList.add('nav--scrolled');
+        nav.classList.add("nav--scrolled");
       } else {
-        nav.classList.remove('nav--scrolled');
+        nav.classList.remove("nav--scrolled");
       }
     };
 
     // Throttle scroll events for better performance
     let ticking = false;
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           handleScroll();
@@ -311,7 +347,7 @@ export class PageRenderer {
     });
 
     // Handle resize to recalculate header position
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       handleScroll();
     });
 

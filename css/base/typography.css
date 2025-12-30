@@ -89,7 +89,7 @@ em {
 
 /* Code and preformatted text */
 code {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   background: var(--bg-card);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
@@ -166,15 +166,15 @@ small {
   h1 {
     font-size: var(--font-size-3xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-2xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
   }
-  
+
   body {
     font-size: var(--font-size-sm);
   }
@@ -184,7 +184,7 @@ small {
   h1 {
     font-size: var(--font-size-2xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-xl);
   }

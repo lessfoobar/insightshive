@@ -10,7 +10,5 @@
     "valid-id": "error",
     "heading-level": "warn"
   },
-  "elements": [
-    "html5"
-  ]
+  "elements": ["html5"]
 }

@@ -118,3 +118,23 @@ jspm_packages/
 
 # Documentation generated files
 docs/generated/css/main.css
+
+# Trunk
+.trunk/
+
+# AI Tools & MCP Servers
+# GitHub Copilot
+.copilot/
+.github-copilot/
+
+# Claude (Anthropic)
+.claude/
+.anthropic/
+.claude-code/
+
+# Google Gemini
+.gemini/
+.google-ai/
+
+# Serena AI
+.serena/

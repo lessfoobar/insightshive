@@ -1,33 +1,66 @@
 /* Spacing Utilities - BEM Methodology */
 
 /* Margin utilities */
-.m-0 { margin: 0; }
-.mt-4 { margin-top: var(--space-4); }
-.mb-4 { margin-bottom: var(--space-4); }
-.mb-6 { margin-bottom: var(--space-6); }
-.mx-auto { margin-left: auto; margin-right: auto; }
+.m-0 {
+  margin: 0;
+}
+.mt-4 {
+  margin-top: var(--space-4);
+}
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+.mb-6 {
+  margin-bottom: var(--space-6);
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Padding utilities */
-.p-0 { padding: 0; }
+.p-0 {
+  padding: 0;
+}
 /* Display utilities */
-.block { display: block; }
-.flex { display: flex; }
-.grid { display: grid; }
-.hidden { display: none; }
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.hidden {
+  display: none;
+}
 
 /* Position utilities */
-.relative { position: relative; }
+.relative {
+  position: relative;
+}
 
 /* Width and height utilities */
-.w-full { width: 100%; }
-.h-full { height: 100%; }
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
 
 /* Mobile responsive spacing */
 @media (max-width: 768px) {
-  .md\:mb-4 { margin-bottom: var(--space-4); }
-  .md\:p-4 { padding: var(--space-4); }
+  .md\:mb-4 {
+    margin-bottom: var(--space-4);
+  }
+  .md\:p-4 {
+    padding: var(--space-4);
+  }
 }
 
 @media (max-width: 480px) {
-  .sm\:p-3 { padding: var(--space-3); }
+  .sm\:p-3 {
+    padding: var(--space-3);
+  }
 }

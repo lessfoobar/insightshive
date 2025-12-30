@@ -1,0 +1,314 @@
+/**
+ * Article & News Components
+ * Styles for blog posts, news articles, and article listings
+ */
+
+/* Article Cards */
+.article-card {
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(163, 89, 188, 0.2);
+}
+
+.card__image-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin: calc(var(--space-4) * -1) calc(var(--space-4) * -1) var(--space-4);
+}
+
+.card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.article-card:hover .card__image {
+  transform: scale(1.05);
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.card__date {
+  color: var(--text-secondary);
+}
+
+.card__author {
+  color: var(--text-secondary);
+}
+
+/* Featured Article */
+.featured-article {
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+}
+
+.featured-article .card__image {
+  height: 300px;
+}
+
+.featured-article .card__title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-3);
+}
+
+.featured-excerpt {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-primary);
+}
+
+.badge--featured {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  color: var(--text-on-accent);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.05em;
+}
+
+/* Article Tags */
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  transition:
+    background var(--transition-base),
+    color var(--transition-base);
+}
+
+.tag:hover {
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border-color: var(--accent-primary);
+}
+
+/* Category Badges */
+.badge--industry-insights {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.badge--product {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.badge--announcements {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.badge--technology {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: #1a1a1d;
+}
+
+.badge--case-study {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: #1a1a1d;
+}
+
+/* Article Detail Page */
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article__header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.article__header .page-title {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+}
+
+.article__header .article__meta {
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.article__content {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-primary);
+}
+
+.article__content h2 {
+  font-size: var(--font-size-2xl);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  color: var(--text-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.article__content h3 {
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+  color: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
+}
+
+.article__content p {
+  margin-bottom: var(--space-4);
+}
+
+.article__content strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-heading);
+}
+
+.article__content ul,
+.article__content ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+.article__content li {
+  margin-bottom: var(--space-2);
+}
+
+.article__content blockquote {
+  border-left: 4px solid var(--accent-primary);
+  padding-left: var(--space-4);
+  margin: var(--space-6) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.article__content code {
+  background: var(--bg-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: "Courier New", monospace;
+  font-size: var(--font-size-sm);
+}
+
+.article__content pre {
+  background: var(--bg-secondary);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+.article__content pre code {
+  background: none;
+  padding: 0;
+}
+
+.article__content a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  transition: color var(--transition-base);
+}
+
+.article__content a:hover {
+  color: var(--accent-secondary);
+}
+
+.article__tags {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-color);
+}
+
+.article__footer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 2px solid var(--border-color);
+  text-align: center;
+}
+
+/* Articles Grid */
+.articles-grid {
+  margin-top: var(--space-6);
+}
+
+/* Featured Section */
+.featured-section {
+  margin-bottom: var(--space-8);
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.no-articles {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card__image {
+    height: 180px;
+  }
+
+  .featured-article .card__image {
+    height: 220px;
+  }
+
+  .featured-article .card__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .article__header .page-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .article__content {
+    font-size: var(--font-size-base);
+  }
+
+  .article__content h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .article__content h3 {
+    font-size: var(--font-size-lg);
+  }
+}

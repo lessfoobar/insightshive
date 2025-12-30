@@ -100,13 +100,21 @@
 /* Top CTA Button */
 .card--highlight {
   border-left-color: var(--color-primary-600);
-  background: linear-gradient(135deg, var(--bg-card) 45%, var(--color-primary-50) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-card) 45%,
+    var(--color-primary-50) 100%
+  );
   margin-bottom: var(--space-6);
 }
 
 /* Metric cards for KPIs */
 .card--metric {
-  background: linear-gradient(135deg, var(--bg-card) 45%, var(--color-primary-50) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-card) 45%,
+    var(--color-primary-50) 100%
+  );
   text-align: center;
   transition: all 0.3s ease;
   border-left: none;
@@ -121,7 +129,11 @@
 .metric-number {
   font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-bold);
-  background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--color-primary-600)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,15 +167,16 @@
 }
 
 .card--team-member::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, 
-    var(--accent-primary), 
-    var(--color-primary-600), 
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--color-primary-600),
     var(--accent-secondary)
   );
   transform: scaleX(0);
@@ -192,7 +205,11 @@
   font-weight: var(--font-weight-bold);
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, var(--accent-primary) 45%, var(--accent-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary) 45%,
+    var(--accent-secondary) 100%
+  );
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -303,7 +320,11 @@
 
 /* CTA section card */
 .card--cta {
-  background: linear-gradient(135deg, var(--accent-primary) 45%, var(--accent-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary) 45%,
+    var(--accent-secondary) 100%
+  );
   color: white;
   text-align: center;
   padding: var(--space-12) var(--space-6);
@@ -319,13 +340,14 @@
 }
 
 .card--cta::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>')
+    repeat;
   background-size: 50px 50px;
   opacity: 0.3;
   pointer-events: none;
@@ -400,15 +422,24 @@
 }
 
 .badge--ai {
-  background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--color-primary-600)
+  );
   color: white;
   box-shadow: 0 2px 4px rgba(163, 89, 188, 0.3);
   animation: pulse-ai 2s infinite;
 }
 
 @keyframes pulse-ai {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 /* Grid-specific card adjustments */

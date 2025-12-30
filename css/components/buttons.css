@@ -31,14 +31,22 @@
 
 /* Button variants */
 .btn--primary {
-  background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--color-primary-600)
+  );
   color: white;
   box-shadow: 0 4px 8px rgba(163, 89, 188, 0.3);
 }
 
 .btn--primary:hover,
 .btn--primary:focus {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--accent-primary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600),
+    var(--accent-primary)
+  );
   color: #2d2d2d;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(163, 89, 188, 0.4);
@@ -75,7 +83,7 @@
 
 /* CTA button */
 .btn--cta {
-  background: linear-gradient(135deg, white, rgba(255,255,255,0.9));
+  background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.9));
   color: var(--accent-primary);
   padding: var(--space-4) var(--space-8);
   border: none;
@@ -87,7 +95,7 @@
   transition: all var(--transition-base);
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -95,15 +103,23 @@
 .btn--cta:hover,
 .btn--cta:focus {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.95));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.95)
+  );
   color: #2d2d2d;
   text-decoration: none;
 }
 
 /* Top CTA button */
 .btn--cta-top {
-  background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--color-primary-600)
+  );
   color: white;
   padding: var(--space-4) var(--space-8);
   border: none;
@@ -125,7 +141,11 @@
 .btn--cta-top:focus {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(163, 89, 188, 0.4);
-  background: linear-gradient(135deg, var(--color-primary-600), var(--accent-primary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600),
+    var(--accent-primary)
+  );
   color: #2d2d2d;
   text-decoration: none;
 }
@@ -136,7 +156,11 @@
   bottom: var(--space-5);
   right: var(--space-5);
   z-index: var(--z-fixed);
-  background: linear-gradient(135deg, var(--accent-primary), var(--color-primary-600));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--color-primary-600)
+  );
   color: white;
   border: none;
   border-radius: var(--radius-full);

@@ -28,14 +28,15 @@
 }
 
 .app-download-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, 
-    var(--accent-primary), 
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
     var(--color-primary-600)
   );
   transform: scaleX(0);
