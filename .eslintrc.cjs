@@ -81,6 +81,7 @@ module.exports = [
           SwitchCase: 1,
           VariableDeclarator: 1,
           outerIIFEBody: 1,
+          ignoredNodes: ["TemplateLiteral *"],
         },
       ],
       "linebreak-style": ["error", "unix"],
